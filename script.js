@@ -157,4 +157,21 @@ document.addEventListener('DOMContentLoaded', () => {
             floatingImg.style.transform = `translate(${moveX}px, ${moveY}px)`;
         });
     }
+
+    // --- 7. Back to Top Button Logic ---
+    const backToTopBtn = document.getElementById('back-to-top');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
+            backToTopBtn.classList.add('active');
+        } else {
+            backToTopBtn.classList.remove('active');
+        }
+    });
+
+    backToTopBtn.addEventListener('click', () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
 });

@@ -413,6 +413,14 @@ section {
     aspect-ratio: 16/10;
 }
 
+.portfolio-link {
+    display: block;
+    width: 100%;
+    height: 100%;
+    color: inherit;
+    text-decoration: none;
+}
+
 .portfolio-item img {
     width: 100%;
     height: 100%;
@@ -432,9 +440,34 @@ section {
     transition: var(--transition-smooth);
 }
 
+.link-icon {
+    position: absolute;
+    bottom: 2rem;
+    right: 2rem;
+    width: 24px;
+    height: 24px;
+    color: var(--primary);
+    background: rgba(15, 23, 42, 0.5);
+    padding: 5px;
+    border-radius: 8px;
+    backdrop-filter: blur(4px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    opacity: 0;
+    transform: scale(0.8);
+    transition: var(--transition-smooth);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .portfolio-item:hover .portfolio-info {
     transform: translateY(0);
     opacity: 1;
+}
+
+.portfolio-item:hover .link-icon {
+    opacity: 1;
+    transform: scale(1) translateY(-5px);
 }
 
 .portfolio-item:hover img {
@@ -731,5 +764,56 @@ section {
     }
     .ai-quote {
         font-size: 1.2rem;
+    }
+}
+
+
+/* --- Back to Top Button --- */
+.back-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    background: rgba(79, 70, 229, 0.2);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+    transition: var(--transition-smooth);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.back-to-top.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.back-to-top:hover {
+    background: var(--primary);
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px var(--primary-glow);
+}
+
+.back-to-top svg {
+    width: 24px;
+    height: 24px;
+}
+
+@media (max-width: 768px) {
+    .back-to-top {
+        bottom: 20px;
+        right: 20px;
+        width: 45px;
+        height: 45px;
     }
 }
