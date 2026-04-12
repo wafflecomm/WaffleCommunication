@@ -637,4 +637,74 @@ section {
         text-align: center;
     }
 }
-$styles
+
+/* --- AI Quote Emphasis --- */
+.ai-quote-container {
+    margin: 3rem auto;
+    padding: 3rem;
+    max-width: 800px;
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 30px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+    position: relative;
+    overflow: hidden;
+    animation: aiFloat 6s ease-in-out infinite;
+}
+
+.ai-quote-container::before {
+    content: "\""";
+    position: absolute;
+    top: -20px;
+    left: 20px;
+    font-size: 15rem;
+    font-family: \""Outfit\"", sans-serif;
+    color: rgba(79, 70, 229, 0.1);
+    z-index: -1;
+}
+
+.ai-quote {
+    font-size: clamp(1.1rem, 2.5vw, 1.6rem);
+    line-height: 1.6;
+    color: var(--text-main);
+    text-align: center;
+    font-weight: 300;
+}
+
+.ai-quote .highlight {
+    background: linear-gradient(120deg, rgba(79, 70, 229, 0.3) 0%, rgba(79, 70, 229, 0) 100%);
+    padding: 0 10px;
+    border-radius: 5px;
+    font-weight: 600;
+}
+
+.ai-quote .highlight-secondary {
+    background: linear-gradient(120deg, rgba(245, 158, 11, 0.3) 0%, rgba(245, 158, 11, 0) 100%);
+}
+
+.ai-quote .accent-text {
+    display: block;
+    margin-top: 1rem;
+    font-weight: 800;
+    font-size: 1.2em;
+    background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 0 10px rgba(79, 70, 229, 0.3));
+}
+
+@keyframes aiFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+@media (max-width: 768px) {
+    .ai-quote-container {
+        padding: 2rem;
+        margin: 2rem 1rem;
+    }
+    .ai-quote {
+        font-size: 1.1rem;
+    }
+}
