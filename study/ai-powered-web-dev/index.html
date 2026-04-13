@@ -49,13 +49,16 @@
     </script>
     <style>
         @keyframes pulse-button {
-            0%, 100% { 
-                transform: scale(1); 
+
+            0%,
+            100% {
+                transform: scale(1);
                 opacity: 0.4;
                 filter: drop-shadow(0 0 0px rgba(0, 112, 243, 0));
             }
-            50% { 
-                transform: scale(1.2); 
+
+            50% {
+                transform: scale(1.2);
                 opacity: 1;
                 filter: drop-shadow(0 0 8px rgba(0, 112, 243, 0.8));
             }
@@ -65,6 +68,7 @@
             animation: pulse-button 2s ease-in-out infinite;
             display: inline-block;
         }
+
         body {
             background-color: #0a0a0a;
             color: white;
@@ -159,7 +163,8 @@
                     <div class="w-14 h-14 bg-electric/20 rounded-xl flex items-center justify-center text-electric">
                         <i data-lucide="book-open" class="w-8 h-8"></i>
                     </div>
-                    <div class="detail-icon text-electric opacity-40 group-hover:opacity-100 transition-all duration-300 transform group-hover:scale-110 animate-pulse-custom">
+                    <div
+                        class="detail-icon text-electric opacity-40 group-hover:opacity-100 transition-all duration-300 transform group-hover:scale-110 animate-pulse-custom">
                         <i data-lucide="plus-circle" class="w-6 h-6"></i>
                     </div>
                 </div>
@@ -204,7 +209,8 @@
                     <div class="w-14 h-14 bg-electric/20 rounded-xl flex items-center justify-center text-electric">
                         <i data-lucide="zap" class="w-8 h-8"></i>
                     </div>
-                    <div class="detail-icon text-electric opacity-40 group-hover:opacity-100 transition-all duration-300 transform group-hover:scale-110 animate-pulse-custom">
+                    <div
+                        class="detail-icon text-electric opacity-40 group-hover:opacity-100 transition-all duration-300 transform group-hover:scale-110 animate-pulse-custom">
                         <i data-lucide="plus-circle" class="w-6 h-6"></i>
                     </div>
                 </div>
@@ -245,7 +251,8 @@
                     <div class="w-14 h-14 bg-electric/20 rounded-xl flex items-center justify-center text-electric">
                         <i data-lucide="github" class="w-8 h-8"></i>
                     </div>
-                    <div class="detail-icon text-electric opacity-40 group-hover:opacity-100 transition-all duration-300 transform group-hover:scale-110 animate-pulse-custom">
+                    <div
+                        class="detail-icon text-electric opacity-40 group-hover:opacity-100 transition-all duration-300 transform group-hover:scale-110 animate-pulse-custom">
                         <i data-lucide="plus-circle" class="w-6 h-6"></i>
                     </div>
                 </div>
@@ -266,30 +273,98 @@
                                     class="flex-shrink-0 w-5 h-5 bg-electric/20 rounded-full flex items-center justify-center text-[10px] text-electric font-bold mr-3 mt-0.5">1</span>
                                 GitHub에서 Public 또는 Private 저장소 생성
                             </li>
+                            <li class="flex flex-col text-sm text-gray-300">
+                                <div class="flex items-start">
+                                    <span class="flex-shrink-0 w-5 h-5 bg-electric/20 rounded-full flex items-center justify-center text-[10px] text-electric font-bold mr-3 mt-0.5">2</span>
+                                    <span>연결 URL 또는 명령어 복사하기</span>
+                                </div>
+                                <div class="mt-3 ml-8 space-y-2 bg-black/20 rounded-xl p-3 border border-white/5 overflow-hidden">
+                                    <div class="flex items-center justify-between group">
+                                        <div class="flex items-center min-w-0 flex-1">
+                                            <span class="text-[10px] font-mono text-gray-500 w-12 flex-shrink-0">HTTPS</span>
+                                            <code id="url-https" class="text-[10px] text-gray-400 truncate mx-2 font-mono">https://github.com/xxxxxx/sample.git</code>
+                                        </div>
+                                        <button onclick="copyText('url-https')" class="flex-shrink-0 p-1 px-2 rounded bg-white/5 text-gray-400 hover:text-white hover:bg-white/10 transition-all text-[9px] font-bold uppercase tracking-wider">Copy</button>
+                                    </div>
+                                    <div class="flex items-center justify-between group border-t border-white/5 pt-2">
+                                        <div class="flex items-center min-w-0 flex-1">
+                                            <span class="text-[10px] font-mono text-gray-500 w-12 flex-shrink-0">SSH</span>
+                                            <code id="url-ssh" class="text-[10px] text-gray-400 truncate mx-2 font-mono">git@github.com:xxxxxx/sample.git</code>
+                                        </div>
+                                        <button onclick="copyText('url-ssh')" class="flex-shrink-0 p-1 px-2 rounded bg-white/5 text-gray-400 hover:text-white hover:bg-white/10 transition-all text-[9px] font-bold uppercase tracking-wider">Copy</button>
+                                    </div>
+                                    <div class="flex items-center justify-between group border-t border-white/5 pt-2">
+                                        <div class="flex items-center min-w-0 flex-1">
+                                            <span class="text-[10px] font-mono text-gray-500 w-12 flex-shrink-0">CLI</span>
+                                            <code id="url-cli" class="text-[10px] text-gray-400 truncate mx-2 font-mono">gh repo clone xxxxxx/sample</code>
+                                        </div>
+                                        <button onclick="copyText('url-cli')" class="flex-shrink-0 p-1 px-2 rounded bg-white/5 text-gray-400 hover:text-white hover:bg-white/10 transition-all text-[9px] font-bold uppercase tracking-wider">Copy</button>
+                                    </div>
+                                </div>
+                            </li>
                             <li class="flex items-start text-sm text-gray-300">
                                 <span
-                                    class="flex-shrink-0 w-5 h-5 bg-electric/20 rounded-full flex items-center justify-center text-[10px] text-electric font-bold mr-3 mt-0.5">2</span>
-                                Antigravity 터미널에서 다음 명령어로 연결:
+                                    class="flex-shrink-0 w-5 h-5 bg-electric/20 rounded-full flex items-center justify-center text-[10px] text-electric font-bold mr-3 mt-0.5">3</span>
+                                Antigravity 터미널에서 다음 명령어로 연결 (또는 GUI 활용):
                             </li>
                         </ul>
                     </div>
-                    <div class="mb-4">
-                        <p class="text-xs text-gray-400 mb-2 font-mono uppercase tracking-wider">Antigravity 프롬프트 창에 입력후
-                            연결 요청 :</p>
-                        <div class="bg-electric/10 rounded-lg p-3 border border-electric/30">
-                            <p class="text-sm text-gray-300">https://github.com/사용자아이디/저장소이름.git 연결해줘</p>
+                    <!-- Tab Navigation -->
+                    <div class="flex p-1 bg-white/5 rounded-xl mb-6 border border-white/10" onclick="event.stopPropagation()">
+                        <button onclick="switchTab('github-ai')" id="tab-github-ai"
+                            class="flex-1 flex items-center justify-center py-2.5 rounded-lg text-sm font-bold transition-all duration-300 bg-electric text-white shadow-lg shadow-electric/20">
+                            <i data-lucide="sparkles" class="w-4 h-4 mr-2"></i>
+                            AI 에이전트
+                        </button>
+                        <button onclick="switchTab('github-manual')" id="tab-github-manual"
+                            class="flex-1 flex items-center justify-center py-2.5 rounded-lg text-sm font-bold transition-all duration-300 text-gray-400 hover:text-white">
+                            <i data-lucide="terminal" class="w-4 h-4 mr-2"></i>
+                            터미널 (Bash)
+                        </button>
+                    </div>
+
+                    <!-- Tab Content: AI Agent -->
+                    <div id="content-github-ai" class="space-y-4 animate-fade-in-up">
+                        <div class="relative group">
+                            <p class="text-[10px] text-gray-500 mb-2 font-mono uppercase tracking-widest pl-1">Antigravity 프롬프트 입력창</p>
+                            <div class="bg-electric/10 rounded-2xl p-4 border border-electric/30 backdrop-blur-sm relative overflow-hidden group-hover:border-electric/50 transition-colors">
+                                <div class="flex items-start justify-between gap-4">
+                                    <p id="prompt-text" class="text-sm text-blue-100 leading-relaxed">
+                                        https://github.com/사용자아이디/저장소이름.git 연결해줘
+                                    </p>
+                                    <button onclick="event.stopPropagation(); copyText('prompt-text')" class="flex-shrink-0 p-2 rounded-lg bg-electric/20 text-electric hover:bg-electric hover:text-white transition-all">
+                                        <i data-lucide="copy" class="w-4 h-4"></i>
+                                    </button>
+                                </div>
+                                <div class="absolute -right-4 -bottom-4 w-24 h-24 bg-electric/10 rounded-full blur-2xl pointer-events-none"></div>
+                            </div>
+                            <p class="text-[11px] text-gray-500 mt-3 text-center italic">"입력 한 번으로 모든 설정이 자동으로 완료됩니다."</p>
                         </div>
                     </div>
-                    <div class="bg-black/40 rounded-lg p-4 font-mono text-xs border border-white/5">
-                        <div class="flex items-center justify-between mb-2 text-gray-500">
-                            <span>Bash</span>
-                            <i data-lucide="terminal" class="w-3 h-3"></i>
+
+                    <!-- Tab Content: Manual Terminal (Hidden by default) -->
+                    <div id="content-github-manual" class="space-y-4 hidden">
+                        <div class="bg-black/60 rounded-2xl border border-white/10 overflow-hidden backdrop-blur-xl">
+                            <div class="flex items-center justify-between px-4 py-3 border-b border-white/5 bg-white/5">
+                                <div class="flex space-x-1.5">
+                                    <div class="w-2.5 h-2.5 rounded-full bg-red-500/50"></div>
+                                    <div class="w-2.5 h-2.5 rounded-full bg-yellow-500/50"></div>
+                                    <div class="w-2.5 h-2.5 rounded-full bg-green-500/50"></div>
+                                </div>
+                                <span class="text-[10px] font-mono text-gray-500">Terminal — Bash</span>
+                                <button onclick="copyText('terminal-commands')" class="p-1 px-2 rounded-md bg-white/5 text-gray-400 hover:text-white hover:bg-white/10 transition-all text-[10px] flex items-center">
+                                    <i data-lucide="copy" class="w-3 h-3 mr-1.5"></i>
+                                    Copy All
+                                </button>
+                            </div>
+                            <div class="p-5 font-mono text-xs leading-relaxed overflow-x-auto">
+                                <pre id="terminal-commands" class="text-gray-300"><span class="text-electric">git</span> init
+<span class="text-electric">git</span> remote add origin <span class="text-blue-400">https://github.com/ID/repo.git</span>
+<span class="text-electric">git</span> add .
+<span class="text-electric">git</span> commit -m <span class="text-green-400">"Initial commit"</span>
+<span class="text-electric">git</span> push -u origin main</pre>
+                            </div>
                         </div>
-                        <p class="text-gray-300 mb-1">git init</p>
-                        <p class="text-gray-300 mb-1">git remote add origin https://github.com/ID/repo.git</p>
-                        <p class="text-gray-300 mb-1">git add .</p>
-                        <p class="text-gray-300 mb-1">git commit -m "Initial commit"</p>
-                        <p class="text-gray-300">git push -u origin main</p>
                     </div>
                 </div>
             </div>
@@ -301,7 +376,8 @@
                     <div class="w-14 h-14 bg-electric/20 rounded-xl flex items-center justify-center text-electric">
                         <i data-lucide="cloud" class="w-8 h-8"></i>
                     </div>
-                    <div class="detail-icon text-electric opacity-40 group-hover:opacity-100 transition-all duration-300 transform group-hover:scale-110 animate-pulse-custom">
+                    <div
+                        class="detail-icon text-electric opacity-40 group-hover:opacity-100 transition-all duration-300 transform group-hover:scale-110 animate-pulse-custom">
                         <i data-lucide="plus-circle" class="w-6 h-6"></i>
                     </div>
                 </div>
@@ -397,7 +473,8 @@
                     <div class="w-14 h-14 bg-electric/20 rounded-xl flex items-center justify-center text-electric">
                         <i data-lucide="rocket" class="w-8 h-8"></i>
                     </div>
-                    <div class="detail-icon text-electric opacity-40 group-hover:opacity-100 transition-all duration-300 transform group-hover:scale-110 animate-pulse-custom">
+                    <div
+                        class="detail-icon text-electric opacity-40 group-hover:opacity-100 transition-all duration-300 transform group-hover:scale-110 animate-pulse-custom">
                         <i data-lucide="plus-circle" class="w-6 h-6"></i>
                     </div>
                 </div>
@@ -550,6 +627,11 @@
 
         // Toggle Card Details
         function toggleDetails(id) {
+            // 버튼이나 링크 클릭 시 아코디언이 닫히는 현상 방지
+            if (event && (event.target.closest('button') || event.target.closest('a'))) {
+                return;
+            }
+
             const content = document.getElementById(id);
             content.classList.toggle('active');
 
@@ -569,6 +651,45 @@
                 iconContainer.classList.add('opacity-40', 'animate-pulse-custom');
             }
             lucide.createIcons();
+        }
+
+        // GitHub Tab Switching
+        function switchTab(tabId) {
+            const aiTab = document.getElementById('tab-github-ai');
+            const manualTab = document.getElementById('tab-github-manual');
+            const aiContent = document.getElementById('content-github-ai');
+            const manualContent = document.getElementById('content-github-manual');
+
+            if (tabId === 'github-ai') {
+                aiTab.classList.add('bg-electric', 'text-white', 'shadow-lg', 'shadow-electric/20');
+                aiTab.classList.remove('text-gray-400');
+                manualTab.classList.remove('bg-electric', 'text-white', 'shadow-lg', 'shadow-electric/20');
+                manualTab.classList.add('text-gray-400');
+                aiContent.classList.remove('hidden');
+                manualContent.classList.add('hidden');
+            } else {
+                manualTab.classList.add('bg-electric', 'text-white', 'shadow-lg', 'shadow-electric/20');
+                manualTab.classList.remove('text-gray-400');
+                aiTab.classList.remove('bg-electric', 'text-white', 'shadow-lg', 'shadow-electric/20');
+                aiTab.classList.add('text-gray-400');
+                manualContent.classList.remove('hidden');
+                aiContent.classList.add('hidden');
+            }
+        }
+
+        // Copy Text Function
+        function copyText(elementId) {
+            const text = document.getElementById(elementId).innerText;
+            navigator.clipboard.writeText(text).then(() => {
+                const btn = event.currentTarget;
+                const originalInner = btn.innerHTML;
+                btn.innerHTML = '<i data-lucide="check" class="w-4 h-4"></i>';
+                lucide.createIcons();
+                setTimeout(() => {
+                    btn.innerHTML = originalInner;
+                    lucide.createIcons();
+                }, 2000);
+            });
         }
     </script>
 </body>
