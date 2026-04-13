@@ -142,7 +142,7 @@
                     <div class="w-14 h-14 bg-electric/20 rounded-xl flex items-center justify-center text-electric">
                         <i data-lucide="book-open" class="w-8 h-8"></i>
                     </div>
-                    <div class="text-electric opacity-0 group-hover:opacity-100 transition-opacity">
+                    <div class="detail-icon text-electric opacity-40 group-hover:opacity-100 transition-all duration-300 transform group-hover:scale-110">
                         <i data-lucide="plus-circle" class="w-6 h-6"></i>
                     </div>
                 </div>
@@ -187,7 +187,7 @@
                     <div class="w-14 h-14 bg-electric/20 rounded-xl flex items-center justify-center text-electric">
                         <i data-lucide="zap" class="w-8 h-8"></i>
                     </div>
-                    <div class="text-electric opacity-0 group-hover:opacity-100 transition-opacity">
+                    <div class="detail-icon text-electric opacity-40 group-hover:opacity-100 transition-all duration-300 transform group-hover:scale-110">
                         <i data-lucide="plus-circle" class="w-6 h-6"></i>
                     </div>
                 </div>
@@ -228,7 +228,7 @@
                     <div class="w-14 h-14 bg-electric/20 rounded-xl flex items-center justify-center text-electric">
                         <i data-lucide="github" class="w-8 h-8"></i>
                     </div>
-                    <div class="text-electric opacity-0 group-hover:opacity-100 transition-opacity">
+                    <div class="detail-icon text-electric opacity-40 group-hover:opacity-100 transition-all duration-300 transform group-hover:scale-110">
                         <i data-lucide="plus-circle" class="w-6 h-6"></i>
                     </div>
                 </div>
@@ -284,7 +284,7 @@
                     <div class="w-14 h-14 bg-electric/20 rounded-xl flex items-center justify-center text-electric">
                         <i data-lucide="cloud" class="w-8 h-8"></i>
                     </div>
-                    <div class="text-electric opacity-0 group-hover:opacity-100 transition-opacity">
+                    <div class="detail-icon text-electric opacity-40 group-hover:opacity-100 transition-all duration-300 transform group-hover:scale-110">
                         <i data-lucide="plus-circle" class="w-6 h-6"></i>
                     </div>
                 </div>
@@ -380,7 +380,7 @@
                     <div class="w-14 h-14 bg-electric/20 rounded-xl flex items-center justify-center text-electric">
                         <i data-lucide="rocket" class="w-8 h-8"></i>
                     </div>
-                    <div class="text-electric opacity-0 group-hover:opacity-100 transition-opacity">
+                    <div class="detail-icon text-electric opacity-40 group-hover:opacity-100 transition-all duration-300 transform group-hover:scale-110">
                         <i data-lucide="plus-circle" class="w-6 h-6"></i>
                     </div>
                 </div>
@@ -530,10 +530,16 @@
             const card = content.closest('.workflow-card');
             const icon = card.querySelector('[data-lucide="plus-circle"], [data-lucide="minus-circle"]');
 
+            const iconContainer = card.querySelector('.detail-icon');
+
             if (content.classList.contains('active')) {
-                card.querySelector('.transition-opacity').innerHTML = '<i data-lucide="minus-circle" class="w-6 h-6"></i>';
+                iconContainer.innerHTML = '<i data-lucide="minus-circle" class="w-6 h-6"></i>';
+                iconContainer.classList.remove('opacity-40');
+                iconContainer.classList.add('opacity-100');
             } else {
-                card.querySelector('.transition-opacity').innerHTML = '<i data-lucide="plus-circle" class="w-6 h-6"></i>';
+                iconContainer.innerHTML = '<i data-lucide="plus-circle" class="w-6 h-6"></i>';
+                iconContainer.classList.remove('opacity-100');
+                iconContainer.classList.add('opacity-40');
             }
             lucide.createIcons();
         }
