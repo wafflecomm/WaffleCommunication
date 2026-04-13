@@ -275,30 +275,41 @@
                             </li>
                             <li class="flex flex-col text-sm text-gray-300">
                                 <div class="flex items-start">
-                                    <span class="flex-shrink-0 w-5 h-5 bg-electric/20 rounded-full flex items-center justify-center text-[10px] text-electric font-bold mr-3 mt-0.5">2</span>
+                                    <span
+                                        class="flex-shrink-0 w-5 h-5 bg-electric/20 rounded-full flex items-center justify-center text-[10px] text-electric font-bold mr-3 mt-0.5">2</span>
                                     <span>연결 URL 또는 명령어 복사하기</span>
                                 </div>
-                                <div class="mt-3 ml-8 space-y-2 bg-black/20 rounded-xl p-3 border border-white/5 overflow-hidden">
+                                <div
+                                    class="mt-3 ml-8 space-y-2 bg-black/20 rounded-xl p-3 border border-white/5 overflow-hidden">
                                     <div class="flex items-center justify-between group">
                                         <div class="flex items-center min-w-0 flex-1">
-                                            <span class="text-[10px] font-mono text-gray-500 w-12 flex-shrink-0">HTTPS</span>
-                                            <code id="url-https" class="text-[10px] text-gray-400 truncate mx-2 font-mono">https://github.com/xxxxxx/sample.git</code>
+                                            <span
+                                                class="text-[10px] font-mono text-gray-500 w-12 flex-shrink-0">HTTPS</span>
+                                            <code id="url-https"
+                                                class="text-[10px] text-gray-400 truncate mx-2 font-mono">https://github.com/xxxxxx/sample.git</code>
                                         </div>
-                                        <button onclick="copyText('url-https')" class="flex-shrink-0 p-1 px-2 rounded bg-white/5 text-gray-400 hover:text-white hover:bg-white/10 transition-all text-[9px] font-bold uppercase tracking-wider">Copy</button>
+                                        <button onclick="copyText('url-https')"
+                                            class="flex-shrink-0 p-1 px-2 rounded bg-white/5 text-gray-400 hover:text-white hover:bg-white/10 transition-all text-[9px] font-bold uppercase tracking-wider">Copy</button>
                                     </div>
                                     <div class="flex items-center justify-between group border-t border-white/5 pt-2">
                                         <div class="flex items-center min-w-0 flex-1">
-                                            <span class="text-[10px] font-mono text-gray-500 w-12 flex-shrink-0">SSH</span>
-                                            <code id="url-ssh" class="text-[10px] text-gray-400 truncate mx-2 font-mono">git@github.com:xxxxxx/sample.git</code>
+                                            <span
+                                                class="text-[10px] font-mono text-gray-500 w-12 flex-shrink-0">SSH</span>
+                                            <code id="url-ssh"
+                                                class="text-[10px] text-gray-400 truncate mx-2 font-mono">git@github.com:xxxxxx/sample.git</code>
                                         </div>
-                                        <button onclick="copyText('url-ssh')" class="flex-shrink-0 p-1 px-2 rounded bg-white/5 text-gray-400 hover:text-white hover:bg-white/10 transition-all text-[9px] font-bold uppercase tracking-wider">Copy</button>
+                                        <button onclick="copyText('url-ssh')"
+                                            class="flex-shrink-0 p-1 px-2 rounded bg-white/5 text-gray-400 hover:text-white hover:bg-white/10 transition-all text-[9px] font-bold uppercase tracking-wider">Copy</button>
                                     </div>
                                     <div class="flex items-center justify-between group border-t border-white/5 pt-2">
                                         <div class="flex items-center min-w-0 flex-1">
-                                            <span class="text-[10px] font-mono text-gray-500 w-12 flex-shrink-0">CLI</span>
-                                            <code id="url-cli" class="text-[10px] text-gray-400 truncate mx-2 font-mono">gh repo clone xxxxxx/sample</code>
+                                            <span
+                                                class="text-[10px] font-mono text-gray-500 w-12 flex-shrink-0">CLI</span>
+                                            <code id="url-cli"
+                                                class="text-[10px] text-gray-400 truncate mx-2 font-mono">gh repo clone xxxxxx/sample</code>
                                         </div>
-                                        <button onclick="copyText('url-cli')" class="flex-shrink-0 p-1 px-2 rounded bg-white/5 text-gray-400 hover:text-white hover:bg-white/10 transition-all text-[9px] font-bold uppercase tracking-wider">Copy</button>
+                                        <button onclick="copyText('url-cli')"
+                                            class="flex-shrink-0 p-1 px-2 rounded bg-white/5 text-gray-400 hover:text-white hover:bg-white/10 transition-all text-[9px] font-bold uppercase tracking-wider">Copy</button>
                                     </div>
                                 </div>
                             </li>
@@ -310,7 +321,8 @@
                         </ul>
                     </div>
                     <!-- Tab Navigation -->
-                    <div class="flex p-1 bg-white/5 rounded-xl mb-6 border border-white/10" onclick="event.stopPropagation()">
+                    <div class="flex p-1 bg-white/5 rounded-xl mb-6 border border-white/10"
+                        onclick="event.stopPropagation()">
                         <button onclick="switchTab('github-ai')" id="tab-github-ai"
                             class="flex-1 flex items-center justify-center py-2.5 rounded-lg text-sm font-bold transition-all duration-300 bg-electric text-white shadow-lg shadow-electric/20">
                             <i data-lucide="sparkles" class="w-4 h-4 mr-2"></i>
@@ -326,19 +338,25 @@
                     <!-- Tab Content: AI Agent -->
                     <div id="content-github-ai" class="space-y-4 animate-fade-in-up">
                         <div class="relative group">
-                            <p class="text-[10px] text-gray-500 mb-2 font-mono uppercase tracking-widest pl-1">Antigravity 프롬프트 입력창</p>
-                            <div class="bg-electric/10 rounded-2xl p-4 border border-electric/30 backdrop-blur-sm relative overflow-hidden group-hover:border-electric/50 transition-colors">
+                            <p class="text-[10px] text-gray-500 mb-2 font-mono uppercase tracking-widest pl-1">
+                                Antigravity 프롬프트 입력창</p>
+                            <div
+                                class="bg-electric/10 rounded-2xl p-4 border border-electric/30 backdrop-blur-sm relative overflow-hidden group-hover:border-electric/50 transition-colors">
                                 <div class="flex items-start justify-between gap-4">
                                     <p id="prompt-text" class="text-sm text-blue-100 leading-relaxed">
                                         https://github.com/사용자아이디/저장소이름.git 연결해줘
                                     </p>
-                                    <button onclick="event.stopPropagation(); copyText('prompt-text')" class="flex-shrink-0 p-2 rounded-lg bg-electric/20 text-electric hover:bg-electric hover:text-white transition-all">
+                                    <button onclick="event.stopPropagation(); copyText('prompt-text')"
+                                        class="flex-shrink-0 p-2 rounded-lg bg-electric/20 text-electric hover:bg-electric hover:text-white transition-all">
                                         <i data-lucide="copy" class="w-4 h-4"></i>
                                     </button>
                                 </div>
-                                <div class="absolute -right-4 -bottom-4 w-24 h-24 bg-electric/10 rounded-full blur-2xl pointer-events-none"></div>
+                                <div
+                                    class="absolute -right-4 -bottom-4 w-24 h-24 bg-electric/10 rounded-full blur-2xl pointer-events-none">
+                                </div>
                             </div>
-                            <p class="text-[11px] text-gray-500 mt-3 text-center italic">"입력 한 번으로 모든 설정이 자동으로 완료됩니다."</p>
+                            <p class="text-[11px] text-gray-500 mt-3 text-center italic">"입력 한 번으로 모든 설정이 자동으로 완료됩니다."
+                            </p>
                         </div>
                     </div>
 
@@ -352,7 +370,8 @@
                                     <div class="w-2.5 h-2.5 rounded-full bg-green-500/50"></div>
                                 </div>
                                 <span class="text-[10px] font-mono text-gray-500">Terminal — Bash</span>
-                                <button onclick="copyText('terminal-commands')" class="p-1 px-2 rounded-md bg-white/5 text-gray-400 hover:text-white hover:bg-white/10 transition-all text-[10px] flex items-center">
+                                <button onclick="copyText('terminal-commands')"
+                                    class="p-1 px-2 rounded-md bg-white/5 text-gray-400 hover:text-white hover:bg-white/10 transition-all text-[10px] flex items-center">
                                     <i data-lucide="copy" class="w-3 h-3 mr-1.5"></i>
                                     Copy All
                                 </button>
@@ -387,10 +406,15 @@
 
                 <!-- Expanded Content -->
                 <div id="step5-details" class="details-content border-t border-white/10 pt-6 mt-4">
-                    <h4 class="text-electric font-semibold mb-4 text-lg">5 & 6. 서버 배포 및 확인</h4>
+                    <h4 class="text-electric font-semibold mb-4 text-lg">5. 서버 배포 및 확인</h4>
                     <p class="text-sm text-gray-300 mb-6 leading-relaxed">
                         가장 빠르고 안정적인 무료 호스팅 서비스 중 하나인 Cloudflare Pages를 이용합니다.
                     </p>
+
+                    <p class="text-sm text-gray-300 mb-6 leading-relaxed">
+                        GitHub 와 Cloudflare 를 연결하여 자동으로 빌드/배포합니다.
+                    </p>
+
 
                     <div class="space-y-3 mb-8">
                         <div class="flex items-start text-sm text-gray-300">
