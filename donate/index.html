@@ -184,6 +184,19 @@
           </button>
         </div>
 
+        <!-- Terms Agreement Checkbox -->
+        <div class="mb-4 p-3 rounded-xl bg-gray-50 dark:bg-zinc-800/80 border border-gray-200 dark:border-zinc-700/60 text-xs">
+          <label class="flex items-start gap-2 cursor-pointer text-gray-600 dark:text-zinc-300">
+            <input type="checkbox" id="terms-agree-check" checked class="mt-0.5 w-4 h-4 text-orange-500 rounded focus:ring-orange-400">
+            <span>
+              <strong class="text-gray-900 dark:text-white">[필수]</strong> 
+              <a href="terms.html" target="_blank" class="underline hover:text-orange-500 font-medium">이용약관</a>, 
+              <a href="privacy.html" target="_blank" class="underline hover:text-orange-500 font-medium">개인정보처리방침</a> 및 
+              <a href="refund.html" target="_blank" class="underline hover:text-orange-500 font-medium">환불정책</a>을 확인하였으며 이에 동의합니다.
+            </span>
+          </label>
+        </div>
+
         <!-- PortOne Button Container -->
         <div id="portone-container">
           <button id="btn-portone-pay" type="button" class="w-full py-4 px-6 bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-white font-bold rounded-2xl shadow-lg shadow-orange-500/25 hover:shadow-orange-500/35 hover:scale-[1.01] active:scale-[0.99] smooth-transition flex items-center justify-center gap-2 text-base">
@@ -208,6 +221,32 @@
 
     </section>
 
+    <!-- Product & Service Details (PG 심사 필수 상품 고지) -->
+    <section class="bg-white dark:bg-zinc-900 rounded-3xl p-6 shadow-sm border border-gray-100 dark:border-zinc-800/80 mb-6">
+      <h2 class="text-sm font-bold text-gray-900 dark:text-white mb-3 flex items-center gap-2">
+        <iconify-icon icon="solar:bag-check-bold" class="text-orange-500 text-base"></iconify-icon>
+        <span>서비스 상품 정보 및 거래 조건 고지</span>
+      </h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs text-gray-600 dark:text-zinc-300">
+        <div class="p-3 rounded-xl bg-gray-50 dark:bg-zinc-800 border border-gray-100 dark:border-zinc-700/60 space-y-1">
+          <strong class="text-gray-900 dark:text-white block">상품명 및 내용</strong>
+          <p>크리에이터 커피 후원권 (디지털 응원 리워드)</p>
+        </div>
+        <div class="p-3 rounded-xl bg-gray-50 dark:bg-zinc-800 border border-gray-100 dark:border-zinc-700/60 space-y-1">
+          <strong class="text-gray-900 dark:text-white block">제공 방식 및 시기</strong>
+          <p>결제 즉시 실시간 후원자 명단 등재 및 감사 영수증 발급</p>
+        </div>
+        <div class="p-3 rounded-xl bg-gray-50 dark:bg-zinc-800 border border-gray-100 dark:border-zinc-700/60 space-y-1">
+          <strong class="text-gray-900 dark:text-white block">판매 가격 (VAT 포함)</strong>
+          <p>1잔 ₩3,000 / 3잔 ₩9,000 / 5잔 ₩15,000 / 직접입력</p>
+        </div>
+        <div class="p-3 rounded-xl bg-gray-50 dark:bg-zinc-800 border border-gray-100 dark:border-zinc-700/60 space-y-1">
+          <strong class="text-gray-900 dark:text-white block">청약철회 및 환불</strong>
+          <p>결제 후 7일 이내 고객센터(02-555-0123) 접수 시 100% 환불</p>
+        </div>
+      </div>
+    </section>
+
     <!-- Recent Supporters Section -->
     <section class="bg-white dark:bg-zinc-900 rounded-3xl p-6 shadow-sm border border-gray-100 dark:border-zinc-800/80 mb-8">
       <div class="flex items-center justify-between mb-4">
@@ -222,17 +261,31 @@
       </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="text-center py-4 text-xs text-gray-400 dark:text-zinc-600 space-y-2">
-      <div class="flex items-center justify-center gap-3 text-gray-500 dark:text-zinc-400 font-medium">
-        <a href="../index.html" class="hover:text-orange-500 transition">홈으로</a>
+    <!-- Footer Business Info (PG 심사 필수 항목) -->
+    <footer class="text-center py-6 px-4 text-xs text-gray-500 dark:text-zinc-500 space-y-3 border-t border-gray-200 dark:border-zinc-800/80">
+      
+      <!-- Policy Links -->
+      <div class="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 font-bold text-gray-700 dark:text-zinc-300">
+        <a href="terms.html" class="hover:text-orange-500 transition underline">이용약관</a>
         <span>•</span>
-        <a href="guide.html" class="hover:text-orange-500 transition flex items-center gap-1 font-bold text-orange-600 dark:text-orange-400">
-          <iconify-icon icon="solar:document-text-bold"></iconify-icon> 개발 지침서 보기
-        </a>
+        <a href="privacy.html" class="hover:text-orange-500 transition underline">개인정보처리방침</a>
+        <span>•</span>
+        <a href="refund.html" class="hover:text-orange-500 transition underline text-orange-600 dark:text-orange-400">환불정책</a>
+        <span>•</span>
+        <a href="guide.html" class="hover:text-orange-500 transition">개발지침서</a>
+        <span>•</span>
+        <a href="../index.html" class="hover:text-orange-500 transition">메인홈페이지</a>
       </div>
-      <p class="mb-1">Powered by <strong class="text-gray-600 dark:text-zinc-400">Waffle Communication</strong></p>
-      <p>&copy; 2026 All Rights Reserved.</p>
+
+      <!-- Business Legal Info -->
+      <div class="space-y-1 text-[11px] text-gray-500 dark:text-zinc-400 leading-relaxed max-w-md mx-auto">
+        <p><strong>상호:</strong> (주)와플커뮤니케이션 | <strong>대표자:</strong> 김인섭</p>
+        <p><strong>사업자등록번호:</strong> 214-88-82348 | <strong>통신판매업신고:</strong> 2026-서울강남-0123호</p>
+        <p><strong>주소:</strong> 서울특별시 강남구 테헤란로 423, 2층 2440호 (삼성동, 현대타워)</p>
+        <p><strong>고객센터 유선번호:</strong> <a href="tel:02-555-0123" class="font-bold underline">02-555-0123</a> (평일 10:00~18:00) | <strong>이메일:</strong> waffle.comm@gmail.com</p>
+      </div>
+
+      <p class="text-[10px] text-gray-400 dark:text-zinc-600 pt-2">&copy; 2026 Waffle Communication. All rights reserved.</p>
     </footer>
 
   </main>

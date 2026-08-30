@@ -278,6 +278,13 @@ document.addEventListener('DOMContentLoaded', () => {
   // 7. PortOne V2 Payment Integration
   // ==========================================
   elements.btnPortonePay.addEventListener('click', async () => {
+    const termsCheck = document.getElementById('terms-agree-check');
+    if (termsCheck && !termsCheck.checked) {
+      alert('이용약관, 개인정보처리방침 및 환불정책에 동의해 주세요.');
+      termsCheck.focus();
+      return;
+    }
+
     const supporterName = state.nickname.trim() || '익명의 후원자';
     const message = state.message.trim() || '따뜻한 커피 한 잔 보내드립니다!';
     const paymentId = `pay_${Date.now()}_${Math.random().toString(36).substring(2, 7)}`;
