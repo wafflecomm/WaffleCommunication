@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>와플커뮤니케이션 통합 홈페이지 & 커피 후원 플랫폼 기획서</title>
-  <meta name="description" content="와플커뮤니케이션 공식 웹사이트 및 커피 후원 플랫폼 상세 기획서 (Paperlogy 폰트 적용)">
+  <meta name="description" content="와플커뮤니케이션 공식 웹사이트, 커피 후원 플랫폼 및 통신판매업 등록 가이드 상세 기획서 (Paperlogy 폰트 적용)">
 
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -84,7 +84,7 @@
         <span class="tracking-tight text-base sm:text-lg">Waffle Communication</span>
       </a>
       <span class="hidden sm:inline-block px-2.5 py-0.5 rounded-full text-xs font-semibold bg-orange-100 dark:bg-orange-950/60 text-orange-600 dark:text-orange-400">
-        통합 기획서 v2.0
+        통합 기획서 v2.1
       </span>
     </div>
 
@@ -110,14 +110,15 @@
         <nav class="space-y-1.5 text-xs text-gray-600 dark:text-zinc-400 font-medium">
           <a href="#section-1" class="block py-1 hover:text-orange-500 transition">1. 프로젝트 개요</a>
           <a href="#section-2" class="block py-1 hover:text-orange-500 transition">2. 공식 사업자 정보 & 법적 고지</a>
-          <a href="#section-3" class="block py-1 hover:text-orange-500 transition">3. 시스템 아키텍처 & 기술 스택</a>
-          <a href="#section-4" class="block py-1 hover:text-orange-500 transition">4. 디자인 시스템 & UI/UX</a>
-          <a href="#section-5" class="block py-1 hover:text-orange-500 transition">5. 페이지별 상세 기능 명세</a>
-          <a href="#section-6" class="block py-1 hover:text-orange-500 transition">6. 결제 인프라 & SDK 연동</a>
-          <a href="#section-7" class="block py-1 hover:text-orange-500 transition">7. 데이터베이스 스키마 (Supabase)</a>
-          <a href="#section-8" class="block py-1 hover:text-orange-500 transition">8. PG 심사 5대 요건 검증 결과</a>
-          <a href="#section-9" class="block py-1 hover:text-orange-500 transition">9. 배포 & 라이브 접속 URL</a>
-          <a href="#section-10" class="block py-1 hover:text-orange-500 transition">10. 향후 로드맵 & 고도화 계획</a>
+          <a href="#section-3" class="block py-1 hover:text-orange-500 transition font-bold text-orange-600 dark:text-orange-400">3. 통신판매업등록(개인사업자)</a>
+          <a href="#section-4" class="block py-1 hover:text-orange-500 transition">4. 시스템 아키텍처 & 기술 스택</a>
+          <a href="#section-5" class="block py-1 hover:text-orange-500 transition">5. 디자인 시스템 & UI/UX</a>
+          <a href="#section-6" class="block py-1 hover:text-orange-500 transition">6. 페이지별 상세 기능 명세</a>
+          <a href="#section-7" class="block py-1 hover:text-orange-500 transition">7. 결제 인프라 & SDK 연동</a>
+          <a href="#section-8" class="block py-1 hover:text-orange-500 transition">8. 데이터베이스 스키마 (Supabase)</a>
+          <a href="#section-9" class="block py-1 hover:text-orange-500 transition">9. PG 심사 5대 요건 검증 결과</a>
+          <a href="#section-10" class="block py-1 hover:text-orange-500 transition">10. 배포 & 라이브 접속 URL</a>
+          <a href="#section-11" class="block py-1 hover:text-orange-500 transition">11. 향후 로드맵 & 고도화 계획</a>
         </nav>
       </div>
     </aside>
@@ -131,13 +132,13 @@
           <div class="flex items-center gap-2 text-xs font-bold text-orange-600 dark:text-orange-400">
             <span>WAFFLE COMMUNICATION</span>
             <span>•</span>
-            <span>SYSTEM SPECIFICATION</span>
+            <span>SPECIFICATION v2.1</span>
           </div>
           <h1 class="text-2xl sm:text-4xl font-extrabold text-gray-900 dark:text-white tracking-tight leading-tight">
             통합 홈페이지 & 커피 후원 플랫폼 상세 기획서
           </h1>
           <p class="text-sm sm:text-base text-gray-600 dark:text-zinc-400 max-w-2xl leading-relaxed">
-            와플커뮤니케이션 공식 웹사이트와 국내/해외 듀얼 결제 커피 후원 시스템, 실시간 클라우드 DB, PG사 심사 준수 요건을 집대성한 종합 기획 설계 문서입니다.
+            와플커뮤니케이션 공식 웹사이트와 국내/해외 듀얼 결제 커피 후원 시스템, 통신판매업 등록 가이드 및 PG사 심사 준수 요건을 집대성한 종합 기획 설계 문서입니다.
           </p>
         </div>
       </div>
@@ -220,10 +221,87 @@
         </div>
       </section>
 
-      <!-- Section 3: Architecture & Tech Stack -->
-      <section id="section-3" class="p-6 sm:p-8 rounded-3xl bg-white dark:bg-zinc-900 border border-gray-200 dark:border-zinc-800 shadow-sm space-y-4">
+      <!-- Section 3: E-Commerce Registration (NEW) -->
+      <section id="section-3" class="p-6 sm:p-8 rounded-3xl bg-white dark:bg-zinc-900 border border-orange-200 dark:border-orange-900/40 shadow-sm space-y-6">
+        <div class="flex items-center justify-between flex-wrap gap-2">
+          <h2 class="text-xl font-bold text-gray-900 dark:text-white flex items-center gap-2">
+            <span class="w-7 h-7 rounded-xl bg-orange-500 text-white flex items-center justify-center text-sm font-bold">3</span>
+            <span>통신판매업등록(개인사업자) 절차 및 가이드</span>
+          </h2>
+          <span class="text-xs px-3 py-1 rounded-full bg-orange-100 dark:bg-orange-950/60 text-orange-600 dark:text-orange-400 font-bold">
+            정부24 온라인 10분 신청
+          </span>
+        </div>
+
+        <p class="text-xs sm:text-sm text-gray-600 dark:text-zinc-300 leading-relaxed">
+          개인사업자의 통신판매업 신고는 <strong>'구매안전서비스 이용확인증(에스크로)'</strong>만 준비되면 <strong>정부24(gov.kr)</strong>에서 온라인으로 10분 만에 신청할 수 있습니다. <em>(신고 전 사업자등록 번호: 214-13-58853 완료 필수)</em>
+        </p>
+
+        <!-- 3 Steps Visual Flow -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <!-- Step 1 -->
+          <div class="p-5 rounded-2xl bg-orange-50/50 dark:bg-zinc-800/80 border border-orange-100 dark:border-zinc-700/80 space-y-2.5">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-bold text-orange-600 dark:text-orange-400 uppercase tracking-wider">1단계</span>
+              <iconify-icon icon="solar:folder-check-bold" class="text-orange-500 text-lg"></iconify-icon>
+            </div>
+            <h3 class="font-bold text-gray-900 dark:text-white text-sm">필수 준비물 챙기기</h3>
+            <ul class="text-xs text-gray-600 dark:text-zinc-300 space-y-1.5">
+              <li>• <strong>사업자등록증</strong> (번호: 214-13-58853)</li>
+              <li>• <strong>구매안전서비스 이용확인증</strong> (에스크로 PDF/이미지)</li>
+              <li>• <strong>간편인증/공인인증서</strong> (정부24 로그인용)</li>
+            </ul>
+          </div>
+
+          <!-- Step 2 -->
+          <div class="p-5 rounded-2xl bg-orange-50/50 dark:bg-zinc-800/80 border border-orange-100 dark:border-zinc-700/80 space-y-2.5">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-bold text-orange-600 dark:text-orange-400 uppercase tracking-wider">2단계</span>
+              <iconify-icon icon="solar:document-add-bold" class="text-orange-500 text-lg"></iconify-icon>
+            </div>
+            <h3 class="font-bold text-gray-900 dark:text-white text-sm">정부24 온라인 신청</h3>
+            <ul class="text-xs text-gray-600 dark:text-zinc-300 space-y-1.5">
+              <li>• '통신판매업 신고' 검색 후 신청</li>
+              <li>• 업체/대표자/인터넷 도메인 주소 입력</li>
+              <li>• 에스크로 확인증 파일 첨부</li>
+              <li>• '온라인발급(본인출력)' 선택 및 접수</li>
+            </ul>
+          </div>
+
+          <!-- Step 3 -->
+          <div class="p-5 rounded-2xl bg-orange-50/50 dark:bg-zinc-800/80 border border-orange-100 dark:border-zinc-700/80 space-y-2.5">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-bold text-orange-600 dark:text-orange-400 uppercase tracking-wider">3단계</span>
+              <iconify-icon icon="solar:printer-minimalistic-bold" class="text-orange-500 text-lg"></iconify-icon>
+            </div>
+            <h3 class="font-bold text-gray-900 dark:text-white text-sm">면허세 납부 & 발급</h3>
+            <ul class="text-xs text-gray-600 dark:text-zinc-300 space-y-1.5">
+              <li>• 지자체 심사 후 면허세 납부 문자 수신</li>
+              <li>• 위택스/이택스 등록면허세 납부 (1~3일)</li>
+              <li>• 정부24 MY GOV에서 신고증 직접 출력</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Detailed Application Step Box -->
+        <div class="p-5 rounded-2xl bg-gray-50 dark:bg-zinc-800/50 border border-gray-200 dark:border-zinc-700/60 space-y-3 text-xs">
+          <h4 class="font-bold text-gray-900 dark:text-white text-sm flex items-center gap-1.5">
+            <iconify-icon icon="solar:info-circle-bold" class="text-orange-500"></iconify-icon>
+            <span>정부24 신청서 작성 세부 가이드</span>
+          </h4>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-gray-600 dark:text-zinc-300 leading-relaxed">
+            <p>• <strong>판매방식:</strong> 인터넷 선택</p>
+            <p>• <strong>취급품목:</strong> 종합몰 또는 소프트웨어/디지털콘텐츠</p>
+            <p>• <strong>인터넷 도메인:</strong> https://wafflecomm.github.io/WaffleCommunication/</p>
+            <p>• <strong>행정정보 공동이용:</strong> 사업자등록증 확인을 위해 동의 필수</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 4: System Architecture -->
+      <section id="section-4" class="p-6 sm:p-8 rounded-3xl bg-white dark:bg-zinc-900 border border-gray-200 dark:border-zinc-800 shadow-sm space-y-4">
         <h2 class="text-xl font-bold text-gray-900 dark:text-white flex items-center gap-2">
-          <span class="w-7 h-7 rounded-xl bg-orange-100 dark:bg-orange-950/60 text-orange-600 dark:text-orange-400 flex items-center justify-center text-sm font-bold">3</span>
+          <span class="w-7 h-7 rounded-xl bg-orange-100 dark:bg-orange-950/60 text-orange-600 dark:text-orange-400 flex items-center justify-center text-sm font-bold">4</span>
           <span>시스템 아키텍처 및 기술 스택</span>
         </h2>
         <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
@@ -242,10 +320,10 @@
         </div>
       </section>
 
-      <!-- Section 4: Design System -->
-      <section id="section-4" class="p-6 sm:p-8 rounded-3xl bg-white dark:bg-zinc-900 border border-gray-200 dark:border-zinc-800 shadow-sm space-y-4">
+      <!-- Section 5: Design System -->
+      <section id="section-5" class="p-6 sm:p-8 rounded-3xl bg-white dark:bg-zinc-900 border border-gray-200 dark:border-zinc-800 shadow-sm space-y-4">
         <h2 class="text-xl font-bold text-gray-900 dark:text-white flex items-center gap-2">
-          <span class="w-7 h-7 rounded-xl bg-orange-100 dark:bg-orange-950/60 text-orange-600 dark:text-orange-400 flex items-center justify-center text-sm font-bold">4</span>
+          <span class="w-7 h-7 rounded-xl bg-orange-100 dark:bg-orange-950/60 text-orange-600 dark:text-orange-400 flex items-center justify-center text-sm font-bold">5</span>
           <span>디자인 시스템 (Option A: 웜 모카 & 크림)</span>
         </h2>
         <p class="text-xs sm:text-sm text-gray-600 dark:text-zinc-400 leading-relaxed">
@@ -271,10 +349,10 @@
         </div>
       </section>
 
-      <!-- Section 5: Feature Specifications -->
-      <section id="section-5" class="p-6 sm:p-8 rounded-3xl bg-white dark:bg-zinc-900 border border-gray-200 dark:border-zinc-800 shadow-sm space-y-4">
+      <!-- Section 6: Feature Specifications -->
+      <section id="section-6" class="p-6 sm:p-8 rounded-3xl bg-white dark:bg-zinc-900 border border-gray-200 dark:border-zinc-800 shadow-sm space-y-4">
         <h2 class="text-xl font-bold text-gray-900 dark:text-white flex items-center gap-2">
-          <span class="w-7 h-7 rounded-xl bg-orange-100 dark:bg-orange-950/60 text-orange-600 dark:text-orange-400 flex items-center justify-center text-sm font-bold">5</span>
+          <span class="w-7 h-7 rounded-xl bg-orange-100 dark:bg-orange-950/60 text-orange-600 dark:text-orange-400 flex items-center justify-center text-sm font-bold">6</span>
           <span>페이지별 상세 기능 명세</span>
         </h2>
         
@@ -294,6 +372,7 @@
           <div class="p-5 rounded-2xl bg-gray-50 dark:bg-zinc-800/60 border border-gray-100 dark:border-zinc-700/60 space-y-2">
             <h3 class="font-bold text-gray-900 dark:text-white text-sm">☕ 커피 후원 플랫폼 (donate/index.html)</h3>
             <ul class="list-disc list-inside space-y-1 text-gray-600 dark:text-zinc-300 text-xs">
+              <li><strong>상단 미니멀 컬러 스와치</strong>: 4색 컬러 도트 칩(모카/모노/세이지/인디고) 실시간 전환</li>
               <li><strong>4단계 잔 수 프리셋</strong>: 1잔(₩3,000 / $3), 3잔(₩9,000 / $9), 5잔(₩15,000 / $15), 직접입력</li>
               <li><strong>듀얼 결제 시스템</strong>: PortOne V2 (국내) & PayPal Official Donate SDK (해외)</li>
               <li><strong>필수 약관 동의</strong>: 결제 전 이용약관/개인정보/환불정책 체크박스 유효성 검사</li>
@@ -304,10 +383,10 @@
         </div>
       </section>
 
-      <!-- Section 8: PG Compliance Table -->
-      <section id="section-8" class="p-6 sm:p-8 rounded-3xl bg-white dark:bg-zinc-900 border border-gray-200 dark:border-zinc-800 shadow-sm space-y-4">
+      <!-- Section 9: PG Compliance Table -->
+      <section id="section-9" class="p-6 sm:p-8 rounded-3xl bg-white dark:bg-zinc-900 border border-gray-200 dark:border-zinc-800 shadow-sm space-y-4">
         <h2 class="text-xl font-bold text-gray-900 dark:text-white flex items-center gap-2">
-          <span class="w-7 h-7 rounded-xl bg-orange-100 dark:bg-orange-950/60 text-orange-600 dark:text-orange-400 flex items-center justify-center text-sm font-bold">8</span>
+          <span class="w-7 h-7 rounded-xl bg-orange-100 dark:bg-orange-950/60 text-orange-600 dark:text-orange-400 flex items-center justify-center text-sm font-bold">9</span>
           <span>PG사/포트원 심사 5대 필수 요건 검증 결과</span>
         </h2>
         
@@ -351,10 +430,10 @@
         </div>
       </section>
 
-      <!-- Section 9: Live URLs -->
-      <section id="section-9" class="p-6 sm:p-8 rounded-3xl bg-white dark:bg-zinc-900 border border-gray-200 dark:border-zinc-800 shadow-sm space-y-4">
+      <!-- Section 10: Live URLs -->
+      <section id="section-10" class="p-6 sm:p-8 rounded-3xl bg-white dark:bg-zinc-900 border border-gray-200 dark:border-zinc-800 shadow-sm space-y-4">
         <h2 class="text-xl font-bold text-gray-900 dark:text-white flex items-center gap-2">
-          <span class="w-7 h-7 rounded-xl bg-orange-100 dark:bg-orange-950/60 text-orange-600 dark:text-orange-400 flex items-center justify-center text-sm font-bold">9</span>
+          <span class="w-7 h-7 rounded-xl bg-orange-100 dark:bg-orange-950/60 text-orange-600 dark:text-orange-400 flex items-center justify-center text-sm font-bold">10</span>
           <span>배포 현황 및 바로가기</span>
         </h2>
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
