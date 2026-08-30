@@ -360,25 +360,61 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // ==========================================
-  // 8. PayPal JS SDK Integration
+  // 8. PayPal Donate SDK Integration (https://developer.paypal.com/sdk/donate/)
   // ==========================================
   function reRenderPayPal() {
     const paypalWrapper = document.getElementById('paypal-button-wrapper');
     if (!paypalWrapper) return;
     paypalWrapper.innerHTML = '';
 
-    if (window.paypal) {
+    const supporterName = state.nickname.trim() || 'Anonymous';
+    const message = state.message.trim() || 'Enjoy your coffee!';
+
+    // 1. PayPal Official Donate SDK (PayPal.Donation.Button)
+    if (window.PayPal && window.PayPal.Donation && window.PayPal.Donation.Button) {
       try {
-        paypal.Buttons({
+        window.PayPal.Donation.Button({
+          env: 'sandbox', // 'sandbox' | 'production'
+          business: 'waffle.comm@gmail.com', // PayPal Business Receiver
+          image: {
+            src: 'https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif',
+            title: 'PayPal - The safer, easier way to pay online!',
+            alt: 'Donate with PayPal button'
+          },
+          item_name: `☕ ${state.target} 님을 위한 커피 후원 (${state.cups}잔)`,
+          amount: state.amountUSD.toFixed(2),
+          currency_code: 'USD',
+          onComplete: async function (params) {
+            console.log('PayPal Donation Completed:', params);
+            await saveSupporterToDB({
+              name: supporterName,
+              cups: state.cups,
+              amount: `$${state.amountUSD.toFixed(2)}`,
+              amount_usd: state.amountUSD,
+              message: message,
+              payment_id: params.tx || `pp_donate_${Date.now()}`,
+              target: state.target
+            });
+            showSuccessModal(supporterName, `$${state.amountUSD.toFixed(2)}`, message);
+          }
+        }).render('#paypal-button-wrapper');
+        return;
+      } catch (e) {
+        console.warn('PayPal Donate SDK Button 렌더링 실패, Smart Buttons로 전환:', e);
+      }
+    }
+
+    // 2. PayPal Smart Buttons SDK (Fallback)
+    if (window.paypal && window.paypal.Buttons) {
+      try {
+        window.paypal.Buttons({
           style: {
             layout: 'vertical',
             color: 'gold',
             shape: 'pill',
-            label: 'pay'
+            label: 'donate'
           },
           createOrder: (data, actions) => {
-            const supporterName = state.nickname.trim() || 'Anonymous';
-            const message = state.message.trim() || 'Enjoy your coffee!';
             return actions.order.create({
               purchase_units: [{
                 description: `Coffee donation for ${state.target} (${state.cups} cups)`,
@@ -396,18 +432,17 @@ document.addEventListener('DOMContentLoaded', () => {
           },
           onApprove: async (data, actions) => {
             const details = await actions.order.capture();
-            const supporterName = details.payer.name.given_name || state.nickname.trim() || 'Anonymous';
-            const msg = state.message || 'Thank you for your creation!';
+            const payerName = details.payer.name.given_name || supporterName;
             await saveSupporterToDB({
-              name: supporterName,
+              name: payerName,
               cups: state.cups,
               amount: `$${state.amountUSD.toFixed(2)}`,
               amount_usd: state.amountUSD,
-              message: msg,
+              message: message,
               payment_id: details.id || `pp_${Date.now()}`,
               target: state.target
             });
-            showSuccessModal(supporterName, `$${state.amountUSD.toFixed(2)}`, msg);
+            showSuccessModal(payerName, `$${state.amountUSD.toFixed(2)}`, message);
           },
           onError: (err) => {
             console.error('PayPal Error:', err);
@@ -415,12 +450,12 @@ document.addEventListener('DOMContentLoaded', () => {
           }
         }).render('#paypal-button-wrapper');
       } catch (e) {
-        console.warn('PayPal Button render failed:', e);
+        console.warn('PayPal Buttons render failed:', e);
       }
     } else {
       paypalWrapper.innerHTML = `
         <div class="p-4 rounded-xl bg-gray-100 dark:bg-zinc-800 text-center text-sm text-gray-500">
-          <p class="mb-2 font-medium">PayPal SDK 로드 준비 중</p>
+          <p class="mb-2 font-medium">PayPal Donate SDK 로드 중</p>
           <button id="demo-paypal-btn" class="w-full py-3 bg-[#FFC439] hover:bg-[#F2BA36] text-black font-bold rounded-full shadow transition flex items-center justify-center gap-2">
             <iconify-icon icon="logos:paypal" class="text-xl"></iconify-icon> PayPal 모의 결제 완료
           </button>
@@ -429,18 +464,16 @@ document.addEventListener('DOMContentLoaded', () => {
       const demoBtn = document.getElementById('demo-paypal-btn');
       if (demoBtn) {
         demoBtn.addEventListener('click', async () => {
-          const supporterName = state.nickname.trim() || '글로벌 후원자';
-          const msg = state.message || 'Awesome creator! ☕';
           await saveSupporterToDB({
             name: supporterName,
             cups: state.cups,
             amount: `$${state.amountUSD.toFixed(2)}`,
             amount_usd: state.amountUSD,
-            message: msg,
+            message: message,
             payment_id: `demo_${Date.now()}`,
             target: state.target
           });
-          showSuccessModal(supporterName, `$${state.amountUSD.toFixed(2)}`, msg);
+          showSuccessModal(supporterName, `$${state.amountUSD.toFixed(2)}`, message);
         });
       }
     }
