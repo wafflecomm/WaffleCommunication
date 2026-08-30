@@ -256,6 +256,34 @@ body {
   box-shadow: 0 0 0 2px var(--theme-bg-card, #FFF), 0 0 0 3.5px var(--theme-accent, #785238);
 }
 
+/* Top Back Navigation Button (< Icon with Theme Adaptive Hover) */
+.back-nav-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 9999px;
+  color: var(--theme-accent);
+  background-color: transparent;
+  border: 1px solid transparent;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.back-nav-btn:hover {
+  background-color: var(--theme-accent-sub) !important;
+  border-color: var(--theme-border) !important;
+  color: var(--theme-accent) !important;
+  box-shadow: 0 4px 12px var(--theme-shadow);
+  transform: scale(1.05);
+}
+
+.back-nav-btn:hover iconify-icon {
+  transform: translateX(-2px);
+}
+
 /* Hover & Transitions */
 .smooth-transition {
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
