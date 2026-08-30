@@ -163,7 +163,7 @@
   - ⚡ **1. 트래픽 캐쳐 (Traffic Catcher AI)**: 실시간 급상승 키워드 & 트렌드 기반 올인원 AI 자동 글작성 마케팅 플랫폼 ([trafficcatcher.ai](https://www.trafficcatcher.ai))
   - 🎮 **2. 캐주얼 & 온라인 게임**: 소셜 엔터테인먼트, 혁신적인 보드게임 및 파티게임
   - 📚 **3. 교육용 앱 솔루션**: 재미와 배움을 융합한 에듀테크 서비스
-  - 🎵 **4. AI 음악 추천 및 제작**: 사용자의 무드와 상황에 맞춘 스마트 AI 음악 제작 및 큐레이션
+  - 🎵 **4. AI 음악 추천 및 제작 (Moodify)**: 사진과 감정을 분석하여 맞춤형 배경음악과 플레이리스트를 제작하는 스마트 AI 음악 솔루션 ([ai-moodify.pages.dev](https://ai-moodify.pages.dev/))
   - ☕🎵 **5. Music Diffuser (YouTube 공식 채널)**: 공부, 업무, 휴식/명상을 위한 감성적인 AI Lo-Fi & Ambient 배경음악 채널 ([@Music_Diffuser](https://www.youtube.com/@Music_Diffuser))
   - 🎮🔥 **6. 우짤게임 UZGAME (YouTube 공식 채널)**: 유쾌하고 재밌는 실시간 게임 플레이 스트리밍 채널 ([@uzgame-201](https://www.youtube.com/@uzgame-201)) 연동
 * **Global Partners Section (14개 공식 링크 연결 완료)**:
