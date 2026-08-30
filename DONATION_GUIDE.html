@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="ko" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>☕ 커피 후원 플랫폼 개발 지침서 | Waffle Communication</title>
+  <meta name="description" content="개발자, 크리에이터를 위한 모바일 퍼스트 미니멀 커피 후원 플랫폼 구축 및 PG 연동 개발 지침서">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Iconify Solar Icons -->
+  <script src="https://code.iconify.design/iconify-icon/2.3.0/iconify-icon.min.js"></script>
+
+  <!-- Tailwind Configuration with Paperlogy -->
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Paperlogy', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+            mono: ['Fira Code', 'Consolas', 'Monaco', 'monospace'],
+          },
+          colors: {
+            coffee: {
+              50: '#FFF7F2',
+              100: '#FFEFE6',
+              500: '#FF813F',
+              600: '#E66826',
+              700: '#BF4E15',
+              900: '#732A06',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Paperlogy Webfont (Project Noonnu CDN) -->
+  <style>
+    @font-face {
+      font-family: 'Paperlogy';
+      src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2408-3@1.0/Paperlogy-4Regular.woff2') format('woff2');
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'Paperlogy';
+      src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2408-3@1.0/Paperlogy-5Medium.woff2') format('woff2');
+      font-weight: 500;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'Paperlogy';
+      src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2408-3@1.0/Paperlogy-6SemiBold.woff2') format('woff2');
+      font-weight: 600;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'Paperlogy';
+      src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2408-3@1.0/Paperlogy-7Bold.woff2') format('woff2');
+      font-weight: 700;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'Paperlogy';
+      src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2408-3@1.0/Paperlogy-8ExtraBold.woff2') format('woff2');
+      font-weight: 800;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    * {
+      font-family: 'Paperlogy', -apple-system, BlinkMacSystemFont, sans-serif;
+      box-sizing: border-box;
+    }
+
+    body {
+      word-break: keep-all;
+      overflow-wrap: break-word;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    .code-block {
+      background: #18181b;
+      color: #f4f4f5;
+      font-family: 'Fira Code', Consolas, Monaco, monospace;
+      border-radius: 1rem;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .code-block pre, .code-block code {
+      font-family: 'Fira Code', Consolas, Monaco, monospace !important;
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: rgba(156, 163, 175, 0.3);
+      border-radius: 9999px;
+    }
+  </style>
+</head>
+<body class="bg-gray-50 dark:bg-zinc-950 text-gray-800 dark:text-zinc-200 min-h-screen selection:bg-orange-500 selection:text-white">
+
+  <!-- Reading Progress Bar -->
+  <div id="progress-bar" class="fixed top-0 left-0 h-1 bg-gradient-to-r from-orange-500 to-amber-400 z-50 transition-all duration-150" style="width: 0%;"></div>
+
+  <!-- Top Sticky Navigation -->
+  <header class="sticky top-0 z-40 bg-white/80 dark:bg-zinc-900/80 backdrop-blur-md border-b border-gray-200 dark:border-zinc-800 py-3.5 px-4 sm:px-8">
+    <div class="max-w-6xl mx-auto flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <a href="../index.html" class="flex items-center gap-2 hover:opacity-80 transition">
+          <span class="text-2xl">🧇</span>
+          <span class="font-bold text-base tracking-tight text-gray-900 dark:text-white">Waffle Communication</span>
+        </a>
+        <span class="text-gray-300 dark:text-zinc-700 hidden sm:inline">|</span>
+        <span class="text-xs px-2.5 py-1 rounded-full bg-orange-100 dark:bg-orange-950/70 text-orange-600 dark:text-orange-400 font-bold hidden sm:inline">
+          개발 지침서 v1.0
+        </span>
+      </div>
+
+      <div class="flex items-center gap-3">
+        <a href="index.html" class="px-4 py-2 bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-white text-xs sm:text-sm font-bold rounded-full shadow-md shadow-orange-500/20 hover:scale-105 active:scale-95 transition flex items-center gap-1.5">
+          <span>☕ 후원 페이지 보기</span>
+          <iconify-icon icon="solar:arrow-right-linear" class="text-base"></iconify-icon>
+        </a>
+        <button id="theme-toggle" class="p-2 rounded-full bg-gray-100 dark:bg-zinc-800 text-gray-600 dark:text-zinc-300 hover:scale-105 active:scale-95 transition border border-gray-200 dark:border-zinc-700 flex items-center justify-center" aria-label="테마 전환">
+          <iconify-icon id="theme-icon" icon="solar:moon-bold-duotone" class="text-lg"></iconify-icon>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Container with Sidebar TOC -->
+  <div class="max-w-6xl mx-auto px-4 sm:px-8 py-10 grid grid-cols-1 lg:grid-cols-12 gap-10">
+    
+    <!-- Left Table of Contents (Desktop Sticky) -->
+    <aside class="hidden lg:block lg:col-span-3">
+      <div class="sticky top-24 space-y-4">
+        <h3 class="text-xs font-bold uppercase tracking-wider text-gray-400 dark:text-zinc-500 mb-3 flex items-center gap-1.5">
+          <iconify-icon icon="solar:list-bold" class="text-sm text-orange-500"></iconify-icon>
+          문서 목차
+        </h3>
+        <nav class="space-y-1.5 text-xs font-medium text-gray-600 dark:text-zinc-400">
+          <a href="#section-1" class="block py-1.5 px-3 rounded-lg hover:bg-orange-50 dark:hover:bg-zinc-800/80 hover:text-orange-600 dark:hover:text-orange-400 transition">1. 개요 및 기획 목표</a>
+          <a href="#section-2" class="block py-1.5 px-3 rounded-lg hover:bg-orange-50 dark:hover:bg-zinc-800/80 hover:text-orange-600 dark:hover:text-orange-400 transition">2. 사용자 플로우 (User Flow)</a>
+          <a href="#section-3" class="block py-1.5 px-3 rounded-lg hover:bg-orange-50 dark:hover:bg-zinc-800/80 hover:text-orange-600 dark:hover:text-orange-400 transition">3. 화면 구성 및 UI/UX 설계</a>
+          <a href="#section-4" class="block py-1.5 px-3 rounded-lg hover:bg-orange-50 dark:hover:bg-zinc-800/80 hover:text-orange-600 dark:hover:text-orange-400 transition">4. 기술 스택 및 라이브러리</a>
+          <a href="#section-5" class="block py-1.5 px-3 rounded-lg hover:bg-orange-50 dark:hover:bg-zinc-800/80 hover:text-orange-600 dark:hover:text-orange-400 transition">5. 핵심 기술 구현 상세 코드</a>
+          <a href="#section-6" class="block py-1.5 px-3 rounded-lg hover:bg-orange-50 dark:hover:bg-zinc-800/80 hover:text-orange-600 dark:hover:text-orange-400 transition">6. 보안 및 운영 고려사항</a>
+          <a href="#section-7" class="block py-1.5 px-3 rounded-lg hover:bg-orange-50 dark:hover:bg-zinc-800/80 hover:text-orange-600 dark:hover:text-orange-400 transition">7. 다이렉트 딥링크 활용 예시</a>
+          <a href="#section-8" class="block py-1.5 px-3 rounded-lg hover:bg-orange-50 dark:hover:bg-zinc-800/80 hover:text-orange-600 dark:hover:text-orange-400 transition">8. 프로젝트 파일 구조</a>
+          <a href="#section-9" class="block py-1.5 px-3 rounded-lg hover:bg-orange-50 dark:hover:bg-zinc-800/80 hover:text-orange-600 dark:hover:text-orange-400 transition">9. 개발 & QA 체크리스트</a>
+        </nav>
+
+        <div class="pt-6 border-t border-gray-200 dark:border-zinc-800">
+          <div class="p-4 rounded-2xl bg-orange-50/60 dark:bg-orange-950/30 border border-orange-200/60 dark:border-orange-900/40 text-xs">
+            <span class="font-bold text-orange-600 dark:text-orange-400 block mb-1">💡 팁</span>
+            <p class="text-gray-600 dark:text-zinc-400 leading-relaxed">
+              본 지침서는 Paperlogy 폰트를 기본 서체로 채택하여 개발되었습니다.
+            </p>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="lg:col-span-9 space-y-12">
+      
+      <!-- Document Title & Meta -->
+      <section class="space-y-4 pb-8 border-b border-gray-200 dark:border-zinc-800">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-orange-100 dark:bg-orange-950/60 text-orange-600 dark:text-orange-400 text-xs font-bold">
+          <span>☕ Engineering Spec</span>
+        </div>
+        <h1 class="text-3xl sm:text-4xl font-extrabold text-gray-900 dark:text-white tracking-tight leading-tight">
+          미니멀 커피 후원 플랫폼 개발 지침서
+        </h1>
+        <p class="text-base text-gray-600 dark:text-zinc-400 leading-relaxed">
+          개발자, 크리에이터, 오픈소스 메인테이너를 위한 모바일 퍼스트 미니멀 후원 플랫폼 구축 및 PortOne V2 / PayPal 연동 공식 가이드라인입니다.
+        </p>
+      </section>
+
+      <!-- Section 1: Overview -->
+      <section id="section-1" class="space-y-4">
+        <div class="flex items-center gap-2">
+          <span class="w-2 h-6 bg-orange-500 rounded-full"></span>
+          <h2 class="text-2xl font-bold text-gray-900 dark:text-white">1. 📌 개요 및 기획 목표</h2>
+        </div>
+        <p class="text-sm sm:text-base text-gray-600 dark:text-zinc-300 leading-relaxed">
+          외부 링크(블로그, GitHub README, SNS 프로필 등)를 통해 사용자가 손쉽게 유입되어 커피(후원금)를 전달할 수 있는 가볍고 직관적인 단일 페이지 웹 애플리케이션입니다.
+        </p>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+          <div class="p-5 rounded-2xl bg-white dark:bg-zinc-900 border border-gray-200 dark:border-zinc-800 shadow-sm space-y-2">
+            <div class="w-8 h-8 rounded-full bg-orange-100 dark:bg-orange-950/60 text-orange-600 flex items-center justify-center font-bold">🚀</div>
+            <h3 class="font-bold text-sm text-gray-900 dark:text-white">무설치 & 초경량 아키텍처</h3>
+            <p class="text-xs text-gray-500 dark:text-zinc-400 leading-relaxed">회원가입이나 앱 설치 없이 URL 클릭 한 번으로 후원이 완료되는 Zero-Friction UX를 지향합니다.</p>
+          </div>
+          <div class="p-5 rounded-2xl bg-white dark:bg-zinc-900 border border-gray-200 dark:border-zinc-800 shadow-sm space-y-2">
+            <div class="w-8 h-8 rounded-full bg-orange-100 dark:bg-orange-950/60 text-orange-600 flex items-center justify-center font-bold">💳</div>
+            <h3 class="font-bold text-sm text-gray-900 dark:text-white">국내/해외 통합 결제</h3>
+            <p class="text-xs text-gray-500 dark:text-zinc-400 leading-relaxed">PortOne V2(카드/카카오/토스)와 PayPal JS SDK를 통해 국내외 결제를 모두 지원합니다.</p>
+          </div>
+          <div class="p-5 rounded-2xl bg-white dark:bg-zinc-900 border border-gray-200 dark:border-zinc-800 shadow-sm space-y-2">
+            <div class="w-8 h-8 rounded-full bg-orange-100 dark:bg-orange-950/60 text-orange-600 flex items-center justify-center font-bold">🔗</div>
+            <h3 class="font-bold text-sm text-gray-900 dark:text-white">다이렉트 딥링크 파라미터</h3>
+            <p class="text-xs text-gray-500 dark:text-zinc-400 leading-relaxed">URL 파라미터(?target=insub&amount=9000)를 통해 크리에이터와 후원 금액을 사전 지정합니다.</p>
+          </div>
+          <div class="p-5 rounded-2xl bg-white dark:bg-zinc-900 border border-gray-200 dark:border-zinc-800 shadow-sm space-y-2">
+            <div class="w-8 h-8 rounded-full bg-orange-100 dark:bg-orange-950/60 text-orange-600 flex items-center justify-center font-bold">🌗</div>
+            <h3 class="font-bold text-sm text-gray-900 dark:text-white">시스템 다크모드 자동 연동</h3>
+            <p class="text-xs text-gray-500 dark:text-zinc-400 leading-relaxed">OS의 prefers-color-scheme 설정을 감지하여 실시간으로 부드러운 다크/라이트 테마를 제공합니다.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 2: User Flow -->
+      <section id="section-2" class="space-y-4">
+        <div class="flex items-center gap-2">
+          <span class="w-2 h-6 bg-orange-500 rounded-full"></span>
+          <h2 class="text-2xl font-bold text-gray-900 dark:text-white">2. 🗺️ 사용자 플로우 (User Flow)</h2>
+        </div>
+        <p class="text-sm text-gray-600 dark:text-zinc-300">
+          후원자의 인지 부하를 최소화하기 위해 4단계 이내로 결제가 완료되는 최적의 플로우를 설계했습니다.
+        </p>
+
+        <div class="p-6 rounded-2xl bg-white dark:bg-zinc-900 border border-gray-200 dark:border-zinc-800 shadow-sm">
+          <div class="grid grid-cols-1 md:grid-cols-5 gap-3 text-center text-xs">
+            <div class="p-3 rounded-xl bg-orange-50 dark:bg-zinc-800/80 border border-orange-200 dark:border-zinc-700">
+              <span class="block text-base mb-1">🔗</span>
+              <strong class="text-gray-900 dark:text-white block mb-0.5">1. 링크 유입</strong>
+              <span class="text-gray-500 dark:text-zinc-400 text-[11px]">URL 파라미터 파싱</span>
+            </div>
+            <div class="p-3 rounded-xl bg-orange-50 dark:bg-zinc-800/80 border border-orange-200 dark:border-zinc-700">
+              <span class="block text-base mb-1">☕</span>
+              <strong class="text-gray-900 dark:text-white block mb-0.5">2. 잔 수 선택</strong>
+              <span class="text-gray-500 dark:text-zinc-400 text-[11px]">1/3/5잔 or 직접입력</span>
+            </div>
+            <div class="p-3 rounded-xl bg-orange-50 dark:bg-zinc-800/80 border border-orange-200 dark:border-zinc-700">
+              <span class="block text-base mb-1">✍️</span>
+              <strong class="text-gray-900 dark:text-white block mb-0.5">3. 정보 입력</strong>
+              <span class="text-gray-500 dark:text-zinc-400 text-[11px]">닉네임 & 응원 메시지</span>
+            </div>
+            <div class="p-3 rounded-xl bg-orange-50 dark:bg-zinc-800/80 border border-orange-200 dark:border-zinc-700">
+              <span class="block text-base mb-1">💳</span>
+              <strong class="text-gray-900 dark:text-white block mb-0.5">4. 결제 진행</strong>
+              <span class="text-gray-500 dark:text-zinc-400 text-[11px]">PortOne / PayPal</span>
+            </div>
+            <div class="p-3 rounded-xl bg-orange-500 text-white font-bold">
+              <span class="block text-base mb-1">🎉</span>
+              <strong class="block mb-0.5">5. 완료 & 피드</strong>
+              <span class="text-orange-100 text-[11px]">영수증 & 실시간 반영</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 3: UI/UX Wireframe -->
+      <section id="section-3" class="space-y-4">
+        <div class="flex items-center gap-2">
+          <span class="w-2 h-6 bg-orange-500 rounded-full"></span>
+          <h2 class="text-2xl font-bold text-gray-900 dark:text-white">3. 🎨 화면 구성 및 UI/UX 설계 (Wireframe)</h2>
+        </div>
+        <p class="text-sm text-gray-600 dark:text-zinc-300">
+          모바일 한 손 조작 영역(Thumb Zone)을 고려하여 하단 결제 버튼과 입력 폼을 직관적으로 배치했습니다.
+        </p>
+
+        <div class="p-6 rounded-2xl bg-white dark:bg-zinc-900 border border-gray-200 dark:border-zinc-800 space-y-4 text-xs">
+          <div class="p-4 rounded-xl border border-dashed border-gray-300 dark:border-zinc-700 flex items-center justify-between">
+            <div>
+              <strong class="text-sm text-gray-900 dark:text-white block">[헤더] 크리에이터 프로필 카드</strong>
+              <span class="text-gray-500 dark:text-zinc-400">아바타, 크리에이터 닉네임, 한 줄 소개글, 다크/라이트 테마 토글</span>
+            </div>
+            <span class="text-lg">👤</span>
+          </div>
+
+          <div class="p-4 rounded-xl border border-dashed border-gray-300 dark:border-zinc-700 flex items-center justify-between">
+            <div>
+              <strong class="text-sm text-gray-900 dark:text-white block">[후원 금액] ☕ 잔 수 프리셋 버튼 그리드</strong>
+              <span class="text-gray-500 dark:text-zinc-400">☕ 1잔(₩3,000/$3) | ☕☕ 3잔(₩9,000/$9) | ☕☕☕ 5잔(₩15,000/$15) | ✏️ 직접입력</span>
+            </div>
+            <span class="text-lg">☕</span>
+          </div>
+
+          <div class="p-4 rounded-xl border border-dashed border-gray-300 dark:border-zinc-700 flex items-center justify-between">
+            <div>
+              <strong class="text-sm text-gray-900 dark:text-white block">[후원자 정보] 닉네임 & 응원 메시지</strong>
+              <span class="text-gray-500 dark:text-zinc-400">닉네임 Input(최대 20자) + 응원 메시지 Textarea(최대 200자 카운터)</span>
+            </div>
+            <span class="text-lg">📝</span>
+          </div>
+
+          <div class="p-4 rounded-xl border border-dashed border-gray-300 dark:border-zinc-700 flex items-center justify-between">
+            <div>
+              <strong class="text-sm text-gray-900 dark:text-white block">[결제 게이트웨이] 국내(PortOne) / 해외(PayPal) 탭</strong>
+              <span class="text-gray-500 dark:text-zinc-400">PortOne V2 결제 버튼(카드/카카오/토스) & PayPal Buttons JS 컨테이너</span>
+            </div>
+            <span class="text-lg">💳</span>
+          </div>
+
+          <div class="p-4 rounded-xl border border-dashed border-gray-300 dark:border-zinc-700 flex items-center justify-between">
+            <div>
+              <strong class="text-sm text-gray-900 dark:text-white block">[소셜 프루프] 최근 따뜻한 커피 후원자 목록</strong>
+              <span class="text-gray-500 dark:text-zinc-400">실시간 후원자 닉네임, 응원 메시지, 커피 잔 수 및 상대 시간 렌더링</span>
+            </div>
+            <span class="text-lg">❤️</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 4: Tech Stack -->
+      <section id="section-4" class="space-y-4">
+        <div class="flex items-center gap-2">
+          <span class="w-2 h-6 bg-orange-500 rounded-full"></span>
+          <h2 class="text-2xl font-bold text-gray-900 dark:text-white">4. 🛠️ 기술 스택 및 라이브러리</h2>
+        </div>
+
+        <div class="overflow-x-auto rounded-2xl border border-gray-200 dark:border-zinc-800">
+          <table class="w-full text-left text-xs sm:text-sm">
+            <thead class="bg-gray-100 dark:bg-zinc-800 text-gray-700 dark:text-zinc-300">
+              <tr>
+                <th class="p-3.5 font-bold">레이어</th>
+                <th class="p-3.5 font-bold">기술 스택</th>
+                <th class="p-3.5 font-bold">도입 목적 및 설명</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-200 dark:divide-zinc-800 bg-white dark:bg-zinc-900">
+              <tr>
+                <td class="p-3.5 font-bold text-orange-600 dark:text-orange-400">Typography</td>
+                <td class="p-3.5 font-semibold">Paperlogy (페이퍼로지)</td>
+                <td class="p-3.5 text-gray-600 dark:text-zinc-300">가독성이 뛰어나고 따뜻한 감성의 모던 웹폰트 (400~800 굵기 전면 적용)</td>
+              </tr>
+              <tr>
+                <td class="p-3.5 font-bold text-orange-600 dark:text-orange-400">Frontend</td>
+                <td class="p-3.5 font-semibold">Vanilla HTML5 + JS (ES6+)</td>
+                <td class="p-3.5 text-gray-600 dark:text-zinc-300">번들러 없이 브라우저에서 즉시 실행되는 초경량 단일 페이지 구성</td>
+              </tr>
+              <tr>
+                <td class="p-3.5 font-bold text-orange-600 dark:text-orange-400">Styling</td>
+                <td class="p-3.5 font-semibold">Tailwind CSS (CDN)</td>
+                <td class="p-3.5 text-gray-600 dark:text-zinc-300">모바일 퍼스트 반응형 유틸리티 클래스 및 dark: 테마 제어</td>
+              </tr>
+              <tr>
+                <td class="p-3.5 font-bold text-orange-600 dark:text-orange-400">국내 결제</td>
+                <td class="p-3.5 font-semibold">PortOne SDK V2</td>
+                <td class="p-3.5 text-gray-600 dark:text-zinc-300">카카오페이, 토스페이먼츠, 신용/체크카드 결제 및 모바일 인앱 리디렉션 지원</td>
+              </tr>
+              <tr>
+                <td class="p-3.5 font-bold text-orange-600 dark:text-orange-400">해외 결제</td>
+                <td class="p-3.5 font-semibold">PayPal JS SDK</td>
+                <td class="p-3.5 text-gray-600 dark:text-zinc-300">글로벌 후원자를 위한 USD($) 환산 및 공식 결제 버튼 렌더링</td>
+              </tr>
+              <tr>
+                <td class="p-3.5 font-bold text-orange-600 dark:text-orange-400">Database</td>
+                <td class="p-3.5 font-semibold">Supabase JS SDK (PostgreSQL)</td>
+                <td class="p-3.5 text-gray-600 dark:text-zinc-300">실시간 Realtime 후원자 메시지 동기화 및 무설치 LocalStorage 폴백 지원</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Section 5: Implementation Code -->
+      <section id="section-5" class="space-y-6">
+        <div class="flex items-center gap-2">
+          <span class="w-2 h-6 bg-orange-500 rounded-full"></span>
+          <h2 class="text-2xl font-bold text-gray-900 dark:text-white">5. ⚙️ 핵심 기술 구현 상세 코드</h2>
+        </div>
+
+        <!-- 5.1 System Theme -->
+        <div class="space-y-2">
+          <h3 class="text-base font-bold text-gray-900 dark:text-white">5.1. 시스템 다크모드 자동 감지 (OS Sync)</h3>
+          <div class="code-block p-4 text-xs overflow-x-auto relative">
+            <pre><code>// OS 다크모드 설정 감지 및 실시간 이벤트 리스너
+function initTheme() {
+  const darkModeMediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+  
+  function applyTheme(isDark) {
+    if (isDark) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  }
+
+  // 최초 로드 시 OS 설정값 반영
+  applyTheme(darkModeMediaQuery.matches);
+
+  // OS 설정 변경 시 실시간 반영
+  darkModeMediaQuery.addEventListener('change', (e) => applyTheme(e.matches));
+}</code></pre>
+          </div>
+        </div>
+
+        <!-- 5.2 Direct Link -->
+        <div class="space-y-2">
+          <h3 class="text-base font-bold text-gray-900 dark:text-white">5.2. 다이렉트 딥링크 파라미터 파싱</h3>
+          <div class="code-block p-4 text-xs overflow-x-auto relative">
+            <pre><code>// URL 쿼리 파라미터 파싱 및 크리에이터 프로필 자동 설정
+function parseUrlParams() {
+  const params = new URLSearchParams(window.location.search);
+  const target = params.get('target') || '와플커뮤니케이션';
+  const amount = parseInt(params.get('amount'), 10) || 3000;
+  const message = params.get('message') || '';
+
+  return { target, amount, message };
+}</code></pre>
+          </div>
+        </div>
+
+        <!-- 5.3 PortOne V2 -->
+        <div class="space-y-2">
+          <h3 class="text-base font-bold text-gray-900 dark:text-white">5.3. PortOne V2 결제 연동 (인앱 브라우저 호환)</h3>
+          <div class="code-block p-4 text-xs overflow-x-auto relative">
+            <pre><code>async function requestPortOnePayment({ target, amount, nickname, message }) {
+  const paymentId = `pay_${Date.now()}_${Math.random().toString(36).substring(2, 7)}`;
+  
+  const response = await PortOne.requestPayment({
+    storeId: "YOUR_STORE_ID",
+    paymentId: paymentId,
+    orderName: `☕ ${target} 님을 위한 커피 후원`,
+    totalAmount: amount,
+    currency: "CURRENCY_KRW",
+    payMethod: "CARD",
+    customer: { fullName: nickname || "익명의 후원자" },
+    customData: { target, message },
+    // 카카오톡/인스타 인앱 브라우저 대응을 위한 필수 리디렉션 URL
+    redirectUrl: `${window.location.origin}${window.location.pathname}?paymentId=${paymentId}`
+  });
+}</code></pre>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 6: Security & Best Practices -->
+      <section id="section-6" class="space-y-4">
+        <div class="flex items-center gap-2">
+          <span class="w-2 h-6 bg-orange-500 rounded-full"></span>
+          <h2 class="text-2xl font-bold text-gray-900 dark:text-white">6. 🛡️ 보안 및 운영 고려사항</h2>
+        </div>
+
+        <div class="space-y-3 text-xs sm:text-sm">
+          <div class="p-4 rounded-xl bg-red-50 dark:bg-red-950/30 border border-red-200 dark:border-red-900/40 space-y-1">
+            <strong class="text-red-700 dark:text-red-400 font-bold block">1. 결제 위변조 방지 (Server Validation)</strong>
+            <p class="text-gray-600 dark:text-zinc-300">
+              클라이언트(브라우저)에서 금액 조작을 방지하기 위해, 결제 완료 후 PortOne/PayPal API를 호출하여 실제 승인된 금액과 paymentId를 백엔드/Serverless에서 재검증해야 합니다.
+            </p>
+          </div>
+
+          <div class="p-4 rounded-xl bg-amber-50 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-900/40 space-y-1">
+            <strong class="text-amber-700 dark:text-amber-400 font-bold block">2. 모바일 인앱 브라우저 팝업 차단 방지</strong>
+            <p class="text-gray-600 dark:text-zinc-300">
+              카카오톡, 인스타그램 인앱 브라우저는 팝업 창을 강제 차단할 수 있으므로, 반드시 <code>redirectUrl</code> 파라미터를 설정하여 페이지 전환 방식으로 결제가 진행되도록 해야 합니다.
+            </p>
+          </div>
+
+          <div class="p-4 rounded-xl bg-blue-50 dark:bg-blue-950/30 border border-blue-200 dark:border-blue-900/40 space-y-1">
+            <strong class="text-blue-700 dark:text-blue-400 font-bold block">3. 크리에이터 타겟 식별자(target) 전송</strong>
+            <p class="text-gray-600 dark:text-zinc-300">
+              다이렉트 링크를 통해 여러 사람이 하나의 도메인을 공유하므로, 결제 메타데이터(<code>customData</code>)에 target 식별자를 포함해 정산 및 후원자 명단을 분리해야 합니다.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 7: Direct Link Examples -->
+      <section id="section-7" class="space-y-4">
+        <div class="flex items-center gap-2">
+          <span class="w-2 h-6 bg-orange-500 rounded-full"></span>
+          <h2 class="text-2xl font-bold text-gray-900 dark:text-white">7. 🔗 다이렉트 딥링크 활용 예시</h2>
+        </div>
+
+        <div class="overflow-x-auto rounded-2xl border border-gray-200 dark:border-zinc-800">
+          <table class="w-full text-left text-xs sm:text-sm">
+            <thead class="bg-gray-100 dark:bg-zinc-800 text-gray-700 dark:text-zinc-300">
+              <tr>
+                <th class="p-3.5 font-bold">링크 유형</th>
+                <th class="p-3.5 font-bold">URL 파라미터 예시</th>
+                <th class="p-3.5 font-bold">동작 결과</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-200 dark:divide-zinc-800 bg-white dark:bg-zinc-900">
+              <tr>
+                <td class="p-3.5 font-bold">기본 접속</td>
+                <td class="p-3.5 font-mono text-orange-600 dark:text-orange-400">donate/index.html</td>
+                <td class="p-3.5">기본 프로필 로드, 기본 1잔(₩3,000) 선택</td>
+              </tr>
+              <tr>
+                <td class="p-3.5 font-bold">특정 개발자 지정</td>
+                <td class="p-3.5 font-mono text-orange-600 dark:text-orange-400">?target=insub</td>
+                <td class="p-3.5">'insub' 크리에이터 프로필 자동 로드</td>
+              </tr>
+              <tr>
+                <td class="p-3.5 font-bold">금액 지정 링크</td>
+                <td class="p-3.5 font-mono text-orange-600 dark:text-orange-400">?target=insub&amount=9000</td>
+                <td class="p-3.5">커피 3잔(₩9,000) 버튼 자동 활성화</td>
+              </tr>
+              <tr>
+                <td class="p-3.5 font-bold">메시지 사전 입력</td>
+                <td class="p-3.5 font-mono text-orange-600 dark:text-orange-400">?amount=15000&message=응원합니다</td>
+                <td class="p-3.5">응원 메시지 입력 필드 사전 자동 기입</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Section 8: File Structure -->
+      <section id="section-8" class="space-y-4">
+        <div class="flex items-center gap-2">
+          <span class="w-2 h-6 bg-orange-500 rounded-full"></span>
+          <h2 class="text-2xl font-bold text-gray-900 dark:text-white">8. 📂 프로젝트 파일 구조</h2>
+        </div>
+
+        <div class="code-block p-4 text-xs">
+          <pre><code>WaffleComm/
+├── DONATION_DEVELOPMENT_GUIDE.md   # 마크다운 원본 개발 지침서
+├── supabase_schema.sql             # Supabase 원클릭 테이블 생성 스키마
+├── .env.local                      # Supabase 환경 변수 설정
+└── donate/
+    ├── index.html                  # Paperlogy 폰트 기반 커피 후원 메인 웹페이지
+    ├── style.css                   # Paperlogy 웹폰트 선언 및 테마 스타일
+    ├── script.js                   # PortOne / PayPal / Supabase DB 연동 스크립트
+    └── guide.html                  # 본 개발 지침서 웹 뷰어 HTML</code></pre>
+        </div>
+      </section>
+
+      <!-- Section 9: Checklist -->
+      <section id="section-9" class="space-y-4 pb-12">
+        <div class="flex items-center gap-2">
+          <span class="w-2 h-6 bg-orange-500 rounded-full"></span>
+          <h2 class="text-2xl font-bold text-gray-900 dark:text-white">9. 🚀 개발 & QA 배포 체크리스트</h2>
+        </div>
+
+        <div class="p-6 rounded-2xl bg-white dark:bg-zinc-900 border border-gray-200 dark:border-zinc-800 space-y-3 text-xs sm:text-sm">
+          <label class="flex items-center gap-3 cursor-pointer">
+            <input type="checkbox" checked class="w-4 h-4 text-orange-500 rounded focus:ring-orange-400">
+            <span><strong>Paperlogy 폰트 렌더링</strong>: 모든 디바이스에서 Paperlogy 폰트가 깨짐 없이 정상 출력되는지 확인</span>
+          </label>
+          <label class="flex items-center gap-3 cursor-pointer">
+            <input type="checkbox" checked class="w-4 h-4 text-orange-500 rounded focus:ring-orange-400">
+            <span><strong>반응형 뷰포트</strong>: 375px 모바일 ~ 1920px 데스크톱까지 카드 형태 레이아웃 유지</span>
+          </label>
+          <label class="flex items-center gap-3 cursor-pointer">
+            <input type="checkbox" checked class="w-4 h-4 text-orange-500 rounded focus:ring-orange-400">
+            <span><strong>OS 다크/라이트 테마</strong>: OS 테마 변경 시 웹페이지 색상이 실시간으로 자연스럽게 전환</span>
+          </label>
+          <label class="flex items-center gap-3 cursor-pointer">
+            <input type="checkbox" checked class="w-4 h-4 text-orange-500 rounded focus:ring-orange-400">
+            <span><strong>PortOne / PayPal 결제창 호출</strong>: 테스트 샌드박스 환경에서 결제창이 원활하게 뜨는지 검증</span>
+          </label>
+          <label class="flex items-center gap-3 cursor-pointer">
+            <input type="checkbox" checked class="w-4 h-4 text-orange-500 rounded focus:ring-orange-400">
+            <span><strong>Supabase Cloud DB 실시간 동기화</strong>: 결제 완료 시 donations 테이블에 저장 및 피드 반영</span>
+          </label>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- Footer -->
+  <footer class="border-t border-gray-200 dark:border-zinc-800 py-6 text-center text-xs text-gray-500 dark:text-zinc-500 bg-white dark:bg-zinc-900">
+    <p class="mb-1"><strong>와플커뮤니케이션 (Waffle Communication)</strong> 공식 개발 지침서</p>
+    <p>&copy; 2026 All Rights Reserved.</p>
+  </footer>
+
+  <!-- Script: Theme & Progress -->
+  <script>
+    // 1. Reading Progress Bar
+    window.addEventListener('scroll', () => {
+      const winScroll = document.documentElement.scrollTop || document.body.scrollTop;
+      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const scrolled = (winScroll / height) * 100;
+      document.getElementById('progress-bar').style.width = scrolled + '%';
+    });
+
+    // 2. Theme Toggle
+    const themeBtn = document.getElementById('theme-toggle');
+    const themeIcon = document.getElementById('theme-icon');
+
+    function applyTheme(isDark) {
+      if (isDark) {
+        document.documentElement.classList.add('dark');
+        themeIcon.setAttribute('icon', 'solar:sun-2-bold-duotone');
+      } else {
+        document.documentElement.classList.remove('dark');
+        themeIcon.setAttribute('icon', 'solar:moon-bold-duotone');
+      }
+    }
+
+    const savedTheme = localStorage.getItem('donation_theme');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    applyTheme(savedTheme === 'dark' || (!savedTheme && prefersDark));
+
+    themeBtn.addEventListener('click', () => {
+      const isDark = document.documentElement.classList.toggle('dark');
+      localStorage.setItem('donation_theme', isDark ? 'dark' : 'light');
+      applyTheme(isDark);
+    });
+  </script>
+</body>
+</html>

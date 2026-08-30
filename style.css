@@ -499,6 +499,15 @@ section {
     opacity: 0.6;
 }
 
+.partner-item a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    text-decoration: none;
+}
+
 .partner-item img {
     max-width: 100%;
     max-height: 50px;
@@ -873,5 +882,150 @@ section {
         right: 20px;
         width: 45px;
         height: 45px;
+    }
+}
+
+/* ==========================================================================
+   Paperlogy Web Font Definition for Floating Elements
+   ========================================================================== */
+@font-face {
+    font-family: 'Paperlogy';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2408-3@1.0/Paperlogy-6SemiBold.woff2') format('woff2');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Paperlogy';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2408-3@1.0/Paperlogy-7Bold.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* ==========================================================================
+   Floating Coffee Donation Button (Pulse & Hover Expand)
+   ========================================================================== */
+.floating-coffee-btn {
+    position: fixed;
+    bottom: 95px;
+    right: 30px;
+    height: 52px;
+    min-width: 52px;
+    background: linear-gradient(135deg, #FF813F 0%, #F56515 100%);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 9999px;
+    color: #ffffff;
+    display: inline-flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 0 14px;
+    cursor: pointer;
+    z-index: 1000;
+    text-decoration: none;
+    box-shadow: 0 8px 25px rgba(255, 129, 63, 0.45);
+    transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    overflow: hidden;
+    white-space: nowrap;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+/* Pulse Ring Effect */
+.coffee-pulse-ring {
+    position: absolute;
+    top: 50%;
+    left: 26px;
+    transform: translate(-50%, -50%);
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: 2px solid rgba(255, 129, 63, 0.85);
+    animation: coffeePulse 2.2s infinite cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    pointer-events: none;
+    z-index: -1;
+}
+
+@keyframes coffeePulse {
+    0% {
+        transform: translate(-50%, -50%) scale(0.95);
+        opacity: 0.9;
+    }
+    70% {
+        transform: translate(-50%, -50%) scale(1.65);
+        opacity: 0;
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(1.85);
+        opacity: 0;
+    }
+}
+
+.coffee-icon-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    line-height: 1;
+    flex-shrink: 0;
+    transition: transform 0.3s ease;
+}
+
+.coffee-btn-text {
+    font-family: 'Paperlogy', 'Noto Sans KR', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: -0.3px;
+    color: #ffffff;
+    max-width: 0;
+    opacity: 0;
+    margin-left: 0;
+    transform: translateX(10px);
+    transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    overflow: hidden;
+    pointer-events: none;
+}
+
+/* Hover State: Expand sideways & Reveal Text */
+.floating-coffee-btn:hover {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 12px 30px rgba(255, 129, 63, 0.6);
+    padding: 0 20px 0 16px;
+}
+
+.floating-coffee-btn:hover .coffee-pulse-ring {
+    animation: none;
+    opacity: 0;
+}
+
+.floating-coffee-btn:hover .coffee-icon-box {
+    transform: scale(1.15) rotate(-6deg);
+}
+
+.floating-coffee-btn:hover .coffee-btn-text {
+    max-width: 140px;
+    opacity: 1;
+    margin-left: 8px;
+    transform: translateX(0);
+}
+
+@media (max-width: 768px) {
+    .floating-coffee-btn {
+        bottom: 80px;
+        right: 20px;
+        height: 48px;
+        min-width: 48px;
+        padding: 0 13px;
+    }
+    
+    .coffee-pulse-ring {
+        left: 24px;
+        width: 44px;
+        height: 44px;
+    }
+
+    .coffee-icon-box {
+        font-size: 20px;
     }
 }

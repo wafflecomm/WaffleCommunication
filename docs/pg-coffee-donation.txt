@@ -1,0 +1,153 @@
+1. 개요 및 기획 목표
+목적: 개발자, 크리에이터, 오픈소스 메인테이너를 위한 미니멀하고 직관적인 후원 플랫폼 구축
+
+핵심 기능: PortOne(국내 결제) 및 PayPal(해외 결제) 통합, 모바일 퍼스트 반응형 UI, 시스템 다크모드 자동 연동
+
+2. 사용자 플로우 (User Flow)
+접속: URL을 통해 후원 페이지 진입 (모바일/PC 최적화)
+
+테마 적용: 접속한 기기의 OS 설정값(다크/라이트)을 감지하여 UI 자동 전환
+
+후원자 정보 입력:
+
+후원자 닉네임 (선택/필수)
+
+응원 메시지 (최대 200자)
+
+후원 금액 선택:
+
+프리셋 버튼 (예: 커피 1잔, 3잔, 5잔 등) 또는 직접 입력
+
+결제 수단 선택:
+
+국내 결제: PortOne (신용카드, 간편결제 등)
+
+해외 결제: PayPal
+
+결제 완료: 영수증 화면 및 후원자 명단(리스트)에 즉시 반영
+
+3. 화면 구성 (UI/UX Wireframe)
+[메인 화면 구조]
+상단 헤더: 프로필 아바타, 개발자/크리에이터 닉네임, 간단한 소개 문구 ("오픈소스 유지보수와 커피 수혈을 위한 후원입니다.")
+
+후원 금액 섹션:
+
+아이콘(☕) 기반의 직관적인 금액 선택 버튼 (예: ₩3,000 / ₩5,000 / ₩10,000 또는 커스텀 입력)
+
+메시지 입력 섹션:
+
+닉네임 입력 필드 (input)
+
+응원 메시지 입력 영역 (textarea)
+
+결제 수단 선택 섹션:
+
+[PortOne으로 후원하기 (국내)] - 토스페이먼츠, 카카오페이, 카드 등 연동
+
+[PayPal로 후원하기 (해외)] - 글로벌 결제
+
+최근 후원자 리스트 (Recent Supporters):
+
+최근 후원한 사람들의 닉네임과 메시지가 롤링되거나 리스트업되는 영역 (소셜 프루프 강화)
+
+4. 기술 스택 제안
+Frontend: HTML, CSS, Javascript 로만 구현
+
+Styling: Tailwind CSS (시스템 다크모드 dark: 클래스 및 CSS 변수 활용 용이)
+
+Payment Gateway:
+
+국내: PortOne SDK (V2)
+
+해외: PayPal Checkout SDK 또는 PayPal Buttons JS
+
+Backend: Node.js 또는 Serverless Functions (결제 검증 및 DB 저장용)
+
+5. 상세 기능 명세
+항목	구현 내용	비고
+시스템 다크모드	CSS 미디어 쿼리(@media (prefers-color-scheme: dark)) 또는 Tailwind darkMode: 'media' 설정 활용	사용자 수동 토글 버튼을 상단에 추가하여 오버라이드 기능 제공 가능
+PortOne 결제 연동	포트원 V2 결제 SDK를 활용해 국내 주요 PG사 및 간편결제(카카오페이, 토스 등) 연동	웹훅(Webhook)을 통한 서버 단 결제 검증 필수
+PayPal 결제 연동	PayPal JavaScript SDK를 활용해 USD 또는 주요 통화 결제 처리	해외 유저를 위한 달러($) 단위 환산 프리셋 제공
+반응형 디자인	모바일 화면(375px~)에서도 결제 버튼과 입력폼이 엄지손가락 영역(Thumb Zone)에 닿도록 배치	PC에서는 중앙 정렬된 카드 형태의 깔끔한 레이아웃 제공
+
+6. 개발 시 고려사항 (Tips)
+모바일 웹 브라우저 호환성: 인앱 브라우저(카카오톡, 인스타그램 등)에서 PortOne 결제 창이 팝업이나 리디렉션될 때 끊김이 없도록 PG사 설정(m_redirect_url 등)을 꼼꼼히 구성해야 합니다.
+
+결제 위변조 방지: 프론트엔드에서 금액을 임의로 조작하여 요청하는 것을 막기 위해, 결제 요청 전 서버(Backend)에서 상품 정보와 금액을 세팅하고 검증하는 로직이 필요합니다.
+
+7. 프로젝트 파일 구조 (예시)
+coffee-donation/
+├── index.html       # 마크업 및 전체 구조
+├── style.css        # 커스텀 스타일 및 다크모드 설정
+└── script.js        # 결제 연동, UI 인터랙션, PortOne/PayPal 로직
+
+
+
+8. 화면 구성 및 UI/UX 설계 (HTML 구조)
+다크모드 대응: Tailwind CSS의 CDN을 사용하거나, CSS 미디어 쿼리(prefers-color-scheme)와 CSS Variables를 조합하여 시스템 테마를 자동으로 반영합니다.
+
+모바일 퍼스트 레이아웃: 스마트폰 화면 폭(375px 이상)에서 세로로 길게 떨어지는 카드형 UI를 적용합니다.
+
+[UI 주요 컴포넌트]
+헤더 (Header): 프로필 이미지, 닉네임, 간단한 소개
+
+커피 수량 선택 (Preset Buttons): ☕ 1잔($3 / ₩3,000), ☕ 3잔($9 / ₩9,000), ☕ 5잔($15 / ₩15,000) 및 직접 입력 칸
+
+후원자 정보 입력: 닉네임(input), 응원 메시지(textarea)
+
+결제 수단 선택 영역:
+
+[ PortOne으로 결제 (국내: 카드/간편결제) ] 버튼
+
+[ PayPal로 결제 (해외: 달러) ] 버튼 (PayPal 공식 JavaScript SDK 버튼 컨테이너)
+
+최근 후원자 목록: 간단한 리스트 형태
+
+9. 핵심 기술 구현 계획 (Vanilla JS)
+① 시스템 다크모드 자동 감지 및 적용
+CSS 변수나 Tailwind의 기본 다크모드 기능을 활용해 OS 테마를 자동으로 따르도록 설정합니다.
+
+
+
+10. 개발 및 테스트 단계 체크리스트
+단일 HTML 파일 프로토타이핑: 로컬에서 index.html을 크롬 브라우저로 열어 모바일 뷰(개발자 도구 Device Toolbar)에서 레이아웃이 깔끔하게 떨어지는지 확인합니다.
+
+OS 테마 변경 테스트: 맥OS나 윈도우의 설정에서 다크모드/라이트모드를 바꿨을 때 웹페이지 색상이 실시간으로 자연스럽게 전환되는지 확인합니다.
+
+결제 테스트 환경 구축: PortOne과 PayPal 각각의 테스트(Sandbox) 모드 계정을 연동하여 실제 돈이 나가지 않는 상태에서 결제 창이 원활하게 뜨는지 검증합니다.
+
+
+
+11. 아키텍처 및 동작 플로우
+링크 유입: 사용자가 외부 서비스(예: 블로그 포스팅, GitHub README, 개인 포트폴리오 등)에 걸린 링크 클릭 (예: [https://yourdomain.com/donate.html?target=username&amount=5000](https://yourdomain.com/donate.html?target=username&amount=5000))
+
+페이지 초기화 (script.js):
+
+URL에 포함된 파라미터(수신자 ID, 기본 지정 금액, 메시지 등)를 자바스크립트로 파싱합니다.
+
+파라미터가 없거나 기본값일 경우, 기본 크리에이터 프로필과 기본 후원 금액(예: 커피 1잔)을 로드합니다.
+
+결제 및 데이터 처리:
+
+후원자가 금액과 메시지를 입력하고 PortOne 또는 PayPal 결제를 진행합니다.
+
+중요: 다이렉트 링크로 여러 사람이 들어올 수 있으므로, 결제 완료 후 어떤 크리에이터/개발자에게 후원금이 갔는지 서버(또는 백엔드less DB)에서 식별할 수 있도록 target 값을 결제 주문번호(paymentId)나 메타데이터에 반드시 포함해야 합니다.
+
+2. 파일 구조 (단일 파일 또는 분리형)
+서버에 정적 파일(HTML/CSS/JS) 형태로 호스팅(GitHub Pages, Vercel, Netlify 등)하면 별도의 무거운 서버 구축 없이도 다이렉트 링크 서비스가 가능합니다.
+
+
+
+12. 다이렉트 링크 활용 예시
+이 페이지를 배포한 주소가 [https://donate.my-dev.com](https://donate.my-dev.com) 이라면, 외부 서비스에는 다음과 같은 파라미터 조합으로 링크를 걸어두면 됩니다.
+
+기본 링크: [https://donate.my-dev.com](https://donate.my-dev.com)
+
+특정 개발자 지정 링크: [https://donate.my-dev.com/?target=insub](https://donate.my-dev.com/?target=insub)
+
+금액까지 미리 지정된 링크: [https://donate.my-dev.com/?target=insub&amount=5000](https://donate.my-dev.com/?target=insub&amount=5000)
+
+13. 배포 및 운영 팁
+정적 호스팅 추천: GitHub Pages, Vercel, Netlify 등에 HTML/CSS/JS 파일만 통째로 올리면 서버 비용 없이 무료로 고성능 다이렉트 링크 페이지를 운영할 수 있습니다.
+
+모바일 인앱 브라우저 주의사항: 블로그(네이버 블로그, 티스토리 등)나 SNS 앱 내 브라우저에서 외부 결제창(PortOne)이 열릴 때 팝업 차단이나 세션 끊김이 발생할 수 있으므로, PortOne 설정 시 redirectUrl 파라미터를 필수로 지정하여 결제 완료 후 깔끔하게 복귀할 수 있도록 처리하는 것이 안전합니다.

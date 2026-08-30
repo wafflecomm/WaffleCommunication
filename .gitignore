@@ -1,6 +1,6 @@
 .gemini/
 .backup/
-
 antigravity.config.json
-.
-.backup/    
+.env*
+.DS_Store
+Thumbs.db
