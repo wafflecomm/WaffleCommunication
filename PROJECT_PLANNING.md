@@ -166,7 +166,7 @@
   - 🎵 **4. AI 음악 추천 및 제작**: 사용자의 무드와 상황에 맞춘 스마트 AI 음악 제작 및 큐레이션
   - ☕🎵 **5. Music Diffuser (YouTube 공식 채널)**: 공부, 업무, 휴식/명상을 위한 감성적인 AI Lo-Fi & Ambient 배경음악 채널 ([@Music_Diffuser](https://www.youtube.com/@Music_Diffuser))
   - 🎮🔥 **6. 우짤게임 UZGAME (YouTube 공식 채널)**: 유쾌하고 재밌는 실시간 게임 플레이 스트리밍 채널 ([@uzgame-201](https://www.youtube.com/@uzgame-201)) 연동
-* **Global Partners Section (13개 공식 링크 연결 완료)**:
+* **Global Partners Section (14개 공식 링크 연결 완료)**:
   1. Google (`https://google.com`)
   2. Claude / Anthropic (`https://anthropic.com`)
   3. OpenAI (`https://openai.com`)
@@ -180,6 +180,7 @@
   11. PortOne (`https://portone.io`)
   12. Resend (`https://resend.com`)
   13. Netlify Drop (`https://app.netlify.com/drop`)
+  14. Google Antigravity (`https://antigravity.google/`)
 * **Floating Coffee Action Button**: 화면 우측 하단 고정, 클릭 시 후원 페이지(`donate/index.html`)로 부드럽게 전환
 * **Footer**: 법적 사업자 정보 7대 항목 및 이용약관, 개인정보처리방침, 환불정책 링크 완비
 
