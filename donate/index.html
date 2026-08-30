@@ -67,10 +67,20 @@
         <span class="font-bold text-sm tracking-tight text-gray-800 dark:text-zinc-200">Waffle Support</span>
       </div>
       
-      <!-- Dark/Light Mode Toggle Button -->
-      <button id="theme-toggle-btn" class="p-2.5 rounded-full bg-white dark:bg-zinc-900 border border-gray-200 dark:border-zinc-800 text-gray-600 dark:text-zinc-300 shadow-sm hover:scale-105 active:scale-95 smooth-transition flex items-center justify-center" aria-label="테마 전환" title="다크/라이트 모드 전환">
-        <iconify-icon id="theme-icon" icon="solar:moon-bold-duotone" class="text-xl"></iconify-icon>
-      </button>
+      <div class="flex items-center gap-2">
+        <!-- Minimal Color Swatches (No text, pure colors) -->
+        <div class="flex items-center p-1 rounded-full bg-white dark:bg-zinc-900 border border-gray-200 dark:border-zinc-800 shadow-sm gap-1.5" title="컬러 테마 변경">
+          <button type="button" data-color="mocha" class="palette-chip active" style="background-color: #785238;" title="웜 모카 & 크림 (기본)" aria-label="웜 모카 테마"></button>
+          <button type="button" data-color="mono" class="palette-chip" style="background-color: #0F172A;" title="미니멀 모노 & 슬레이트" aria-label="미니멀 모노 테마"></button>
+          <button type="button" data-color="sage" class="palette-chip" style="background-color: #2D5843;" title="뮤트 세이지 & 올리브" aria-label="세이지 그린 테마"></button>
+          <button type="button" data-color="indigo" class="palette-chip" style="background-color: #4F46E5;" title="딥 인디고 & 브랜드" aria-label="딥 인디고 테마"></button>
+        </div>
+
+        <!-- Dark/Light Mode Toggle Button -->
+        <button id="theme-toggle-btn" class="p-2 rounded-full bg-white dark:bg-zinc-900 border border-gray-200 dark:border-zinc-800 text-gray-600 dark:text-zinc-300 shadow-sm hover:scale-105 active:scale-95 smooth-transition flex items-center justify-center" aria-label="테마 전환" title="다크/라이트 모드 전환">
+          <iconify-icon id="theme-icon" icon="solar:moon-bold-duotone" class="text-lg"></iconify-icon>
+        </button>
+      </div>
     </header>
 
     <!-- Creator Profile Header Card -->

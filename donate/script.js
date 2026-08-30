@@ -91,13 +91,10 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   // ==========================================
-  // 3. Theme Handler (Mocha Theme + Dark/Light Sync)
+  // 3. Theme & Color Palette Handler
   // ==========================================
   function initTheme() {
-    // 1) Warm Mocha Theme Default
-    document.documentElement.setAttribute('data-color-theme', 'mocha');
-
-    // 2) Dark/Light Mode Sync
+    // 1) Dark/Light Mode Sync
     const savedTheme = localStorage.getItem('donation_theme');
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
 
@@ -128,6 +125,31 @@ document.addEventListener('DOMContentLoaded', () => {
         updateThemeIcon(isDark);
       });
     }
+
+    // 2) Color Palette Swatches (Default: mocha)
+    const savedColor = localStorage.getItem('donation_color_theme') || 'mocha';
+    applyColorTheme(savedColor);
+
+    const paletteChips = document.querySelectorAll('.palette-chip');
+    paletteChips.forEach(chip => {
+      chip.addEventListener('click', () => {
+        const color = chip.dataset.color;
+        applyColorTheme(color);
+        localStorage.setItem('donation_color_theme', color);
+      });
+    });
+  }
+
+  function applyColorTheme(color) {
+    document.documentElement.setAttribute('data-color-theme', color);
+    const paletteChips = document.querySelectorAll('.palette-chip');
+    paletteChips.forEach(chip => {
+      if (chip.dataset.color === color) {
+        chip.classList.add('active');
+      } else {
+        chip.classList.remove('active');
+      }
+    });
   }
 
   function updateThemeIcon(isDark) {
