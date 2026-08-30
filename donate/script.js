@@ -91,9 +91,10 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   // ==========================================
-  // 3. Theme Handler (OS Sync + LocalStorage)
+  // 3. Theme & Color Palette Handler
   // ==========================================
   function initTheme() {
+    // 1) Dark/Light Mode
     const savedTheme = localStorage.getItem('donation_theme');
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
 
@@ -117,10 +118,37 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
 
-    elements.themeToggleBtn.addEventListener('click', () => {
-      const isDark = document.documentElement.classList.toggle('dark');
-      localStorage.setItem('donation_theme', isDark ? 'dark' : 'light');
-      updateThemeIcon(isDark);
+    if (elements.themeToggleBtn) {
+      elements.themeToggleBtn.addEventListener('click', () => {
+        const isDark = document.documentElement.classList.toggle('dark');
+        localStorage.setItem('donation_theme', isDark ? 'dark' : 'light');
+        updateThemeIcon(isDark);
+      });
+    }
+
+    // 2) Color Palette (Option A: mocha / B: mono / C: sage / D: indigo)
+    const savedColor = localStorage.getItem('donation_color_theme') || 'mocha';
+    applyColorTheme(savedColor);
+
+    const paletteChips = document.querySelectorAll('.palette-chip');
+    paletteChips.forEach(chip => {
+      chip.addEventListener('click', () => {
+        const color = chip.dataset.color;
+        applyColorTheme(color);
+        localStorage.setItem('donation_color_theme', color);
+      });
+    });
+  }
+
+  function applyColorTheme(color) {
+    document.documentElement.setAttribute('data-color-theme', color);
+    const paletteChips = document.querySelectorAll('.palette-chip');
+    paletteChips.forEach(chip => {
+      if (chip.dataset.color === color) {
+        chip.classList.add('active');
+      } else {
+        chip.classList.remove('active');
+      }
     });
   }
 
@@ -610,9 +638,9 @@ document.addEventListener('DOMContentLoaded', () => {
     elements.supportersList.innerHTML = '';
     state.supporters.forEach(supporter => {
       const item = document.createElement('div');
-      item.className = 'p-4 rounded-2xl bg-white dark:bg-zinc-800/80 border border-gray-100 dark:border-zinc-700/60 shadow-sm card-hover-effect flex items-start gap-3';
+      item.className = 'p-4 rounded-2xl theme-card border shadow-sm card-hover-effect flex items-start gap-3';
       item.innerHTML = `
-        <div class="w-10 h-10 rounded-full bg-orange-100 dark:bg-orange-950/60 text-orange-600 dark:text-orange-400 flex items-center justify-center font-bold text-base shrink-0">
+        <div class="w-10 h-10 rounded-full theme-accent-sub-bg theme-accent-text flex items-center justify-center font-bold text-base shrink-0">
           ☕
         </div>
         <div class="flex-grow min-w-0">
@@ -620,7 +648,7 @@ document.addEventListener('DOMContentLoaded', () => {
             <span class="font-bold text-sm text-gray-900 dark:text-white truncate">${escapeHtml(supporter.name)}</span>
             <span class="text-xs text-gray-400 shrink-0">${supporter.time}</span>
           </div>
-          <p class="text-xs font-semibold text-orange-600 dark:text-orange-400 mb-1.5">커피 ${supporter.cups}잔 (${supporter.amount}) 후원</p>
+          <p class="text-xs font-semibold theme-accent-text mb-1.5">커피 ${supporter.cups}잔 (${supporter.amount}) 후원</p>
           <p class="text-xs text-gray-600 dark:text-gray-300 leading-relaxed break-words">${escapeHtml(supporter.message)}</p>
         </div>
       `;

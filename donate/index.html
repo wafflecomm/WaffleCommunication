@@ -63,27 +63,37 @@
     <!-- Top Action Bar (Theme Switcher & Brand) -->
     <header class="flex items-center justify-between mb-6 px-1">
       <div class="flex items-center gap-2">
-        <span class="text-xl">🧇</span>
-        <span class="font-bold text-sm tracking-tight text-gray-700 dark:text-zinc-300">Waffle Support</span>
+        <span class="text-xl">☕</span>
+        <span class="font-bold text-sm tracking-tight text-gray-800 dark:text-zinc-200">Waffle Support</span>
       </div>
-      <button id="theme-toggle-btn" class="p-2.5 rounded-full bg-white dark:bg-zinc-800 border border-gray-200 dark:border-zinc-700 text-gray-600 dark:text-zinc-300 shadow-sm hover:scale-105 active:scale-95 smooth-transition flex items-center justify-center" aria-label="테마 전환">
-        <iconify-icon id="theme-icon" icon="solar:moon-bold-duotone" class="text-xl"></iconify-icon>
-      </button>
+      
+      <div class="flex items-center gap-2">
+        <!-- Color Theme Palette Selector (A, B, C, D) -->
+        <div class="flex items-center p-1 rounded-full bg-white dark:bg-zinc-900 border border-gray-200 dark:border-zinc-800 shadow-sm gap-1" title="컬러 시안 선택 (A: 모카 / B: 모노 / C: 세이지 / D: 인디고)">
+          <button type="button" data-color="mocha" class="palette-chip active" style="background: #785238; color: #fff;" title="Option A: 웜 모카 & 크림 (기본)">A</button>
+          <button type="button" data-color="mono" class="palette-chip" style="background: #0F172A; color: #fff;" title="Option B: 미니멀 슬레이트 & 모노">B</button>
+          <button type="button" data-color="sage" class="palette-chip" style="background: #2D5843; color: #fff;" title="Option C: 세이지 그린 & 올리브">C</button>
+          <button type="button" data-color="indigo" class="palette-chip" style="background: #4F46E5; color: #fff;" title="Option D: 딥 인디고 & 브랜드">D</button>
+        </div>
+
+        <!-- Dark/Light Mode Toggle Button -->
+        <button id="theme-toggle-btn" class="p-2 rounded-full bg-white dark:bg-zinc-900 border border-gray-200 dark:border-zinc-800 text-gray-600 dark:text-zinc-300 shadow-sm hover:scale-105 active:scale-95 smooth-transition flex items-center justify-center" aria-label="테마 전환" title="다크/라이트 모드 전환">
+          <iconify-icon id="theme-icon" icon="solar:moon-bold-duotone" class="text-lg"></iconify-icon>
+        </button>
+      </div>
     </header>
 
     <!-- Creator Profile Header Card -->
-    <section class="bg-white dark:bg-zinc-900 rounded-3xl p-6 mb-6 shadow-sm border border-gray-100 dark:border-zinc-800/80 text-center relative overflow-hidden card-hover-effect">
-      <div class="absolute -top-12 -right-12 w-36 h-36 bg-orange-400/10 dark:bg-orange-500/10 rounded-full blur-2xl pointer-events-none"></div>
-      
+    <section class="theme-card rounded-3xl p-6 mb-6 shadow-sm border text-center relative overflow-hidden card-hover-effect">
       <div class="relative z-10 flex flex-col items-center">
         <!-- Avatar with Coffee Badge -->
         <div class="relative mb-4">
-          <div class="w-20 h-20 rounded-full bg-gradient-to-tr from-orange-500 to-amber-300 p-0.5 shadow-md">
+          <div class="w-20 h-20 rounded-full p-0.5 shadow-md theme-main-btn">
             <div class="w-full h-full bg-white dark:bg-zinc-800 rounded-full flex items-center justify-center overflow-hidden">
               <img src="https://picsum.photos/seed/wafflecreator/200/200" alt="크리에이터 프로필" class="w-full h-full object-cover" loading="lazy">
             </div>
           </div>
-          <div class="absolute -bottom-1 -right-1 w-8 h-8 rounded-full bg-white dark:bg-zinc-800 border border-gray-100 dark:border-zinc-700 flex items-center justify-center shadow-sm text-base">
+          <div class="absolute -bottom-1 -right-1 w-8 h-8 rounded-full theme-card border flex items-center justify-center shadow-sm text-base">
             ☕
           </div>
         </div>
@@ -96,39 +106,39 @@
     </section>
 
     <!-- Donation Action Card -->
-    <section class="bg-white dark:bg-zinc-900 rounded-3xl p-6 mb-6 shadow-md border border-gray-100 dark:border-zinc-800/80">
+    <section class="theme-card rounded-3xl p-6 mb-6 shadow-md border">
       
       <!-- 1. Coffee Cups Preset Selection -->
       <div class="mb-6">
         <label class="block text-xs font-bold uppercase tracking-wider text-gray-500 dark:text-zinc-400 mb-3 flex items-center justify-between">
           <span>후원할 커피 잔 수 선택</span>
-          <span class="text-orange-600 dark:text-orange-400 font-semibold lowercase">1잔 = ₩3,000 ($3)</span>
+          <span class="theme-accent-text font-semibold lowercase">1잔 = ₩3,000 ($3)</span>
         </label>
         
         <div class="grid grid-cols-4 gap-2.5">
           <!-- 1 Cup -->
-          <button type="button" data-cups="1" class="preset-btn active py-3.5 px-2 rounded-2xl border border-gray-200 dark:border-zinc-700 text-center smooth-transition flex flex-col items-center justify-center">
+          <button type="button" data-cups="1" class="preset-btn active py-3.5 px-2 rounded-2xl border text-center smooth-transition flex flex-col items-center justify-center">
             <span class="text-lg mb-0.5">☕</span>
             <span class="font-bold text-sm">1잔</span>
             <span class="preset-desc text-[11px] text-gray-400 dark:text-zinc-400">₩3,000</span>
           </button>
 
           <!-- 3 Cups -->
-          <button type="button" data-cups="3" class="preset-btn py-3.5 px-2 rounded-2xl border border-gray-200 dark:border-zinc-700 text-center smooth-transition flex flex-col items-center justify-center">
+          <button type="button" data-cups="3" class="preset-btn py-3.5 px-2 rounded-2xl border text-center smooth-transition flex flex-col items-center justify-center">
             <span class="text-lg mb-0.5">☕☕</span>
             <span class="font-bold text-sm">3잔</span>
             <span class="preset-desc text-[11px] text-gray-400 dark:text-zinc-400">₩9,000</span>
           </button>
 
           <!-- 5 Cups -->
-          <button type="button" data-cups="5" class="preset-btn py-3.5 px-2 rounded-2xl border border-gray-200 dark:border-zinc-700 text-center smooth-transition flex flex-col items-center justify-center">
+          <button type="button" data-cups="5" class="preset-btn py-3.5 px-2 rounded-2xl border text-center smooth-transition flex flex-col items-center justify-center">
             <span class="text-lg mb-0.5">☕☕☕</span>
             <span class="font-bold text-sm">5잔</span>
             <span class="preset-desc text-[11px] text-gray-400 dark:text-zinc-400">₩15,000</span>
           </button>
 
           <!-- Custom Amount -->
-          <button type="button" data-cups="custom" class="preset-btn py-3.5 px-2 rounded-2xl border border-gray-200 dark:border-zinc-700 text-center smooth-transition flex flex-col items-center justify-center">
+          <button type="button" data-cups="custom" class="preset-btn py-3.5 px-2 rounded-2xl border text-center smooth-transition flex flex-col items-center justify-center">
             <span class="text-lg mb-0.5">✏️</span>
             <span class="font-bold text-sm">직접입력</span>
             <span class="preset-desc text-[11px] text-gray-400 dark:text-zinc-400">금액지정</span>
@@ -165,12 +175,12 @@
       </div>
 
       <!-- 3. Total Amount Summary Box -->
-      <div class="p-4 rounded-2xl bg-orange-50 dark:bg-orange-950/30 border border-orange-100 dark:border-orange-900/40 mb-6 flex items-center justify-between">
+      <div class="p-4 rounded-2xl theme-accent-sub-bg mb-6 flex items-center justify-between border border-transparent">
         <div>
-          <span class="text-xs text-orange-700 dark:text-orange-300 font-medium">최종 후원 금액</span>
+          <span class="text-xs text-gray-500 dark:text-zinc-400 font-medium">최종 후원 금액</span>
           <div class="flex items-baseline gap-2">
-            <span id="total-amount-krw" class="text-2xl font-black text-orange-600 dark:text-orange-400">₩3,000</span>
-            <span id="total-amount-usd" class="text-xs text-orange-500/80 font-bold">($3.00)</span>
+            <span id="total-amount-krw" class="text-2xl font-black theme-accent-text">₩3,000</span>
+            <span id="total-amount-usd" class="text-xs theme-accent-text opacity-80 font-bold">($3.00)</span>
           </div>
         </div>
         <div class="text-3xl">☕</div>
@@ -179,7 +189,7 @@
       <!-- 4. Payment Gateway Tabs & Action -->
       <div>
         <div class="flex border-b border-gray-200 dark:border-zinc-700 mb-4">
-          <button id="tab-portone" type="button" class="flex-1 py-2.5 text-center text-sm font-bold border-b-2 border-orange-500 text-orange-600 dark:text-orange-400 smooth-transition flex items-center justify-center gap-1.5">
+          <button id="tab-portone" type="button" class="flex-1 py-2.5 text-center text-sm font-bold border-b-2 border-current theme-accent-text smooth-transition flex items-center justify-center gap-1.5">
             <iconify-icon icon="solar:card-bold-duotone" class="text-lg"></iconify-icon> 국내 결제 (PortOne)
           </button>
           <button id="tab-paypal" type="button" class="flex-1 py-2.5 text-center text-sm font-semibold border-b-2 border-transparent text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-zinc-200 smooth-transition flex items-center justify-center gap-1.5">
@@ -190,19 +200,19 @@
         <!-- Terms Agreement Checkbox -->
         <div class="mb-4 p-3 rounded-xl bg-gray-50 dark:bg-zinc-800/80 border border-gray-200 dark:border-zinc-700/60 text-xs">
           <label class="flex items-start gap-2 cursor-pointer text-gray-600 dark:text-zinc-300">
-            <input type="checkbox" id="terms-agree-check" checked class="mt-0.5 w-4 h-4 text-orange-500 rounded focus:ring-orange-400">
+            <input type="checkbox" id="terms-agree-check" checked class="mt-0.5 w-4 h-4 rounded">
             <span>
               <strong class="text-gray-900 dark:text-white">[필수]</strong> 
-              <a href="terms.html" target="_blank" class="underline hover:text-orange-500 font-medium">이용약관</a>, 
-              <a href="privacy.html" target="_blank" class="underline hover:text-orange-500 font-medium">개인정보처리방침</a> 및 
-              <a href="refund.html" target="_blank" class="underline hover:text-orange-500 font-medium">환불정책</a>을 확인하였으며 이에 동의합니다.
+              <a href="terms.html" target="_blank" class="underline hover:opacity-80 font-medium">이용약관</a>, 
+              <a href="privacy.html" target="_blank" class="underline hover:opacity-80 font-medium">개인정보처리방침</a> 및 
+              <a href="refund.html" target="_blank" class="underline hover:opacity-80 font-medium">환불정책</a>을 확인하였으며 이에 동의합니다.
             </span>
           </label>
         </div>
 
         <!-- PortOne Button Container -->
         <div id="portone-container">
-          <button id="btn-portone-pay" type="button" class="w-full py-4 px-6 bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-white font-bold rounded-2xl shadow-lg shadow-orange-500/25 hover:shadow-orange-500/35 hover:scale-[1.01] active:scale-[0.99] smooth-transition flex items-center justify-center gap-2 text-base">
+          <button id="btn-portone-pay" type="button" class="w-full py-4 px-6 theme-main-btn text-white font-bold rounded-2xl shadow-lg hover:scale-[1.01] active:scale-[0.99] smooth-transition flex items-center justify-center gap-2 text-base">
             <span>국내 결제하기 (카드 / 카카오 / 토스)</span>
             <iconify-icon icon="solar:arrow-right-bold" class="text-xl"></iconify-icon>
           </button>
@@ -225,9 +235,9 @@
     </section>
 
     <!-- Product & Service Details (PG 심사 필수 상품 고지) -->
-    <section class="bg-white dark:bg-zinc-900 rounded-3xl p-6 shadow-sm border border-gray-100 dark:border-zinc-800/80 mb-6">
+    <section class="theme-card rounded-3xl p-6 shadow-sm border mb-6">
       <h2 class="text-sm font-bold text-gray-900 dark:text-white mb-3 flex items-center gap-2">
-        <iconify-icon icon="solar:bag-check-bold" class="text-orange-500 text-base"></iconify-icon>
+        <iconify-icon icon="solar:bag-check-bold" class="theme-accent-text text-base"></iconify-icon>
         <span>서비스 상품 정보 및 거래 조건 고지</span>
       </h2>
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs text-gray-600 dark:text-zinc-300">
@@ -251,11 +261,11 @@
     </section>
 
     <!-- Recent Supporters Section -->
-    <section class="bg-white dark:bg-zinc-900 rounded-3xl p-6 shadow-sm border border-gray-100 dark:border-zinc-800/80 mb-8">
+    <section class="theme-card rounded-3xl p-6 shadow-sm border mb-8">
       <div class="flex items-center justify-between mb-4">
         <h2 class="text-base font-bold text-gray-900 dark:text-white flex items-center gap-2">
           <span>최근 따뜻한 커피 후원자</span>
-          <span class="text-xs px-2 py-0.5 rounded-full bg-orange-100 dark:bg-orange-950/60 text-orange-600 dark:text-orange-400 font-semibold">Live</span>
+          <span class="text-xs px-2.5 py-0.5 rounded-full theme-badge font-semibold">Live</span>
         </h2>
       </div>
 
