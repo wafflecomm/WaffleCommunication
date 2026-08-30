@@ -60,11 +60,17 @@
   <!-- Main Container -->
   <main class="w-full max-w-lg mx-auto">
     
-    <!-- Top Action Bar (Theme Switcher & Brand) -->
+    <!-- Top Action Bar (Back Button, Brand & Theme Switcher) -->
     <header class="flex items-center justify-between mb-6 px-1">
-      <div class="flex items-center gap-2">
-        <span class="text-xl">☕</span>
-        <span class="font-bold text-sm tracking-tight text-gray-800 dark:text-zinc-200">Waffle Support</span>
+      <div class="flex items-center gap-1.5">
+        <!-- Minimal Back Button (< Icon with Hover Button Shape) -->
+        <a href="../index.html" class="group flex items-center justify-center w-9 h-9 rounded-full text-gray-600 dark:text-zinc-300 hover:text-orange-600 dark:hover:text-orange-400 hover:bg-white dark:hover:bg-zinc-800 border border-transparent hover:border-gray-200 dark:hover:border-zinc-700 shadow-none hover:shadow-sm smooth-transition" aria-label="메인으로 돌아가기" title="메인 홈페이지로 돌아가기">
+          <iconify-icon icon="solar:alt-arrow-left-linear" class="text-2xl group-hover:-translate-x-0.5 smooth-transition"></iconify-icon>
+        </a>
+        <div class="flex items-center gap-1.5 ml-0.5">
+          <span class="text-xl">☕</span>
+          <span class="font-bold text-sm tracking-tight text-gray-800 dark:text-zinc-200">Waffle Support</span>
+        </div>
       </div>
       
       <div class="flex items-center gap-2">
