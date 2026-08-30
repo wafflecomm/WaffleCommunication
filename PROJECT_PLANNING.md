@@ -174,7 +174,7 @@
   5. GitHub (`https://github.com`)
   6. Cloudflare (`https://cloudflare.com`)
   7. Vercel (`https://vercel.com`)
-  8. Oracle (`https://oracle.com`)
+  8. Oracle Cloud Free Tier (`https://www.oracle.com/kr/cloud/free/`)
   9. PayPal (`https://paypal.com`)
   10. Supabase (`https://supabase.com`)
   11. PortOne (`https://portone.io`)
