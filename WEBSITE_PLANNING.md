@@ -159,7 +159,10 @@
 
 ### 6.1 메인 홈페이지 (`index.html`)
 * **Hero Section**: 회사의 브랜드 슬로건, 핵심 가치 전달 및 주요 서비스 소개
-* **Services & Apps**: 캐주얼 보드게임, 교육용 앱, AI 기반 음악 추천 및 제작 서비스 소개
+* **Services & Apps**:
+  - 🎮 **캐주얼 & 온라인 게임**: 소셜 엔터테인먼트, 혁신적인 보드게임 및 파티게임
+  - 📚 **교육용 앱 솔루션**: 재미와 배움을 융합한 에듀테크 서비스
+  - ☕🎵 **Music Diffuser (AI Lo-Fi & Ambient 음악)**: 공부, 업무, 휴식/명상을 위한 감성적인 AI 배경음악 공식 유튜브 채널 ([@Music_Diffuser](https://www.youtube.com/@Music_Diffuser)) 연동
 * **Global Partners Section (11개 공식 링크 연결 완료)**:
   1. Google (`https://google.com`)
   2. Claude / Anthropic (`https://anthropic.com`)
