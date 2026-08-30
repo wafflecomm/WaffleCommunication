@@ -374,8 +374,8 @@ document.addEventListener('DOMContentLoaded', () => {
     if (window.PayPal && window.PayPal.Donation && window.PayPal.Donation.Button) {
       try {
         window.PayPal.Donation.Button({
-          env: 'sandbox', // 'sandbox' | 'production'
-          business: 'waffle.comm@gmail.com', // PayPal Business Receiver
+          env: 'production', // 'sandbox' | 'production'
+          business: 'ihnseob.kim@gmail.com', // PayPal Business Receiver
           image: {
             src: 'https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif',
             title: 'PayPal - The safer, easier way to pay online!',
