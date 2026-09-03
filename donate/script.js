@@ -348,7 +348,7 @@ document.addEventListener('DOMContentLoaded', () => {
         elements.btnPortonePay.innerHTML = `<iconify-icon icon="solar:spinner-linear" class="animate-spin text-xl"></iconify-icon> 결제창 호출 중...`;
 
         const response = await PortOne.requestPayment({
-          storeId: "store-4ff4afb2-3213-40f9-a2a4-b032483d735d",
+          storeId: "store-2374a47d-68f6-44ef-835f-4e57b838fb1c",
           channelKey: "channel-key-0f69cf81-d006-4351-be62-7d31dda92e5a",
           paymentId: paymentId,
           orderName: `☕ ${state.target} 님을 위한 커피 후원 (${state.cups}잔)`,
