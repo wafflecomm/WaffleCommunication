@@ -91,38 +91,69 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   // ==========================================
-  // 3. Theme & Color Palette Handler
+  // 3. Theme & Color Palette Handler (System / Light / Dark)
   // ==========================================
-  function initTheme() {
-    // 1) Dark/Light Mode Sync
-    const savedTheme = localStorage.getItem('donation_theme');
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const THEME_MODES = ['system', 'light', 'dark'];
 
-    if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
-      document.documentElement.classList.add('dark');
-      updateThemeIcon(true);
-    } else {
-      document.documentElement.classList.remove('dark');
-      updateThemeIcon(false);
+  function applyThemeMode(mode) {
+    const isOsDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    let isDark = false;
+
+    if (mode === 'system') {
+      isDark = isOsDark;
+      if (elements.themeIcon) {
+        elements.themeIcon.setAttribute('icon', 'solar:monitor-smartphone-bold-duotone');
+      }
+      if (elements.themeToggleBtn) {
+        elements.themeToggleBtn.setAttribute('data-tooltip', `화면 모드: 시스템 설정 (${isDark ? '다크' : '라이트'})`);
+      }
+    } else if (mode === 'light') {
+      isDark = false;
+      if (elements.themeIcon) {
+        elements.themeIcon.setAttribute('icon', 'solar:sun-2-bold-duotone');
+      }
+      if (elements.themeToggleBtn) {
+        elements.themeToggleBtn.setAttribute('data-tooltip', '화면 모드: 라이트');
+      }
+    } else if (mode === 'dark') {
+      isDark = true;
+      if (elements.themeIcon) {
+        elements.themeIcon.setAttribute('icon', 'solar:moon-bold-duotone');
+      }
+      if (elements.themeToggleBtn) {
+        elements.themeToggleBtn.setAttribute('data-tooltip', '화면 모드: 다크');
+      }
     }
 
-    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
-      if (!localStorage.getItem('donation_theme')) {
-        if (e.matches) {
-          document.documentElement.classList.add('dark');
-          updateThemeIcon(true);
-        } else {
-          document.documentElement.classList.remove('dark');
-          updateThemeIcon(false);
-        }
+    document.documentElement.classList.toggle('dark', isDark);
+
+    // 툴팁 활성 상태 시 툴팁 내용도 즉시 업데이트
+    const tooltip = document.getElementById('custom-tooltip');
+    if (tooltip && tooltip.classList.contains('show') && elements.themeToggleBtn) {
+      tooltip.textContent = elements.themeToggleBtn.getAttribute('data-tooltip');
+    }
+  }
+
+  function initTheme() {
+    // 1) System / Light / Dark Theme Sync (Default: system)
+    const currentMode = localStorage.getItem('donation_theme_mode') || 'system';
+    applyThemeMode(currentMode);
+
+    // OS 테마 변경 시 시스템 모드 실시간 자동 반응
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
+      const mode = localStorage.getItem('donation_theme_mode') || 'system';
+      if (mode === 'system') {
+        applyThemeMode('system');
       }
     });
 
     if (elements.themeToggleBtn) {
       elements.themeToggleBtn.addEventListener('click', () => {
-        const isDark = document.documentElement.classList.toggle('dark');
-        localStorage.setItem('donation_theme', isDark ? 'dark' : 'light');
-        updateThemeIcon(isDark);
+        const mode = localStorage.getItem('donation_theme_mode') || 'system';
+        const nextIndex = (THEME_MODES.indexOf(mode) + 1) % THEME_MODES.length;
+        const nextMode = THEME_MODES[nextIndex];
+        localStorage.setItem('donation_theme_mode', nextMode);
+        applyThemeMode(nextMode);
       });
     }
 
@@ -150,12 +181,6 @@ document.addEventListener('DOMContentLoaded', () => {
         chip.classList.remove('active');
       }
     });
-  }
-
-  function updateThemeIcon(isDark) {
-    if (elements.themeIcon) {
-      elements.themeIcon.setAttribute('icon', isDark ? 'solar:sun-2-bold-duotone' : 'solar:moon-bold-duotone');
-    }
   }
 
   // ==========================================
@@ -699,9 +724,162 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ==========================================
+  // 12. Share & Toast Functionality
+  // ==========================================
+  const toast = document.getElementById('toast');
+  const toastMsg = document.getElementById('toast-message');
+  let toastTimer = null;
+
+  function showToast(message = '후원 링크가 클립보드에 복사되었습니다! ☕') {
+    if (!toast) return;
+    if (toastMsg) toastMsg.textContent = message;
+    toast.classList.remove('opacity-0', 'translate-y-4', 'pointer-events-none');
+    toast.classList.add('opacity-100', 'translate-y-0');
+
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => {
+      toast.classList.remove('opacity-100', 'translate-y-0');
+      toast.classList.add('opacity-0', 'translate-y-4', 'pointer-events-none');
+    }, 2400);
+  }
+
+  async function handleShare() {
+    const shareData = {
+      title: '와플커뮤니케이션 님에게 커피 후원하기 ☕',
+      text: '개발자와 크리에이터의 창작 활동을 응원하는 가장 쉬운 방법. 커피 한 잔으로 힘을 보태주세요!',
+      url: window.location.href
+    };
+
+    // 1. Web Share API (모바일 및 지원 브라우저)
+    if (navigator.share && navigator.canShare && navigator.canShare(shareData)) {
+      try {
+        await navigator.share(shareData);
+        return;
+      } catch (err) {
+        if (err.name === 'AbortError') {
+          return;
+        }
+        console.warn('Web Share 실패, 클립보드 복사로 대체합니다.', err);
+      }
+    }
+
+    // 2. Fallback: 클립보드 복사
+    try {
+      if (navigator.clipboard && window.isSecureContext) {
+        await navigator.clipboard.writeText(window.location.href);
+      } else {
+        const tempInput = document.createElement('input');
+        tempInput.value = window.location.href;
+        document.body.appendChild(tempInput);
+        tempInput.select();
+        document.execCommand('copy');
+        document.body.removeChild(tempInput);
+      }
+      showToast('후원 링크가 클립보드에 복사되었습니다! ☕');
+    } catch (err) {
+      console.error('클립보드 복사 실패:', err);
+      showToast('링크 복사에 실패했습니다. 브라우저 주소를 직접 복사해 주세요.');
+    }
+  }
+
+  function initShare() {
+    const shareBtn = document.getElementById('share-btn');
+    if (shareBtn) {
+      shareBtn.addEventListener('click', handleShare);
+    }
+  }
+
+  // ==========================================
+  // 13. Custom Floating Tooltip Handler
+  // ==========================================
+  function initCustomTooltips() {
+    const tooltip = document.getElementById('custom-tooltip');
+    if (!tooltip) return;
+
+    // 브라우저 기본 title 속성 -> data-tooltip 이관 (기본 OS 툴팁 중복 방지)
+    document.querySelectorAll('[title]').forEach(el => {
+      if (!el.hasAttribute('data-tooltip')) {
+        el.setAttribute('data-tooltip', el.getAttribute('title'));
+      }
+      el.removeAttribute('title');
+    });
+
+    let currentTarget = null;
+
+    function positionTooltip(el) {
+      const text = el.getAttribute('data-tooltip');
+      if (!text) return hideTooltip();
+
+      tooltip.textContent = text;
+      tooltip.classList.add('show');
+
+      const targetRect = el.getBoundingClientRect();
+      const tooltipRect = tooltip.getBoundingClientRect();
+
+      let left = targetRect.left + (targetRect.width / 2) - (tooltipRect.width / 2);
+      let top = targetRect.top - tooltipRect.height - 8;
+
+      // 상단 공간 부족 시 아래쪽으로 표시
+      if (top < 8) {
+        top = targetRect.bottom + 8;
+      }
+
+      // 좌우 화면 밖으로 벗어남 방지 (8px 여백)
+      const padding = 8;
+      if (left < padding) left = padding;
+      if (left + tooltipRect.width > window.innerWidth - padding) {
+        left = window.innerWidth - tooltipRect.width - padding;
+      }
+
+      tooltip.style.left = `${Math.round(left)}px`;
+      tooltip.style.top = `${Math.round(top)}px`;
+    }
+
+    function hideTooltip() {
+      currentTarget = null;
+      tooltip.classList.remove('show');
+    }
+
+    document.addEventListener('mouseover', (e) => {
+      const target = e.target.closest('[data-tooltip]');
+      if (target) {
+        currentTarget = target;
+        positionTooltip(target);
+      }
+    });
+
+    document.addEventListener('mouseout', (e) => {
+      const target = e.target.closest('[data-tooltip]');
+      if (target && target === currentTarget) {
+        hideTooltip();
+      }
+    });
+
+    document.addEventListener('focusin', (e) => {
+      const target = e.target.closest('[data-tooltip]');
+      if (target) {
+        currentTarget = target;
+        positionTooltip(target);
+      }
+    });
+
+    document.addEventListener('focusout', (e) => {
+      const target = e.target.closest('[data-tooltip]');
+      if (target && target === currentTarget) {
+        hideTooltip();
+      }
+    });
+
+    window.addEventListener('scroll', hideTooltip, { passive: true });
+    window.addEventListener('touchstart', hideTooltip, { passive: true });
+  }
+
+  // ==========================================
   // 11. Initialization
   // ==========================================
   initTheme();
+  initShare();
+  initCustomTooltips();
   parseUrlParameters();
   loadSupportersFromDB();
 });
