@@ -349,12 +349,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const response = await PortOne.requestPayment({
           storeId: "store-4ff4afb2-3213-40f9-a2a4-b032483d735d",
-          channelKey: "channel-key-b8f498c8-1123-455b",
+          channelKey: "channel-key-0f69cf81-d006-4351-be62-7d31dda92e5a",
           paymentId: paymentId,
           orderName: `☕ ${state.target} 님을 위한 커피 후원 (${state.cups}잔)`,
           totalAmount: state.amountKRW,
           currency: "CURRENCY_KRW",
-          payMethod: "CARD",
+          payMethod: "EASY_PAY",
+          easyPay: {
+            easyPayProvider: "EASY_PAY_PROVIDER_KAKAOPAY"
+          },
           customer: {
             fullName: supporterName,
           },
@@ -383,17 +386,8 @@ document.addEventListener('DOMContentLoaded', () => {
           showSuccessModal(supporterName, `₩${state.amountKRW.toLocaleString()}`, message);
         }
       } catch (err) {
-        console.warn("PortOne SDK 호출 시뮬레이션:", err);
-        await saveSupporterToDB({
-          name: supporterName,
-          cups: state.cups,
-          amount: `₩${state.amountKRW.toLocaleString()}`,
-          amount_krw: state.amountKRW,
-          message: message,
-          payment_id: paymentId,
-          target: state.target
-        });
-        showSuccessModal(supporterName, `₩${state.amountKRW.toLocaleString()}`, message);
+        console.error("PortOne 결제 처리 오류:", err);
+        alert(`결제 처리 중 오류가 발생했습니다: ${err.message || '잠시 후 다시 시도해 주세요.'}`);
       } finally {
         elements.btnPortonePay.disabled = false;
         elements.btnPortonePay.innerHTML = `<span>국내 결제하기 (카드 / 카카오 / 토스)</span><iconify-icon icon="solar:arrow-right-bold" class="text-xl"></iconify-icon>`;

@@ -228,7 +228,7 @@
 ```javascript
 const response = await PortOne.requestPayment({
   storeId: "store-4ff4afb2-3213-40f9-a2a4-b032483d735d",
-  channelKey: "channel-key-b8f498c8-1123-455b",
+  channelKey: "channel-key-0f69cf81-d006-4351-be62-7d31dda92e5a",
   paymentId: `pay_${Date.now()}_${Math.random().toString(36).substring(2, 7)}`,
   orderName: `☕ ${state.target} 님을 위한 커피 후원 (${state.cups}잔)`,
   totalAmount: state.amountKRW,
