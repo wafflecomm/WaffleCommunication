@@ -1069,3 +1069,214 @@ section {
         font-size: 19px;
     }
 }
+
+/* ==========================================================================
+   Section 6: Study 2x2 Interactive Glassmorphism Grid
+   ========================================================================== */
+.study-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    max-width: var(--container-max);
+    margin: 0 auto;
+}
+
+.study-card {
+    position: relative;
+    background: rgba(15, 23, 42, 0.65);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 24px;
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    padding: 2.2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-decoration: none;
+    color: inherit;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.study-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--card-accent, var(--primary));
+    opacity: 0.6;
+    transition: opacity 0.3s ease, height 0.3s ease;
+}
+
+.study-card::after {
+    content: '';
+    position: absolute;
+    top: -80px;
+    right: -80px;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background: var(--card-glow, var(--primary-glow));
+    filter: blur(60px);
+    opacity: 0.15;
+    pointer-events: none;
+    transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.study-card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.5), 0 0 35px var(--card-glow, rgba(79, 70, 229, 0.25));
+}
+
+.study-card:hover::before {
+    opacity: 1;
+    height: 4px;
+}
+
+.study-card:hover::after {
+    opacity: 0.35;
+    transform: scale(1.2);
+}
+
+.study-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1.25rem;
+}
+
+.study-icon-box {
+    width: 48px;
+    height: 48px;
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.6rem;
+    box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.study-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 5px 12px;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--card-accent, rgba(255, 255, 255, 0.2));
+    color: var(--card-accent-text, #fff);
+}
+
+.study-card-body h3 {
+    font-size: 1.45rem;
+    color: var(--text-main);
+    margin-bottom: 0.5rem;
+    font-weight: 800;
+    letter-spacing: -0.01em;
+    transition: color 0.3s ease;
+}
+
+.study-card:hover .study-card-body h3 {
+    color: #FFFFFF;
+}
+
+.study-sub-desc {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--card-accent-text, #818CF8);
+    margin-bottom: 0.85rem;
+    line-height: 1.4;
+}
+
+.study-main-desc {
+    color: var(--text-muted);
+    font-size: 0.88rem;
+    line-height: 1.65;
+    margin-bottom: 1.5rem;
+}
+
+.study-card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.study-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.study-tag-item {
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: #94A3B8;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    padding: 3px 8px;
+    border-radius: 6px;
+}
+
+.study-action-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--card-accent-text, var(--primary));
+    transition: all 0.3s ease;
+}
+
+.study-card:hover .study-action-btn {
+    gap: 10px;
+    color: #FFFFFF;
+}
+
+/* Card Theme Variations */
+.study-card.theme-purple {
+    --card-accent: #8B5CF6;
+    --card-accent-text: #A78BFA;
+    --card-glow: rgba(139, 92, 246, 0.35);
+}
+
+.study-card.theme-cyan {
+    --card-accent: #06B6D4;
+    --card-accent-text: #67E8F9;
+    --card-glow: rgba(6, 182, 212, 0.35);
+}
+
+.study-card.theme-emerald {
+    --card-accent: #10B981;
+    --card-accent-text: #6EE7B7;
+    --card-glow: rgba(16, 185, 129, 0.35);
+}
+
+.study-card.theme-amber {
+    --card-accent: #F59E0B;
+    --card-accent-text: #FCD34D;
+    --card-glow: rgba(245, 158, 11, 0.35);
+}
+
+@media (max-width: 900px) {
+    .study-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    .study-card {
+        padding: 1.8rem;
+    }
+}

@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Moodify 협업·통합·배포 운영 가이드</title>
+  <style>
+    @font-face { font-family: Paperlogy; src: url('https://cdn.jsdelivr.net/gh/fonts-archive/Paperlogy/Paperlogy-4Regular.woff2') format('woff2'); font-weight:400; font-display:swap; }
+    @font-face { font-family: Paperlogy; src: url('https://cdn.jsdelivr.net/gh/fonts-archive/Paperlogy/Paperlogy-6SemiBold.woff2') format('woff2'); font-weight:600; font-display:swap; }
+    @font-face { font-family: Paperlogy; src: url('https://cdn.jsdelivr.net/gh/fonts-archive/Paperlogy/Paperlogy-8ExtraBold.woff2') format('woff2'); font-weight:800; font-display:swap; }
+    :root { --bg:#090b12; --panel:#121624; --panel2:#181d2e; --line:#2a324d; --text:#f4f5ff; --muted:#aab3cf; --violet:#a78bfa; --cyan:#67e8f9; --green:#6ee7b7; --amber:#fcd34d; }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body { margin:0; color:var(--text); background:radial-gradient(circle at 90% 0,#34205e 0,transparent 32%),radial-gradient(circle at 0 45%,#103347 0,transparent 30%),var(--bg); font-family:Paperlogy,system-ui,sans-serif; line-height:1.65; }
+    main { width:min(1120px,calc(100% - 32px)); margin:48px auto 72px; }
+    header,.section { background:rgba(18,22,36,.92); border:1px solid var(--line); border-radius:28px; box-shadow:0 22px 65px #0006; }
+    header { padding:42px; overflow:hidden; position:relative; }
+    header::after { content:""; position:absolute; width:260px; height:260px; border-radius:50%; right:-90px; top:-120px; background:linear-gradient(135deg,var(--violet),var(--cyan)); filter:blur(70px); opacity:.22; }
+    h1 { margin:0 0 10px; font-size:clamp(30px,5vw,52px); line-height:1.14; font-weight:800; position:relative; z-index:1; }
+    h2 { margin:0 0 20px; color:var(--cyan); font-size:22px; }
+    h3 { margin:0 0 8px; font-size:17px; }
+    p { color:var(--muted); }
+    .eyebrow { color:var(--violet); font-size:12px; letter-spacing:.22em; text-transform:uppercase; font-weight:800; }
+    .section { padding:30px; margin-top:20px; }
+    .roles,.environments,.checks { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
+    .card { background:var(--panel2); border:1px solid var(--line); border-radius:20px; padding:22px; }
+    .role-icon { width:46px; height:46px; display:grid; place-items:center; border-radius:15px; font-size:22px; margin-bottom:14px; background:#252b43; }
+    .gemini { border-top:3px solid var(--violet); } .codex { border-top:3px solid var(--cyan); } .claude { border-top:3px solid var(--amber); }
+    .port { display:inline-block; color:#071016; background:var(--cyan); padding:4px 10px; border-radius:999px; font-size:12px; font-weight:800; }
+    .flow { display:grid; grid-template-columns:1fr 70px 1fr; align-items:center; gap:14px; margin:18px 0; }
+    .flow-center { grid-column:1/-1; width:min(600px,100%); margin:auto; }
+    .node { background:linear-gradient(145deg,#1b2134,#111522); border:1px solid var(--line); border-radius:22px; padding:24px; text-align:center; }
+    .node strong { display:block; color:white; font-size:18px; margin-bottom:7px; }
+    .arrow { text-align:center; color:var(--cyan); font-size:30px; }
+    .split { display:grid; grid-template-columns:1fr 1fr; gap:18px; }
+    .pipeline { display:flex; flex-direction:column; align-items:center; gap:12px; }
+    .pipeline .arrow { transform:rotate(90deg); line-height:1; }
+    ol { margin:0; padding-left:24px; } li { color:var(--muted); margin:9px 0; }
+    code { color:#ddd6fe; background:#222840; border:1px solid #343d5d; border-radius:7px; padding:2px 7px; }
+    .principle { display:flex; flex-wrap:wrap; justify-content:center; gap:12px; padding:22px; border:1px dashed #495579; border-radius:20px; }
+    .badge { padding:10px 14px; border-radius:999px; background:#20263a; color:#e8eaff; font-weight:600; }
+    .badge.main { background:linear-gradient(135deg,#7357d8,#287f91); }
+    .note { padding:18px 20px; border-left:4px solid var(--amber); background:#211d16; border-radius:12px; color:#f6dfa3; }
+    table { width:100%; border-collapse:collapse; }
+    th,td { text-align:left; padding:13px; border-bottom:1px solid var(--line); vertical-align:top; }
+    th { color:var(--violet); font-size:13px; }
+    footer { text-align:center; color:#727d9e; padding:28px; font-size:12px; }
+    @media (max-width:760px) { main{margin-top:20px} header{padding:28px}.roles,.environments,.checks,.split{grid-template-columns:1fr}.flow{grid-template-columns:1fr}.arrow{transform:rotate(90deg)}.section{padding:22px} }
+    @media print { body{background:white;color:#111}.section,header,.card,.node{box-shadow:none;background:white;color:#111}.section,header,.card,.node,th,td{border-color:#bbb}p,li,td{color:#333} }
+  </style>
+</head>
+<body>
+<main>
+  <header>
+    <div class="eyebrow">Moodify Development Operations</div>
+    <h1>협업·통합·배포 운영 가이드</h1>
+    <p>Gemini, Codex, Claude의 작업을 안전하게 하나의 제품으로 연결하는 기준</p>
+    <p><code>v3.1 · 2026-09-07</code></p>
+  </header>
+
+  <section class="section">
+    <h2>세 담당자의 역할</h2>
+    <div class="roles">
+      <article class="card gemini"><div class="role-icon">◆</div><h3>Gemini</h3><p>UI/UX, 레이아웃, 색상, 애니메이션과 디자인을 담당합니다. 전용 브랜치에서 로컬 개발·빌드·미리보기까지만 수행하며 main 병합과 운영 배포는 하지 않습니다.</p><span class="port">로컬 5173 · 배포 금지</span></article>
+      <article class="card codex"><div class="role-icon">⌘</div><h3>Codex</h3><p>검색·재생·저장·권한·버그 수정과 전체 변경 통합, 프로덕션 빌드 검증 및 승인된 웹 운영 배포를 담당합니다.</p><span class="port">통합 · 검증 · 웹 배포</span></article>
+      <article class="card claude"><div class="role-icon">▲</div><h3>Claude</h3><p>확정된 main 커밋으로 Android/iOS를 빌드·서명하고 스토어에 제출합니다.</p><span class="port">Android / iOS</span></article>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>한눈에 보는 전체 흐름</h2>
+    <div class="flow">
+      <div class="node"><strong>Gemini UI 브랜치</strong>5173에서 디자인 확인<br>커밋·브랜치 푸시</div><div class="arrow">＋</div><div class="node"><strong>Codex 로직 브랜치</strong>5181 등에서 기능 확인<br>커밋·브랜치 푸시</div>
+      <div class="node flow-center"><strong>Codex 최종 통합·검증</strong>최신 변경 확인 → 승인된 변경 병합 → 충돌·누락 검사 → 검색·재생·저장 영향 확인 → 프로덕션 빌드</div>
+      <div class="arrow flow-center">↓</div>
+      <div class="node flow-center"><strong>GitHub main</strong>웹과 앱이 함께 사용하는 유일한 최종 배포 기준</div>
+    </div>
+    <div class="split">
+      <div class="pipeline"><div class="arrow">→</div><div class="node"><strong>Cloudflare Pages</strong>검증된 main에서 보호된 배포 실행<br>Production 환경·SHA 확인</div><div class="arrow">→</div><div class="node"><strong>Moodify 웹</strong>ai-moodify.pages.dev</div></div>
+      <div class="pipeline"><div class="arrow">→</div><div class="node"><strong>Claude 앱 빌드</strong>확정된 main SHA 체크아웃<br>Android/iOS 빌드·서명</div><div class="arrow">→</div><div class="node"><strong>스토어 배포</strong>Google Play / App Store</div></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>환경별 의미</h2>
+    <div class="environments">
+      <div class="card"><h3>localhost:5173</h3><p>Gemini UI/UX 작업의 미리보기입니다. 운영 서버가 아닙니다.</p></div>
+      <div class="card"><h3>localhost:5181 등</h3><p>Codex 로직 작업의 미리보기입니다. 안내된 포트는 작업마다 달라질 수 있습니다.</p></div>
+      <div class="card"><h3>GitHub main</h3><p>승인된 UI와 로직을 모두 포함하며 웹 배포와 앱 빌드의 기준입니다.</p></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>권장 배포 절차</h2>
+    <ol>
+      <li>Gemini와 Codex가 각자 전용 브랜치에서 작업하고 로컬 미리보기를 제공합니다. Gemini는 <code>npm run dev</code>, <code>npm run build</code>, <code>npm run preview</code>까지만 실행합니다.</li>
+      <li>사용자가 UI와 기능을 확인하고 반영을 승인합니다.</li>
+      <li>각 담당자가 자신의 변경만 커밋하고 브랜치에 푸시합니다.</li>
+      <li>Codex가 최신 main과 Gemini 변경을 확인한 뒤 승인된 변경만 통합합니다.</li>
+      <li>충돌·누락과 프로덕션 빌드를 확인하고 사용자 승인 후 main에 푸시합니다.</li>
+      <li>깨끗한 main에서 HEAD와 origin/main이 같은지 확인한 뒤 <code>npm run deploy</code>를 실행합니다.</li>
+      <li>Cloudflare Production 환경, 운영 URL HTTP 200, 최신 자산과 배포 SHA가 최종 main과 같은지 확인합니다.</li>
+      <li>Claude에게 확정 SHA를 전달하고 동일한 소스로 앱을 빌드합니다.</li>
+      <li>앱 버전과 업데이트 정책을 맞춘 뒤 스토어에 제출합니다.</li>
+    </ol>
+  </section>
+
+  <section class="section">
+    <h2>배포 권한과 자동 차단 조건</h2>
+    <div class="split">
+      <div class="card gemini">
+        <h3>Gemini가 실행하지 않는 작업</h3>
+        <ul>
+          <li><code>npm run deploy</code>, <code>wrangler pages deploy</code> 등 배포 명령</li>
+          <li>Cloudflare 대시보드/API 배포와 운영 환경 변수 변경</li>
+          <li>Cloudflare API 토큰 생성·조회·복사·사용</li>
+          <li>main 병합·푸시와 배포 보호 절차 우회</li>
+        </ul>
+      </div>
+      <div class="card codex">
+        <h3>운영 배포 통과 조건</h3>
+        <ul>
+          <li>현재 브랜치가 <code>main</code>일 것</li>
+          <li>작업 트리에 미커밋 변경이 없을 것</li>
+          <li>현재 HEAD가 <code>origin/main</code>과 정확히 일치할 것</li>
+          <li>작업 브랜치 Preview가 아닌 Cloudflare Production으로 등록될 것</li>
+        </ul>
+      </div>
+    </div>
+    <p class="note">배포 스크립트가 조건 불일치로 중단되면 우회하지 않습니다. Gemini는 브랜치와 테스트 결과를 Codex에 전달하고, Codex가 통합·검증·승인 절차를 마친 뒤 운영에 반영합니다.</p>
+  </section>
+
+  <section class="section">
+    <h2>배포 전 체크</h2>
+    <div class="checks">
+      <div class="card"><h3>변경 보존</h3><p>Gemini UI와 Codex 로직이 모두 포함됐는지 확인합니다.</p></div>
+      <div class="card"><h3>기술 검증</h3><p>충돌·관계없는 파일·프로덕션 빌드 결과를 확인합니다.</p></div>
+      <div class="card"><h3>버전 일치</h3><p>main, Cloudflare webVersion, Claude 빌드 SHA를 일치시킵니다.</p></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>Claude에게 전달할 정보</h2>
+    <table>
+      <tr><th>항목</th><th>전달 내용</th></tr>
+      <tr><td>브랜치</td><td><code>main</code></td></tr>
+      <tr><td>커밋</td><td>확정된 전체 SHA</td></tr>
+      <tr><td>변경 요약</td><td>포함된 Gemini UI와 Codex 로직</td></tr>
+      <tr><td>앱 버전</td><td>Android versionName/versionCode 및 iOS version/build</td></tr>
+      <tr><td>업데이트 정책</td><td>스토어 공개 버전과 <code>update-policy.json</code> 일치</td></tr>
+    </table>
+  </section>
+
+  <section class="section">
+    <h2>핵심 원칙</h2>
+    <div class="principle"><span class="badge">5173 = Gemini UI 확인</span><span class="badge">5181 등 = Codex 로직 확인</span><span class="badge main">main = 유일한 배포 기준</span></div>
+    <p class="note">로컬 서버 중 하나를 그대로 배포하지 않습니다. 승인된 UI와 로직을 합친 main을 Cloudflare와 Claude가 함께 사용해야 합니다.</p>
+  </section>
+  <footer>Moodify · Team Integration & Deployment Workflow · v3.1 · Updated 2026-09-07</footer>
+</main>
+</body>
+</html>
