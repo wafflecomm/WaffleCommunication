@@ -5,5 +5,5 @@ User-agent: *
 Allow: /
 
 # Host & Sitemap
-Host: https://wafflecomm.com
-Sitemap: https://wafflecomm.com/sitemap.xml
+Host: https://iwaffle.kr
+Sitemap: https://iwaffle.kr/sitemap.xml
