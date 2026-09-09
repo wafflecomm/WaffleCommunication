@@ -1,0 +1,9 @@
+# Robots.txt for Waffle Communication (??뚯빱裕ㅻ땲耳?댁뀡)
+# Googlebot, Yeti(Naver), Daumoa, Bingbot, etc.
+
+User-agent: *
+Allow: /
+
+# Host & Sitemap
+Host: https://wafflecomm.com
+Sitemap: https://wafflecomm.com/sitemap.xml
