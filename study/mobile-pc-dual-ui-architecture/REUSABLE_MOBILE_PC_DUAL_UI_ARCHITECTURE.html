@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <title>모바일·PC 듀얼 UI 웹앱 아키텍처 기획 가이드</title>
+  <style>
+    @font-face{font-family:Paperlogy;src:url('https://cdn.jsdelivr.net/gh/fonts-archive/Paperlogy/Paperlogy-4Regular.woff2') format('woff2');font-weight:400;font-display:swap}
+    @font-face{font-family:Paperlogy;src:url('https://cdn.jsdelivr.net/gh/fonts-archive/Paperlogy/Paperlogy-6SemiBold.woff2') format('woff2');font-weight:600;font-display:swap}
+    @font-face{font-family:Paperlogy;src:url('https://cdn.jsdelivr.net/gh/fonts-archive/Paperlogy/Paperlogy-8ExtraBold.woff2') format('woff2');font-weight:800;font-display:swap}
+    :root{--bg:#080b12;--panel:#121827e8;--panel2:#181f31;--line:#2a3450;--text:#f5f7ff;--muted:#a9b2c9;--violet:#bd91ff;--cyan:#65e8e0;--amber:#ffd166;--danger:#ff8294}
+    *{box-sizing:border-box;font-family:Paperlogy,system-ui,sans-serif}html{scroll-behavior:smooth}body{margin:0;color:var(--text);background:radial-gradient(circle at 85% 0,#3d2664 0,transparent 30%),radial-gradient(circle at 5% 48%,#103c45 0,transparent 30%),var(--bg);line-height:1.7}a{color:inherit;text-decoration:none}code,pre{font-family:Paperlogy,system-ui,sans-serif}code{padding:2px 6px;border-radius:6px;color:#e3d4ff;background:#252d43}main{width:min(1180px,calc(100% - 30px));margin:30px auto 72px}.hero,.section{border:1px solid var(--line);border-radius:24px;background:var(--panel);box-shadow:0 20px 64px #0007;backdrop-filter:blur(18px)}.hero{padding:42px}.section{margin-top:18px;padding:28px}.eyebrow{color:var(--violet);font-size:12px;font-weight:800;letter-spacing:.18em}.hero h1{max-width:850px;margin:8px 0 14px;font-size:clamp(31px,5vw,54px);line-height:1.12}.hero p{max-width:820px}.meta,.toc{display:flex;flex-wrap:wrap;gap:8px}.pill,.toc a{padding:7px 11px;border:1px solid var(--line);border-radius:999px;color:#dde4f7;background:#1b2234;font-size:11px}.meta,.toc{margin-top:20px}.toc a{border-radius:10px;color:var(--muted)}.toc a:hover{color:white;border-color:var(--violet)}.section h2{margin:0 0 16px;color:var(--cyan);font-size:23px}.section h3{margin:0 0 8px;font-size:16px}p,li,td{color:var(--muted)}.lead{font-size:17px}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.card{padding:20px;border:1px solid var(--line);border-radius:18px;background:var(--panel2)}.card strong{color:white}.diagram{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:14px;margin-top:20px}.core{grid-column:1/-1;padding:16px;border:1px solid #9572d3;border-radius:16px;color:#eadfff;background:#251c39;text-align:center}.branch{padding:20px;border:1px solid var(--line);border-radius:18px;background:#121a29;text-align:center}.arrow{color:var(--cyan);font-size:24px}.note{padding:16px;border-left:4px solid var(--amber);border-radius:12px;color:#f5dfaa;background:#2a2418}.danger{border-left-color:var(--danger);color:#ffd3da;background:#301b25}table{width:100%;border-collapse:collapse}th,td{padding:12px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}th{color:var(--violet);font-size:12px}pre{overflow:auto;padding:18px;border:1px solid var(--line);border-radius:16px;color:#dce6ff;background:#090d16;line-height:1.55}.steps{counter-reset:step;display:grid;gap:10px;padding:0;list-style:none}.steps li{position:relative;padding:14px 16px 14px 54px;border:1px solid var(--line);border-radius:14px;background:#161d2d}.steps li:before{counter-increment:step;content:counter(step);position:absolute;left:14px;top:12px;display:grid;place-items:center;width:28px;height:28px;border-radius:9px;color:#0c1018;background:var(--cyan);font-weight:800}.checklist{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;padding:0;list-style:none}.checklist li{position:relative;padding:11px 12px 11px 39px;border:1px solid #ffffff10;border-radius:12px;background:#ffffff05}.checklist li:before{content:'□';position:absolute;left:14px;top:8px;color:var(--cyan);font-size:19px;font-weight:800}.tag{display:inline-flex;padding:4px 8px;border:1px solid #8467ba;border-radius:999px;color:#d9c3ff;background:#251c39;font-size:10px}footer{padding:28px;text-align:center;color:#6f7891;font-size:11px}@media(max-width:760px){main{width:min(100% - 18px,1180px);margin-top:10px}.hero,.section{padding:21px}.grid,.checklist{grid-template-columns:1fr}.diagram{grid-template-columns:1fr}.core{grid-column:auto}.arrow{transform:rotate(90deg);text-align:center}.table-wrap{overflow:auto}.hero h1{font-size:32px}}
+  </style>
+</head>
+<body><main>
+  <section class="hero">
+    <div class="eyebrow">REUSABLE PRODUCT ARCHITECTURE · v1.2</div>
+    <h1>모바일·PC 듀얼 UI 웹앱 아키텍처 기획 가이드</h1>
+    <p class="lead">모바일 웹·PWA·설치 앱의 안정성을 보존하면서 하나의 서비스에 PC 최적화 화면을 추가하는 실전 표준입니다. 핵심은 반응형 CSS가 아니라 공통 기능 코어와 독립된 두 UI 셸입니다.</p>
+    <div class="meta"><span class="pill">One Core</span><span class="pill">Two UI Shells</span><span class="pill">Feature Flag</span><span class="pill">Native Mobile First</span><span class="pill">Paperlogy</span></div>
+    <nav class="toc"><a href="#principles">핵심 원칙</a><a href="#mode">모드 판정</a><a href="#state">상태 설계</a><a href="#ux">UX 표준</a><a href="#roadmap">개발 단계</a><a href="#qa">QA</a><a href="#release">배포</a></nav>
+  </section>
+
+  <section class="section" id="principles"><h2>1. 하나의 Core, 두 개의 Shell</h2>
+    <div class="diagram"><div class="core"><strong>Language · Theme · Auth · Audio · Billing · Storage · API Providers</strong><br>검색, 결제, 재생, 권한, 저장은 한 번만 구현</div><div class="branch"><span class="tag">MOBILE SHELL</span><h3>Touch & Safe Area</h3><p>세로 흐름, 하단 내비게이션, PWA, Android/iOS</p></div><div class="arrow">↔</div><div class="branch"><span class="tag">DESKTOP SHELL</span><h3>Pointer & Wide Layout</h3><p>사이드바, 다열 대시보드, 키보드, 전역 플레이바</p></div></div>
+    <div class="grid" style="margin-top:14px"><article class="card"><h3>선택 렌더링</h3><p>모바일과 PC 트리를 동시에 실행하지 않습니다. 선택된 앱 하나만 렌더링해 중복 API·effect·결제를 막습니다.</p></article><article class="card"><h3>네이티브 보호</h3><p>설치 앱은 넓은 화면이나 DeX에서도 검증된 모바일 UI를 기본으로 강제합니다.</p></article><article class="card"><h3>공통 Provider</h3><p>UI 분기 위에 Provider를 두어 화면 전환 후에도 재생, 로그인, 언어와 결제 상태를 유지합니다.</p></article><article class="card"><h3>점진 공개</h3><p>PC 번들은 지연 로딩하고 기능 플래그 기본값은 OFF로 두어 즉시 모바일 폴백할 수 있습니다.</p></article></div>
+  </section>
+
+  <section class="section" id="mode"><h2>2. UI 모드 판정 정책</h2><div class="table-wrap"><table><thead><tr><th>우선순위</th><th>조건</th><th>결과</th><th>이유</th></tr></thead><tbody><tr><td>1</td><td>Android/iOS 네이티브</td><td>모바일 강제</td><td>설치 앱 회귀 방지</td></tr><tr><td>2</td><td>로컬 ui 쿼리</td><td>요청 모드</td><td>안전한 비교 테스트</td></tr><tr><td>3</td><td>PC 기능 플래그 OFF</td><td>모바일 폴백</td><td>운영 롤백</td></tr><tr><td>4</td><td>저장된 사용자 선택</td><td>선택 모드</td><td>사용자 의도</td></tr><tr><td>5</td><td>폭 ≥ 1100px + 정밀 포인터</td><td>PC 자동</td><td>태블릿 오판 방지</td></tr><tr><td>6</td><td>그 외</td><td>모바일</td><td>안전 기본값</td></tr></tbody></table></div><pre>if (isNative) return 'mobile'
+if (localOverride) return localOverride
+if (!featureEnabled) return 'mobile'
+if (storedMode !== 'auto') return storedMode
+return width &gt;= 1100 &amp;&amp; finePointer ? 'desktop' : 'mobile'</pre><p class="note">Moodify에는 UI 모드 저장 API가 있지만 사용자가 자동·모바일·PC를 고르는 설정 화면은 아직 연결되지 않았습니다. 제품 기능으로 표시하려면 설정 UI·다국어·접근성·장치 QA가 추가로 필요합니다.</p></section>
+
+  <section class="section"><h2>3. 프로젝트 구조와 앱 셸</h2><div class="grid"><article class="card"><h3>공통 계층</h3><p>contexts, services, utils에 인증·오디오·결제·검색·저장·정규화를 둡니다.</p></article><article class="card"><h3>표현 계층</h3><p>pages는 모바일, desktop은 PC 앱 셸과 전용 페이지를 담당합니다.</p></article></div><pre>src/
+  App.jsx                 # Provider + 모드 분기
+  contexts/               # 장기 전역 상태
+  services/ utils/        # 공통 비즈니스 로직
+  pages/                  # 모바일 UI
+  desktop/                # PC shell, pages, css
+  hooks/useUiMode.js
+  utils/uiMode.js
+scripts/test-ui-mode.mjs</pre><p class="note">PC 사이드바가 있으면 모바일 BottomNav는 CSS로만 숨기지 말고 렌더링하지 않습니다. body 포털은 부모 레이아웃 범위를 벗어날 수 있습니다.</p></section>
+
+  <section class="section" id="state"><h2>4. 상태와 데이터 소유권</h2><div class="table-wrap"><table><thead><tr><th>데이터</th><th>저장 위치</th><th>예시</th></tr></thead><tbody><tr><td>즉시 재생 상태</td><td>Context / 상태 저장소</td><td>현재 곡, 재생, 시간, 반복</td></tr><tr><td>화면 이동 후 임시 유지</td><td>sessionStorage</td><td>검색 목록, 제목, 필터</td></tr><tr><td>사용자 설정</td><td>localStorage / 서버</td><td>언어, 테마, UI 모드</td></tr><tr><td>결제·자격</td><td>서버 원본</td><td>구독, 크레딧, 구매 이력</td></tr><tr><td>공유 상태</td><td>URL / 서버 ID</td><td>공유 목록, 검색어</td></tr><tr><td>일회성 전달</td><td>router state</td><td>새 사진, 전환 힌트</td></tr></tbody></table></div><h3 style="margin-top:18px">복원 우선순위</h3><p><strong>새 라우트 데이터 → 활성 전역 데이터 → 세션 데이터 → 재조회 → 빈 상태</strong></p><p class="danger note">router state만으로 플레이리스트를 유지하면 프로필이나 설정을 다녀온 뒤 목록이 사라집니다.</p></section>
+
+  <section class="section" id="ux"><h2>5. 모바일·PC UX 표준</h2><div class="grid"><article class="card"><h3>모바일</h3><ul><li>100dvh와 visual viewport 동기화</li><li>상·하단 safe area 적용</li><li>주소창·키보드·회전·결제 복귀 처리</li><li>최소 44×44px 터치 영역</li><li>절대 종료 시각 기반 백그라운드 타이머</li><li>PWA 업데이트 후 완전 재실행 안내</li></ul></article><article class="card"><h3>PC</h3><ul><li>1100/1280/1440/1920px 검증</li><li>사이드바·중앙 작업·우측 보조 목록</li><li>페이지 이동 없는 즉시 재생</li><li>hover와 키보드 focus 동시 지원</li><li>긴 이름 말줄임과 고정 배지 폭</li><li>reduced motion 지원</li></ul></article></div></section>
+
+  <section class="section"><h2>6. 공통 기능 연결</h2><div class="grid"><article class="card"><h3>검색</h3><p>한 검색 함수와 정규화 결과를 모바일 세로 카드와 PC 우측 목록이 공유합니다.</p></article><article class="card"><h3>재생</h3><p>모든 플레이어가 하나의 Audio Context와 동일한 재생·반복 상태를 사용합니다.</p></article><article class="card"><h3>외부 음원</h3><p>자동 큐는 외부 전용곡을 건너뛰고 직접 선택에서만 앱·새 탭을 엽니다.</p></article><article class="card"><h3>결제</h3><p>UI는 달라도 주문·서버 검증·권한 반영은 공통 서비스가 담당합니다.</p></article><article class="card"><h3>AI 분석</h3><p>최신 결과 재열람은 저장본을 사용하며 재호출·재차감하지 않습니다.</p></article><article class="card"><h3>데이터 진실성</h3><p>없는 BPM·점수·출처를 만들지 않고 확인 불가 값은 대시로 표시합니다.</p></article></div></section>
+
+  <section class="section" id="roadmap"><h2>7. 단계별 개발 To-do</h2><ol class="steps"><li>기존 모바일 핵심 흐름과 회귀 기준을 확보합니다.</li><li>API·저장·재생·결제 로직을 UI 밖 공통 계층으로 분리합니다.</li><li>네이티브·플래그·폭·포인터 모드 판정과 단위 테스트를 구현합니다.</li><li>PC lazy entry, 사이드바와 라우트 뷰포트를 추가합니다.</li><li>전역 상태와 동기화된 PC 미니 플레이어를 구현합니다.</li><li>Home·Discover부터 PC 전용화하고 검색→재생→복귀를 검증합니다.</li><li>Library·Analysis·Settings·Store를 순차 적용합니다.</li><li>스테이징 플래그를 열고 전체 장치 QA를 수행합니다.</li><li>승인 후 운영에 점진 공개하고 공개 버전을 검증합니다.</li></ol></section>
+
+  <section class="section" id="qa"><h2>8. 필수 QA 체크리스트</h2><ul class="checklist"><li>Mobile Safari와 iOS PWA</li><li>Android Chrome과 설치 앱</li><li>PC Chrome·Edge·Safari</li><li>1100~1920px와 낮은 화면</li><li>터치 대화면·정밀 포인터 판정</li><li>직접 URL·새로고침·뒤로가기</li><li>검색 목록·필터·재생 큐 복원</li><li>재생·시크·셔플·1곡 반복</li><li>최근곡·좋아요·공유 호환</li><li>이미지 실패·외부 음원 처리</li><li>언어·폰트·테마 즉시 반영</li><li>결제 성공·취소·복귀</li><li>PWA 업데이트와 완전 재실행</li><li>네이티브 모바일 UI 강제</li></ul></section>
+
+  <section class="section" id="release"><h2>9. 배포와 롤백</h2><ol class="steps"><li>PC 기능 플래그 OFF 상태로 먼저 배포합니다.</li><li>로컬 desktop 강제 모드와 스테이징에서 검증합니다.</li><li>모바일·PWA·설치 앱 회귀 테스트를 완료합니다.</li><li>사용자 승인 후 운영 플래그를 ON으로 변경합니다.</li><li>Git 커밋, 배포 ID, 공개 버전 manifest 일치를 확인합니다.</li><li>이상 발생 시 플래그 OFF로 다시 빌드·배포하거나 직전 정상 배포로 롤백합니다.</li></ol><p class="note">운영 완료 기준은 빌드 성공이 아니라 공개 URL에서 올바른 버전과 UI 모드가 확인되는 시점입니다.</p>
+    <h3 style="margin-top:24px">운영 PC UI 활성화 필수 설정</h3>
+    <p>Vite 기능 플래그는 빌드 시점에 번들에 고정됩니다. PC UI 코드가 있어도 운영 환경에 다음 값이 없거나 <code>false</code>이면 모든 웹 사용자가 모바일 UI로 폴백합니다.</p>
+    <pre>VITE_DESKTOP_UI_ENABLED=true</pre>
+    <div class="grid"><article class="card"><h3>Cloudflare Pages 설정</h3><ol><li>Workers &amp; Pages에서 대상 프로젝트를 엽니다.</li><li>Settings → Variables and Secrets에서 Production을 선택합니다.</li><li><code>VITE_DESKTOP_UI_ENABLED</code>을 <code>true</code>로 저장합니다.</li><li>환경변수 저장 후 최신 커밋을 다시 배포합니다.</li><li>Preview 검증이 필요하면 Preview 변수도 별도로 등록합니다.</li></ol></article><article class="card"><h3>자동 PC 판정 조건</h3><ul><li>Capacitor 네이티브 앱이 아닌 일반 웹 브라우저</li><li><code>window.innerWidth ≥ 1100</code></li><li>마우스·트랙패드의 hover + fine pointer</li><li>공개 webVersion과 main 커밋 일치</li><li>PC 셸·lazy chunk·업데이트 안내 로딩</li></ul></article></div>
+    <p class="note"><code>VITE_</code> 변수는 브라우저 번들에 공개됩니다. 이 플래그는 일반 환경변수로 관리하고 API 키·토큰·비밀번호는 절대 넣지 않습니다.</p>
+    <h3 style="margin-top:18px">배포 방식별 플래그 주입 위치</h3><div class="table-wrap"><table><thead><tr><th>배포 방식</th><th>설정 위치</th><th>주의 사항</th></tr></thead><tbody><tr><td>Git 연동 Production</td><td>Production Variables</td><td>저장 후 새 Production 배포</td></tr><tr><td>Git 연동 Preview</td><td>Preview Variables</td><td>Production 값 상속을 가정하지 않음</td></tr><tr><td>로컬 Vite</td><td>로컬 .env / 실행 환경</td><td>localhost 쿼리 강제 가능</td></tr><tr><td>Wrangler 직접 업로드</td><td>로컬 빌드 프로세스 환경</td><td>대시보드 변수는 기존 dist에 소급 적용되지 않음</td></tr></tbody></table></div>
+    <pre># PowerShell
+$env:VITE_DESKTOP_UI_ENABLED='true'
+npm run build
+npx wrangler pages deploy dist --project-name ai-moodify --branch main
+
+# macOS / Linux
+VITE_DESKTOP_UI_ENABLED=true npm run build
+npx wrangler pages deploy dist --project-name ai-moodify --branch main</pre>
+    <p class="note">창 분할, 개발자 도구 도킹, 높은 확대율로 콘텐츠 폭이 1100px 미만이면 PC에서도 모바일 UI가 표시될 수 있습니다. 창을 최대화하고 확대율을 100%로 맞춘 뒤 확인합니다.</p>
+    <p class="danger note"><code>?ui=desktop</code>은 localhost 개발 환경 전용입니다. 운영에서는 쿼리를 무시하며, 저장된 desktop 선택값도 기능 플래그가 OFF이면 적용하지 않습니다.</p>
+    <h3 style="margin-top:18px">빌드형 플래그와 런타임 플래그</h3><p>현재 Vite 플래그는 빌드 시 번들에 고정되므로 대시보드에서 값만 바꿔서는 즉시 롤백되지 않습니다. 새 번들을 배포하고 PWA 업데이트까지 전달해야 합니다. 수초 단위 긴급 차단이 필요하면 실패 시 모바일로 폴백하는 별도의 Edge 런타임 설정과 캐시·서명·접근 제어 정책을 설계합니다.</p>
+    <h3 style="margin-top:18px">문제 진단 순서</h3><pre>운영 환경변수와 철자 확인
+→ 환경변수 저장 후 재배포 확인
+→ app-version.json과 main SHA 대조
+→ 네이티브 앱 여부 확인
+→ window.innerWidth와 포인터 조건 확인
+→ PWA 캐시 갱신 및 완전 종료·재실행</pre><p>CI 또는 배포 검증에서 운영 플래그 값, main SHA와 app-version.json, PC 전용 청크 HTTP 200을 자동 확인하는 것을 권장합니다.</p>
+  </section>
+
+  <section class="section"><h2>10. 피해야 할 구현</h2><div class="grid"><article class="card"><p>두 앱을 동시에 렌더링하고 CSS로 숨기기</p></article><article class="card"><p>PC 페이지에 별도 결제·오디오·저장 로직 복제</p></article><article class="card"><p>화면 폭만으로 태블릿·DeX를 PC로 오판</p></article><article class="card"><p>router state만으로 검색·재생목록 유지</p></article><article class="card"><p>없는 BPM·분석 점수·출처 생성</p></article><article class="card"><p>빌드만 확인하고 공개 버전·PWA 갱신 생략</p></article></div></section>
+
+  <footer>Mobile + Desktop Dual UI Architecture Guide · Moodify reference implementation · 2026-09-11</footer>
+</main></body>
+</html>
