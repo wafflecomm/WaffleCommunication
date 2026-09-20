@@ -90,7 +90,7 @@
         href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Noto+Sans+KR:wght@300;400;700&display=swap"
         rel="stylesheet">
 
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css?v=20260920_v3">
 
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-N3B93EZBNS"></script>
@@ -101,6 +101,186 @@
 
         gtag('config', 'G-N3B93EZBNS');
     </script>
+
+    <!-- Critical i18n Language Switcher Styles (Zero-FOUC & Cache-Proof) -->
+    <style id="i18n-critical-styles">
+        .mobile-lang-bar {
+            display: none !important;
+        }
+        @media (max-width: 768px) {
+            .mobile-lang-bar {
+                display: flex !important;
+                align-items: center;
+                justify-content: center;
+                gap: 8px;
+                padding: 15px 0 5px;
+                border-top: 1px solid rgba(255, 255, 255, 0.08);
+                width: 100%;
+                margin-top: 15px;
+            }
+            .mobile-lang-btn {
+                padding: 6px 14px;
+                border-radius: 9999px;
+                background: rgba(255, 255, 255, 0.06);
+                border: 1px solid rgba(255, 255, 255, 0.12);
+                color: rgba(255, 255, 255, 0.8);
+                font-size: 0.8rem;
+                font-weight: 600;
+                cursor: pointer;
+                transition: all 0.2s ease;
+            }
+            .mobile-lang-btn.active {
+                background: #4F46E5 !important;
+                color: #FFFFFF !important;
+                border-color: #6366F1 !important;
+                box-shadow: 0 4px 12px rgba(79, 70, 229, 0.4) !important;
+            }
+            .header .lang-dropdown {
+                margin-left: auto;
+                margin-right: 12px;
+            }
+        }
+
+        .lang-dropdown {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            z-index: 1001;
+        }
+
+        .lang-dropdown-toggle {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            color: #FFFFFF;
+            padding: 6px 14px;
+            border-radius: 9999px;
+            font-size: 0.82rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            outline: none;
+        }
+
+        .lang-dropdown-toggle:hover {
+            background: rgba(79, 70, 229, 0.25);
+            border-color: rgba(99, 102, 241, 0.5);
+            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.25);
+            transform: translateY(-1px);
+        }
+
+        .lang-globe-icon {
+            font-size: 0.95rem;
+            line-height: 1;
+        }
+
+        .lang-current-text {
+            color: #FFFFFF;
+            font-size: 0.82rem;
+            font-weight: 600;
+        }
+
+        .lang-arrow {
+            font-size: 0.65rem;
+            color: rgba(255, 255, 255, 0.6);
+            transition: transform 0.3s ease;
+        }
+
+        .lang-dropdown.open .lang-arrow {
+            transform: rotate(180deg);
+        }
+
+        .lang-menu {
+            position: absolute;
+            top: calc(100% + 8px);
+            right: 0;
+            min-width: 155px;
+            background: rgba(15, 23, 42, 0.96);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-radius: 16px;
+            padding: 6px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), 0 0 20px rgba(79, 70, 229, 0.2);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-8px) scale(0.95);
+            transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+            z-index: 1100;
+            list-style: none;
+            margin: 0;
+            display: block;
+        }
+
+        .lang-dropdown.open .lang-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0) scale(1);
+        }
+
+        .lang-menu-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            padding: 9px 12px;
+            border-radius: 10px;
+            color: rgba(255, 255, 255, 0.75);
+            background: transparent;
+            border: none;
+            font-size: 0.82rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-align: left;
+            outline: none;
+        }
+
+        .lang-menu-item:hover {
+            background: rgba(255, 255, 255, 0.08);
+            color: #FFFFFF;
+        }
+
+        .lang-menu-item.active {
+            background: linear-gradient(135deg, rgba(79, 70, 229, 0.4) 0%, rgba(147, 51, 234, 0.3) 100%);
+            color: #A5B4FC;
+            font-weight: 700;
+            border: 1px solid rgba(165, 180, 252, 0.3);
+        }
+
+        .lang-badge {
+            display: inline-block;
+            padding: 1px 5px;
+            border-radius: 4px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            margin-right: 6px;
+            background: rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.9);
+            font-family: 'Outfit', sans-serif;
+            letter-spacing: 0.5px;
+        }
+
+        .lang-menu-item.active .lang-badge {
+            background: #4F46E5;
+            color: #FFFFFF;
+        }
+
+        .lang-menu-item .check-icon {
+            font-size: 0.75rem;
+            color: #818CF8;
+            display: none;
+        }
+
+        .lang-menu-item.active .check-icon {
+            display: inline;
+        }
+    </style>
+
 </head>
 
 <body>
@@ -119,44 +299,44 @@
                 <li><a href="#study" data-i18n="nav.study">Study</a></li>
                 <li><a href="#partners" data-i18n="nav.partners">Partners</a></li>
                 <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
-                <!-- Mobile Language Selector Bar -->
-                <li class="mobile-lang-bar">
-                    <button type="button" class="mobile-lang-btn" data-set-lang="ko">🇰🇷 KO</button>
-                    <button type="button" class="mobile-lang-btn" data-set-lang="en">🇺🇸 EN</button>
-                    <button type="button" class="mobile-lang-btn" data-set-lang="ja">🇯🇵 JA</button>
-                    <button type="button" class="mobile-lang-btn" data-set-lang="zh">🇨🇳 ZH</button>
+                                <!-- Mobile Language Selector Bar -->
+                <li class="mobile-lang-bar" style="display: none;">
+                    <button type="button" class="mobile-lang-btn active" data-set-lang="ko"><span class="lang-badge">KO</span>한국어</button>
+                    <button type="button" class="mobile-lang-btn" data-set-lang="en"><span class="lang-badge">EN</span>English</button>
+                    <button type="button" class="mobile-lang-btn" data-set-lang="ja"><span class="lang-badge">JA</span>日本語</button>
+                    <button type="button" class="mobile-lang-btn" data-set-lang="zh"><span class="lang-badge">ZH</span>中文</button>
                 </li>
             </ul>
 
-            <!-- Desktop Language Switcher Dropdown -->
+                        <!-- Desktop Language Switcher Dropdown -->
             <div class="lang-dropdown">
                 <button type="button" class="lang-dropdown-toggle" aria-label="언어 선택" title="Language Selector">
-                    <span class="lang-current-flag">🌐</span>
+                    <span class="lang-globe-icon">🌐</span>
                     <span class="lang-current-text">한국어</span>
                     <span class="lang-arrow">▼</span>
                 </button>
                 <ul class="lang-menu">
                     <li>
                         <button type="button" class="lang-menu-item active" data-set-lang="ko">
-                            <span>🇰🇷 한국어 (KO)</span>
+                            <span><span class="lang-badge">KO</span>한국어</span>
                             <span class="check-icon">✓</span>
                         </button>
                     </li>
                     <li>
                         <button type="button" class="lang-menu-item" data-set-lang="en">
-                            <span>🇺🇸 English (EN)</span>
+                            <span><span class="lang-badge">EN</span>English</span>
                             <span class="check-icon">✓</span>
                         </button>
                     </li>
                     <li>
                         <button type="button" class="lang-menu-item" data-set-lang="ja">
-                            <span>🇯🇵 日本語 (JA)</span>
+                            <span><span class="lang-badge">JA</span>日本語</span>
                             <span class="check-icon">✓</span>
                         </button>
                     </li>
                     <li>
                         <button type="button" class="lang-menu-item" data-set-lang="zh">
-                            <span>🇨🇳 中文 (ZH)</span>
+                            <span><span class="lang-badge">ZH</span>中文</span>
                             <span class="check-icon">✓</span>
                         </button>
                     </li>

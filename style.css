@@ -1388,6 +1388,24 @@ section {
     border: 1px solid rgba(165, 180, 252, 0.3);
 }
 
+.lang-badge {
+    display: inline-block;
+    padding: 1px 5px;
+    border-radius: 4px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    margin-right: 6px;
+    background: rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.9);
+    font-family: 'Outfit', sans-serif;
+    letter-spacing: 0.5px;
+}
+
+.lang-menu-item.active .lang-badge {
+    background: #4F46E5;
+    color: #FFFFFF;
+}
+
 .lang-menu-item .check-icon {
     font-size: 0.75rem;
     color: #818CF8;
