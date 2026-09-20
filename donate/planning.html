@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>와플커뮤니케이션 통합 홈페이지 & 커피 후원 플랫폼 기획서</title>
-  <meta name="description" content="와플커뮤니케이션 공식 웹사이트, 커피 후원 플랫폼 및 통신판매업 등록 가이드 상세 기획서 (Paperlogy 폰트 적용)">
+  <meta name="description" content="와플커뮤니케이션 공식 웹사이트, 커피 후원 플랫폼, 4개 국어 i18n 다국어 시스템 및 5대 Engineering Study 가이드 상세 기획서 (Paperlogy 폰트 적용)">
 
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -84,7 +84,7 @@
         <span class="tracking-tight text-base sm:text-lg">Waffle Communication</span>
       </a>
       <span class="hidden sm:inline-block px-2.5 py-0.5 rounded-full text-xs font-semibold bg-orange-100 dark:bg-orange-950/60 text-orange-600 dark:text-orange-400">
-        통합 기획서 v2.1
+        통합 기획서 v2.5
       </span>
     </div>
 
@@ -110,10 +110,16 @@
         <nav class="space-y-1.5 text-xs text-gray-600 dark:text-zinc-400 font-medium">
           <a href="#section-1" class="block py-1 hover:text-orange-500 transition">1. 프로젝트 개요</a>
           <a href="#section-2" class="block py-1 hover:text-orange-500 transition">2. 공식 사업자 정보 & 법적 고지</a>
-          <a href="#section-3" class="block py-1 hover:text-orange-500 transition font-bold text-orange-600 dark:text-orange-400">3. 통신판매업등록(개인사업자)</a>
+          <a href="#section-3" class="block py-1 hover:text-orange-500 transition">3. 통신판매업등록(개인사업자)</a>
           <a href="#section-4" class="block py-1 hover:text-orange-500 transition">4. 시스템 아키텍처 & 기술 스택</a>
           <a href="#section-5" class="block py-1 hover:text-orange-500 transition">5. 디자인 시스템 & UI/UX</a>
-          <a href="#section-6" class="block py-1 hover:text-orange-500 transition">6. 페이지별 상세 기능 명세</a>
+          <a href="#section-6" class="block py-1 hover:text-orange-500 transition font-bold text-orange-600 dark:text-orange-400">6. 페이지별 상세 기능 명세</a>
+          <a href="#section-6-1" class="block pl-3 py-0.5 text-[11px] hover:text-orange-500 transition">• 메인 & i18n 다국어 시스템</a>
+          <a href="#section-6-2" class="block pl-3 py-0.5 text-[11px] hover:text-orange-500 transition">• 6대 핵심 서비스 라인업</a>
+          <a href="#section-6-3" class="block pl-3 py-0.5 text-[11px] hover:text-orange-500 transition">• 14대 글로벌 파트너스</a>
+          <a href="#section-6-4" class="block pl-3 py-0.5 text-[11px] hover:text-orange-500 transition">• 커피 후원 플랫폼</a>
+          <a href="#section-6-6" class="block pl-3 py-0.5 text-[11px] hover:text-orange-500 transition font-semibold text-orange-500">• 5대 Engineering Study</a>
+          <a href="#section-6-7" class="block pl-3 py-0.5 text-[11px] hover:text-orange-500 transition">• 글로벌 SEO 인프라</a>
           <a href="#section-7" class="block py-1 hover:text-orange-500 transition">7. 결제 인프라 & SDK 연동</a>
           <a href="#section-8" class="block py-1 hover:text-orange-500 transition">8. 데이터베이스 스키마 (Supabase)</a>
           <a href="#section-9" class="block py-1 hover:text-orange-500 transition">9. PG 심사 5대 요건 검증 결과</a>
@@ -132,13 +138,13 @@
           <div class="flex items-center gap-2 text-xs font-bold text-orange-600 dark:text-orange-400">
             <span>WAFFLE COMMUNICATION</span>
             <span>•</span>
-            <span>SPECIFICATION v2.1</span>
+            <span>SPECIFICATION v2.5</span>
           </div>
           <h1 class="text-2xl sm:text-4xl font-extrabold text-gray-900 dark:text-white tracking-tight leading-tight">
             통합 홈페이지 & 커피 후원 플랫폼 상세 기획서
           </h1>
           <p class="text-sm sm:text-base text-gray-600 dark:text-zinc-400 max-w-2xl leading-relaxed">
-            와플커뮤니케이션 공식 웹사이트와 국내/해외 듀얼 결제 커피 후원 시스템, 통신판매업 등록 가이드 및 PG사 심사 준수 요건을 집대성한 종합 기획 설계 문서입니다.
+            와플커뮤니케이션 공식 웹사이트와 4개 국어(KO/EN/JA/ZH) i18n 다국어 시스템, 국내/해외 듀얼 결제 커피 후원 플랫폼, 5대 Engineering Study 실전 가이드, 그리고 글로벌 SEO 인프라를 집대성한 종합 기술 기획 설계 문서입니다.
           </p>
         </div>
       </div>
@@ -155,15 +161,15 @@
               <iconify-icon icon="solar:buildings-bold"></iconify-icon> 서비스 비전
             </h3>
             <p class="text-gray-600 dark:text-zinc-300 text-xs leading-relaxed">
-              캐주얼 보드게임, 교육용 인터랙티브 앱, AI 음악 추천 및 제작 솔루션의 브랜드 아이덴티티를 확립하고 지속 가능한 창작 생태계를 구축합니다.
+              실시간 AI 마케팅 솔루션, 캐주얼 보드게임, 교육용 인터랙티브 앱, AI 음악 추천/생성(Moodify Q) 솔루션의 브랜드 아이덴티티를 확립하고 지속 가능한 글로벌 창작 생태계를 구축합니다.
             </p>
           </div>
           <div class="p-4 rounded-2xl bg-gray-50 dark:bg-zinc-800/60 border border-gray-100 dark:border-zinc-700/60 space-y-1.5">
             <h3 class="font-bold text-gray-900 dark:text-white flex items-center gap-1.5 text-xs text-orange-600 dark:text-orange-400">
-              <iconify-icon icon="solar:cup-star-bold"></iconify-icon> 커피 후원 플랫폼
+              <iconify-icon icon="solar:cup-star-bold"></iconify-icon> 커피 후원 & 다국어 플랫폼
             </h3>
             <p class="text-gray-600 dark:text-zinc-300 text-xs leading-relaxed">
-              오픈소스 유지보수와 창작 활동을 응원하는 국내(PortOne)/해외(PayPal) 듀얼 결제 시스템 및 Supabase 실시간 동기화를 제공합니다.
+              오픈소스 유지보수와 창작 활동을 응원하는 국내(PortOne)/해외(PayPal) 듀얼 결제 시스템과 4개 국어 실시간 i18n 엔진, 5대 실전 Engineering Study 가이드를 제공합니다.
             </p>
           </div>
         </div>
@@ -198,7 +204,7 @@
               </tr>
               <tr>
                 <td class="p-3 font-semibold text-gray-900 dark:text-white">통신판매업신고</td>
-                <td class="p-3">제2026-서울강남-04919호</td>
+                <td class="p-3 font-semibold text-gray-900 dark:text-white">제2026-서울강남-04919호</td>
               </tr>
               <tr>
                 <td class="p-3 font-semibold text-gray-900 dark:text-white">업태 / 종목</td>
@@ -213,6 +219,10 @@
                 <td class="p-3 font-bold">02-561-0770 | 이메일: waffle.comm@gmail.com</td>
               </tr>
               <tr>
+                <td class="p-3 font-semibold text-gray-900 dark:text-white">대표 공식 도메인</td>
+                <td class="p-3 font-mono font-bold text-orange-600 dark:text-orange-400">https://iwaffle.kr/</td>
+              </tr>
+              <tr>
                 <td class="p-3 font-semibold text-gray-900 dark:text-white">PayPal 수취 계정</td>
                 <td class="p-3 font-mono">ihnseob.kim@gmail.com (Production 실결제)</td>
               </tr>
@@ -221,7 +231,7 @@
         </div>
       </section>
 
-      <!-- Section 3: E-Commerce Registration (NEW) -->
+      <!-- Section 3: E-Commerce Registration -->
       <section id="section-3" class="p-6 sm:p-8 rounded-3xl bg-white dark:bg-zinc-900 border border-orange-200 dark:border-orange-900/40 shadow-sm space-y-6">
         <div class="flex items-center justify-between flex-wrap gap-2">
           <h2 class="text-xl font-bold text-gray-900 dark:text-white flex items-center gap-2">
@@ -277,23 +287,9 @@
             <h3 class="font-bold text-gray-900 dark:text-white text-sm">면허세 납부 & 발급</h3>
             <ul class="text-xs text-gray-600 dark:text-zinc-300 space-y-1.5">
               <li>• 지자체 심사 후 면허세 납부 문자 수신</li>
-              <li>• 위택스/이택스 등록면허세 납부 (1~3일)</li>
-              <li>• 정부24 MY GOV에서 신고증 직접 출력</li>
+              <li>• 위택스/이택스 등록면허세 납부</li>
+              <li>• 정부24에서 신고증 직접 출력 완료</li>
             </ul>
-          </div>
-        </div>
-
-        <!-- Detailed Application Step Box -->
-        <div class="p-5 rounded-2xl bg-gray-50 dark:bg-zinc-800/50 border border-gray-200 dark:border-zinc-700/60 space-y-3 text-xs">
-          <h4 class="font-bold text-gray-900 dark:text-white text-sm flex items-center gap-1.5">
-            <iconify-icon icon="solar:info-circle-bold" class="text-orange-500"></iconify-icon>
-            <span>정부24 신청서 작성 세부 가이드</span>
-          </h4>
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-gray-600 dark:text-zinc-300 leading-relaxed">
-            <p>• <strong>판매방식:</strong> 인터넷 선택</p>
-            <p>• <strong>취급품목:</strong> 종합몰 또는 소프트웨어/디지털콘텐츠</p>
-            <p>• <strong>인터넷 도메인:</strong> https://wafflecomm.github.io/WaffleCommunication/</p>
-            <p>• <strong>행정정보 공동이용:</strong> 사업자등록증 확인을 위해 동의 필수</p>
           </div>
         </div>
       </section>
@@ -304,10 +300,14 @@
           <span class="w-7 h-7 rounded-xl bg-orange-100 dark:bg-orange-950/60 text-orange-600 dark:text-orange-400 flex items-center justify-center text-sm font-bold">4</span>
           <span>시스템 아키텍처 및 기술 스택</span>
         </h2>
-        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 text-xs">
           <div class="p-4 rounded-2xl bg-gray-50 dark:bg-zinc-800/60 border border-gray-100 dark:border-zinc-700/60 space-y-1">
-            <span class="font-bold text-orange-500 block">🎨 Front-End</span>
+            <span class="font-bold text-orange-500 block">🎨 Front-End Engine</span>
             <p class="text-gray-600 dark:text-zinc-300">HTML5, Vanilla JS, Tailwind CSS CDN, Paperlogy Webfont, Solar Icons</p>
+          </div>
+          <div class="p-4 rounded-2xl bg-gray-50 dark:bg-zinc-800/60 border border-gray-100 dark:border-zinc-700/60 space-y-1">
+            <span class="font-bold text-orange-500 block">🌐 i18n & SEO</span>
+            <p class="text-gray-600 dark:text-zinc-300">JSON 기반 4개 국어 DOM 엔진 + sitemap xhtml hreflang + robots.txt</p>
           </div>
           <div class="p-4 rounded-2xl bg-gray-50 dark:bg-zinc-800/60 border border-gray-100 dark:border-zinc-700/60 space-y-1">
             <span class="font-bold text-orange-500 block">💳 Payment Gateways</span>
@@ -324,10 +324,10 @@
       <section id="section-5" class="p-6 sm:p-8 rounded-3xl bg-white dark:bg-zinc-900 border border-gray-200 dark:border-zinc-800 shadow-sm space-y-4">
         <h2 class="text-xl font-bold text-gray-900 dark:text-white flex items-center gap-2">
           <span class="w-7 h-7 rounded-xl bg-orange-100 dark:bg-orange-950/60 text-orange-600 dark:text-orange-400 flex items-center justify-center text-sm font-bold">5</span>
-          <span>디자인 시스템 (Option A: 웜 모카 & 크림)</span>
+          <span>디자인 시스템 (Vantablack Luxe & 웜 모카)</span>
         </h2>
         <p class="text-xs sm:text-sm text-gray-600 dark:text-zinc-400 leading-relaxed">
-          과도한 채도를 낮추고, 눈의 피로를 덜어주는 아늑한 에스프레소 브라운과 오트밀 크림 베이지 톤을 기본 테마로 적용했습니다.
+          메인 웹사이트는 하이엔드 Vantablack 다크 글래스모피즘을, 도네이션 플랫폼은 눈의 피로를 덜어주는 아늑한 웜 모카 & 오트밀 크림 베이지 톤을 기본 테마로 적용했습니다.
         </p>
         <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs">
           <div class="p-3 rounded-2xl bg-[#FBF9F5] text-gray-900 border border-[#ECE4D9] text-center font-semibold">
@@ -350,30 +350,66 @@
       </section>
 
       <!-- Section 6: Feature Specifications -->
-      <section id="section-6" class="p-6 sm:p-8 rounded-3xl bg-white dark:bg-zinc-900 border border-gray-200 dark:border-zinc-800 shadow-sm space-y-4">
+      <section id="section-6" class="p-6 sm:p-8 rounded-3xl bg-white dark:bg-zinc-900 border border-gray-200 dark:border-zinc-800 shadow-sm space-y-6">
         <h2 class="text-xl font-bold text-gray-900 dark:text-white flex items-center gap-2">
           <span class="w-7 h-7 rounded-xl bg-orange-100 dark:bg-orange-950/60 text-orange-600 dark:text-orange-400 flex items-center justify-center text-sm font-bold">6</span>
           <span>페이지별 상세 기능 명세</span>
         </h2>
         
         <div class="space-y-4 text-xs sm:text-sm">
-          <!-- Main Page -->
-          <div class="p-5 rounded-2xl bg-gray-50 dark:bg-zinc-800/60 border border-gray-100 dark:border-zinc-700/60 space-y-2">
-            <h3 class="font-bold text-gray-900 dark:text-white text-sm">🏠 메인 홈페이지 (index.html)</h3>
+          <!-- 6.1 Main & i18n -->
+          <div id="section-6-1" class="p-5 rounded-2xl bg-gray-50 dark:bg-zinc-800/60 border border-gray-100 dark:border-zinc-700/60 space-y-2">
+            <h3 class="font-bold text-gray-900 dark:text-white text-sm flex items-center gap-2">
+              <span>🏠 6.1 메인 홈페이지 & 4개 국어 i18n 다국어 시스템</span>
+              <span class="px-2 py-0.5 text-[10px] rounded-full bg-blue-100 dark:bg-blue-950/60 text-blue-600 dark:text-blue-400 font-bold">New v2.5</span>
+            </h3>
             <ul class="list-disc list-inside space-y-1 text-gray-600 dark:text-zinc-300 text-xs">
-              <li><strong>Hero Visual & Portfolio</strong>: 소프트웨어 개발, AI 음악 솔루션 소개</li>
-              <li><strong>Multilingual i18n (4개 국어)</strong>: 🇰🇷 한국어, 🇺🇸 영어, 🇯🇵 일본어, 🇨🇳 중국어 JSON 비동기 실시간 전환 시스템</li>
-              <li><strong>Our Services (6대 서비스)</strong>: 1. <strong>트래픽 캐쳐 Traffic Catcher AI</strong>, 2. 캐주얼 게임, 3. 교육용 앱, 4. <strong>AI 음악 추천 및 제작 (Moodify Q)</strong>, 5. Music Diffuser, 6. 우짤게임 UZGAME</li>
-              <li><strong>Global Partners (14개)</strong>: Google, Claude, OpenAI, Ollama, GitHub, Cloudflare, Vercel, Oracle, PayPal, Supabase, PortOne, Resend, Netlify Drop, <strong>Google Antigravity</strong> 공식 링크 연동</li>
+              <li><strong>JSON 기반 클라이언트 i18n 엔진</strong>: <code>asset/js/i18n.js</code> 및 <code>asset/lang/{ko,en,ja,zh}.json</code> 4개 언어 파일 완비 (119개 키 100% 매칭)</li>
+              <li><strong>지능형 언어 감지</strong>: 브라우저 언어 자동 감지, <code>localStorage</code> 설정 보존, URL 파라미터(<code>?lang=</code>) 우선 전환</li>
+              <li><strong>드롭다운 UI</strong>: 헤더 우측 다크네온 글래스모피즘 지구본(🌐) 캡슐 및 모바일 전용 언어 선택 버튼군</li>
               <li><strong>Floating Coffee Button</strong>: 파동 링 애니메이션 및 호버 시 "커피 후원하기" 텍스트 슬라이드</li>
               <li><strong>법적 사업자 푸터</strong>: 7대 사업자 정보 및 3대 약관 링크 완비</li>
             </ul>
           </div>
 
-          <!-- Donation Page -->
-          <div class="p-5 rounded-2xl bg-gray-50 dark:bg-zinc-800/60 border border-gray-100 dark:border-zinc-700/60 space-y-2">
-            <h3 class="font-bold text-gray-900 dark:text-white text-sm">☕ 커피 후원 플랫폼 (donate/index.html)</h3>
+          <!-- 6.2 Services -->
+          <div id="section-6-2" class="p-5 rounded-2xl bg-gray-50 dark:bg-zinc-800/60 border border-gray-100 dark:border-zinc-700/60 space-y-2">
+            <h3 class="font-bold text-gray-900 dark:text-white text-sm">⚡ 6.2 Our Services (6대 핵심 서비스 라인업)</h3>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-gray-600 dark:text-zinc-300 pt-1">
+              <div class="p-3 rounded-xl bg-white dark:bg-zinc-900 border border-gray-200 dark:border-zinc-800">
+                <strong class="text-orange-500">1. 트래픽 캐쳐 AI</strong>: 실시간 급상승 키워드 & 트렌드 기반 올인원 AI 마케팅 글작성 (<a href="https://www.trafficcatcher.ai" target="_blank" class="underline">trafficcatcher.ai</a>)
+              </div>
+              <div class="p-3 rounded-xl bg-white dark:bg-zinc-900 border border-gray-200 dark:border-zinc-800">
+                <strong class="text-orange-500">2. 캐주얼 & 온라인 게임</strong>: 소셜 엔터테인먼트, 혁신적인 보드게임 및 파티게임
+              </div>
+              <div class="p-3 rounded-xl bg-white dark:bg-zinc-900 border border-gray-200 dark:border-zinc-800">
+                <strong class="text-orange-500">3. 교육용 앱 솔루션</strong>: 재미와 배움을 융합한 에듀테크 인터랙티브 서비스
+              </div>
+              <div class="p-3 rounded-xl bg-white dark:bg-zinc-900 border border-gray-200 dark:border-zinc-800">
+                <strong class="text-orange-500">4. Moodify Q (AI 음악 솔루션)</strong>: 사진/감정 분석 맞춤형 AI 음악 제작 (<a href="https://moodifyq.com" target="_blank" class="underline">moodifyq.com</a>)
+              </div>
+              <div class="p-3 rounded-xl bg-white dark:bg-zinc-900 border border-gray-200 dark:border-zinc-800">
+                <strong class="text-orange-500">5. Music Diffuser</strong>: Lo-Fi & Ambient 휴식/집중 배경음악 공식 유튜브 채널
+              </div>
+              <div class="p-3 rounded-xl bg-white dark:bg-zinc-900 border border-gray-200 dark:border-zinc-800">
+                <strong class="text-orange-500">6. 우짤게임 UZGAME</strong>: 유쾌하고 재밌는 게임 플레이 스트리밍 공식 유튜브 채널
+              </div>
+            </div>
+          </div>
+
+          <!-- 6.3 Partners -->
+          <div id="section-6-3" class="p-5 rounded-2xl bg-gray-50 dark:bg-zinc-800/60 border border-gray-100 dark:border-zinc-700/60 space-y-2">
+            <h3 class="font-bold text-gray-900 dark:text-white text-sm">🤝 6.3 Global Partners (14개 글로벌 파트너스 연동)</h3>
+            <p class="text-xs text-gray-600 dark:text-zinc-400">
+              Google, Claude(Anthropic), OpenAI, Ollama, GitHub, Cloudflare, Vercel, Oracle Cloud Free Tier, PayPal, Supabase, PortOne, Resend, Netlify Drop, Google Antigravity 공식 링크 연동 완료
+            </p>
+          </div>
+
+          <!-- 6.4 Donation Page -->
+          <div id="section-6-4" class="p-5 rounded-2xl bg-gray-50 dark:bg-zinc-800/60 border border-gray-100 dark:border-zinc-700/60 space-y-2">
+            <h3 class="font-bold text-gray-900 dark:text-white text-sm">☕ 6.4 커피 후원 플랫폼 (donate/index.html)</h3>
             <ul class="list-disc list-inside space-y-1 text-gray-600 dark:text-zinc-300 text-xs">
+              <li><strong>상단 뒤로가기 버튼 (&lt;)</strong>: 테마별 호버 컬러 매칭 및 부드러운 리플 인터랙션 제공</li>
               <li><strong>상단 미니멀 컬러 스와치</strong>: 4색 컬러 도트 칩(모카/모노/세이지/인디고) 실시간 전환</li>
               <li><strong>4단계 잔 수 프리셋</strong>: 1잔(₩3,000 / $3), 3잔(₩9,000 / $9), 5잔(₩15,000 / $15), 직접입력</li>
               <li><strong>듀얼 결제 시스템</strong>: PortOne V2 (국내) & PayPal Official Donate SDK (해외)</li>
@@ -381,6 +417,80 @@
               <li><strong>상품 거래 조건 고지</strong>: 디지털 후원권, 즉시 영수증 발급, 7일 이내 전액 환불 고지</li>
               <li><strong>실시간 피드 & 모달</strong>: Supabase Realtime 후원자 목록 및 축하 영수증 팝업</li>
             </ul>
+          </div>
+
+          <!-- 6.6 Study Guides -->
+          <div id="section-6-6" class="p-5 rounded-2xl bg-orange-50/40 dark:bg-zinc-800/80 border border-orange-200 dark:border-orange-900/40 space-y-3">
+            <div class="flex items-center justify-between flex-wrap gap-2">
+              <h3 class="font-bold text-gray-900 dark:text-white text-sm flex items-center gap-1.5">
+                <iconify-icon icon="solar:book-bookmark-bold" class="text-orange-500"></iconify-icon>
+                <span>6.6 Engineering Study 5대 실전 가이드라인 (study/)</span>
+              </h3>
+              <span class="text-[10px] px-2.5 py-0.5 rounded-full bg-orange-100 dark:bg-orange-950/60 text-orange-600 dark:text-orange-400 font-bold">5개 인터랙티브 가이드 완비</span>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2.5 text-xs">
+              <a href="study/ai-powered-web-dev/" target="_blank" class="p-3 rounded-xl bg-white dark:bg-zinc-900 border border-gray-200 dark:border-zinc-700/80 hover:border-orange-500 transition block space-y-1">
+                <span class="font-bold text-gray-900 dark:text-white block">💻 1. AI 기반 웹 개발 실전 전략</span>
+                <span class="text-gray-500 dark:text-zinc-400 text-[11px] block">Claude 3.7 + Antigravity 하이브리드 워크플로우</span>
+              </a>
+              <a href="study/webapp-design-guide/" target="_blank" class="p-3 rounded-xl bg-white dark:bg-zinc-900 border border-gray-200 dark:border-zinc-700/80 hover:border-orange-500 transition block space-y-1">
+                <span class="font-bold text-gray-900 dark:text-white block">🎨 2. 웹앱 디자인 시스템 가이드</span>
+                <span class="text-gray-500 dark:text-zinc-400 text-[11px] block">Vantablack Luxe & Glassmorphism UI 설계</span>
+              </a>
+              <a href="study/ai-cowork-guide/" target="_blank" class="p-3 rounded-xl bg-white dark:bg-zinc-900 border border-gray-200 dark:border-zinc-700/80 hover:border-orange-500 transition block space-y-1">
+                <span class="font-bold text-gray-900 dark:text-white block">🤖 3. AI 협업 프롬프트 가이드</span>
+                <span class="text-gray-500 dark:text-zinc-400 text-[11px] block">Context 관리 및 Subagent 위임 전략</span>
+              </a>
+              <a href="study/app-update-plan/" target="_blank" class="p-3 rounded-xl bg-white dark:bg-zinc-900 border border-gray-200 dark:border-zinc-700/80 hover:border-orange-500 transition block space-y-1">
+                <span class="font-bold text-gray-900 dark:text-white block">🚀 4. 앱 업데이트 & 버전 전략</span>
+                <span class="text-gray-500 dark:text-zinc-400 text-[11px] block">Semantic Versioning & 무중단 배포</span>
+              </a>
+              <a href="study/mobile-pc-dual-ui-architecture/" target="_blank" class="p-3 rounded-xl bg-white dark:bg-zinc-900 border border-gray-200 dark:border-zinc-700/80 hover:border-orange-500 transition block space-y-1">
+                <span class="font-bold text-gray-900 dark:text-white block">📱 5. 모바일/PC 듀얼 UI 가이드</span>
+                <span class="text-gray-500 dark:text-zinc-400 text-[11px] block">단일 코드베이스 반응형 분기 아키텍처</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- 6.7 SEO -->
+          <div id="section-6-7" class="p-5 rounded-2xl bg-gray-50 dark:bg-zinc-800/60 border border-gray-100 dark:border-zinc-700/60 space-y-2">
+            <h3 class="font-bold text-gray-900 dark:text-white text-sm">🔍 6.7 글로벌 SEO & 검색엔진 최적화 인프라</h3>
+            <ul class="list-disc list-inside space-y-1 text-gray-600 dark:text-zinc-300 text-xs">
+              <li><strong>sitemap.xml</strong>: <code>xhtml:link hreflang</code> (ko, en, ja, zh, x-default) 태그 및 5대 Study 가이드 전체 색인 반영</li>
+              <li><strong>robots.txt</strong>: 크롤러 접근 허용 및 공식 사이트맵 URL (<code>https://iwaffle.kr/sitemap.xml</code>) 명시</li>
+              <li><strong>SNS 공유 메타태그</strong>: OpenGraph 및 Twitter Card 메타데이터 최적화 완료</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 7: Payment SDK -->
+      <section id="section-7" class="p-6 sm:p-8 rounded-3xl bg-white dark:bg-zinc-900 border border-gray-200 dark:border-zinc-800 shadow-sm space-y-4">
+        <h2 class="text-xl font-bold text-gray-900 dark:text-white flex items-center gap-2">
+          <span class="w-7 h-7 rounded-xl bg-orange-100 dark:bg-orange-950/60 text-orange-600 dark:text-orange-400 flex items-center justify-center text-sm font-bold">7</span>
+          <span>결제 인프라 및 SDK 연동 상세</span>
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs font-mono">
+          <div class="p-4 rounded-2xl bg-gray-900 text-zinc-300 border border-zinc-800 space-y-2 overflow-x-auto">
+            <span class="text-orange-400 font-bold font-sans text-xs">PortOne V2 (국내 결제)</span>
+            <pre class="text-[11px] leading-relaxed"><code>const res = await PortOne.requestPayment({
+  storeId: "store-2374a47d-...",
+  channelKey: "channel-key-0f69...",
+  orderName: "☕ 커피 후원",
+  totalAmount: state.amountKRW,
+  currency: "CURRENCY_KRW",
+  payMethod: "CARD"
+});</code></pre>
+          </div>
+          <div class="p-4 rounded-2xl bg-gray-900 text-zinc-300 border border-zinc-800 space-y-2 overflow-x-auto">
+            <span class="text-orange-400 font-bold font-sans text-xs">PayPal Official SDK (해외 결제)</span>
+            <pre class="text-[11px] leading-relaxed"><code>PayPal.Donation.Button({
+  env: 'production',
+  business: 'ihnseob.kim@gmail.com',
+  item_name: '☕ 커피 후원',
+  amount: state.amountUSD,
+  currency_code: 'USD'
+}).render('#paypal-button-wrapper');</code></pre>
           </div>
         </div>
       </section>
@@ -404,7 +514,7 @@
             <tbody class="divide-y divide-gray-200 dark:divide-zinc-800 text-gray-600 dark:text-zinc-300">
               <tr>
                 <td class="p-3 font-semibold text-gray-900 dark:text-white">1. 사업자 정보 유무</td>
-                <td class="p-3">상호, 대표자, 사업자번호, 통신판매업, 주소, 전화번호, 이메일</td>
+                <td class="p-3">상호, 대표자, 사업자번호, 통신판매업(제2026-서울강남-04919호), 주소, 전화번호, 이메일</td>
                 <td class="p-3 text-center font-bold text-green-600 dark:text-green-400">✅ 100% 완료</td>
               </tr>
               <tr>
@@ -438,13 +548,17 @@
           <span class="w-7 h-7 rounded-xl bg-orange-100 dark:bg-orange-950/60 text-orange-600 dark:text-orange-400 flex items-center justify-center text-sm font-bold">10</span>
           <span>배포 현황 및 바로가기</span>
         </h2>
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 text-xs">
           <a href="index.html" class="p-4 rounded-2xl bg-gray-50 dark:bg-zinc-800/60 border border-gray-200 dark:border-zinc-700/60 hover:border-orange-500 transition flex items-center justify-between">
             <span class="font-bold text-gray-900 dark:text-white">🏠 공식 메인 홈페이지</span>
             <iconify-icon icon="solar:arrow-right-linear" class="text-orange-500"></iconify-icon>
           </a>
           <a href="donate/index.html" class="p-4 rounded-2xl bg-gray-50 dark:bg-zinc-800/60 border border-gray-200 dark:border-zinc-700/60 hover:border-orange-500 transition flex items-center justify-between">
             <span class="font-bold text-gray-900 dark:text-white">☕ 커피 후원 플랫폼</span>
+            <iconify-icon icon="solar:arrow-right-linear" class="text-orange-500"></iconify-icon>
+          </a>
+          <a href="study/ai-powered-web-dev/" class="p-4 rounded-2xl bg-gray-50 dark:bg-zinc-800/60 border border-gray-200 dark:border-zinc-700/60 hover:border-orange-500 transition flex items-center justify-between">
+            <span class="font-bold text-gray-900 dark:text-white">💻 Engineering Study</span>
             <iconify-icon icon="solar:arrow-right-linear" class="text-orange-500"></iconify-icon>
           </a>
           <a href="donate/terms.html" class="p-4 rounded-2xl bg-gray-50 dark:bg-zinc-800/60 border border-gray-200 dark:border-zinc-700/60 hover:border-orange-500 transition flex items-center justify-between">
@@ -459,10 +573,44 @@
             <span class="font-bold text-gray-900 dark:text-white">💸 환불 정책</span>
             <iconify-icon icon="solar:arrow-right-linear" class="text-orange-500"></iconify-icon>
           </a>
-          <a href="donate/guide.html" class="p-4 rounded-2xl bg-gray-50 dark:bg-zinc-800/60 border border-gray-200 dark:border-zinc-700/60 hover:border-orange-500 transition flex items-center justify-between">
-            <span class="font-bold text-gray-900 dark:text-white">📑 개발 지침서 뷰어</span>
-            <iconify-icon icon="solar:arrow-right-linear" class="text-orange-500"></iconify-icon>
-          </a>
+        </div>
+      </section>
+
+      <!-- Section 11: Roadmap -->
+      <section id="section-11" class="p-6 sm:p-8 rounded-3xl bg-white dark:bg-zinc-900 border border-gray-200 dark:border-zinc-800 shadow-sm space-y-4">
+        <h2 class="text-xl font-bold text-gray-900 dark:text-white flex items-center gap-2">
+          <span class="w-7 h-7 rounded-xl bg-orange-100 dark:bg-orange-950/60 text-orange-600 dark:text-orange-400 flex items-center justify-center text-sm font-bold">11</span>
+          <span>향후 로드맵 및 고도화 계획</span>
+        </h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+          <div class="p-3.5 rounded-xl bg-green-50 dark:bg-green-950/30 border border-green-200 dark:border-green-800 flex items-start gap-2">
+            <span class="text-green-600 font-bold">✅ 완료</span>
+            <div>
+              <strong class="text-gray-900 dark:text-white block">4개 국어(KO/EN/JA/ZH) i18n 시스템</strong>
+              <p class="text-gray-600 dark:text-zinc-400 text-[11px]">무설치 JSON 비동기 다국어 전환 엔진 구축 완료</p>
+            </div>
+          </div>
+          <div class="p-3.5 rounded-xl bg-green-50 dark:bg-green-950/30 border border-green-200 dark:border-green-800 flex items-start gap-2">
+            <span class="text-green-600 font-bold">✅ 완료</span>
+            <div>
+              <strong class="text-gray-900 dark:text-white block">5대 Engineering Study 가이드 구축</strong>
+              <p class="text-gray-600 dark:text-zinc-400 text-[11px]">AI 웹 개발 및 아키텍처 실전 가이드라인 완비</p>
+            </div>
+          </div>
+          <div class="p-3.5 rounded-xl bg-green-50 dark:bg-green-950/30 border border-green-200 dark:border-green-800 flex items-start gap-2">
+            <span class="text-green-600 font-bold">✅ 완료</span>
+            <div>
+              <strong class="text-gray-900 dark:text-white block">Moodify Q 서비스 도메인 리뉴얼</strong>
+              <p class="text-gray-600 dark:text-zinc-400 text-[11px]">moodifyq.com 링크 및 에셋 연동 완료</p>
+            </div>
+          </div>
+          <div class="p-3.5 rounded-xl bg-gray-50 dark:bg-zinc-800/60 border border-gray-200 dark:border-zinc-700/60 flex items-start gap-2">
+            <span class="text-orange-500 font-bold">🚀 진행 예정</span>
+            <div>
+              <strong class="text-gray-900 dark:text-white block">후원자 명예의 전당 (Leaderboard)</strong>
+              <p class="text-gray-600 dark:text-zinc-400 text-[11px]">누적 후원 잔 수 기준 Top 10 서포터 뱃지 부여</p>
+            </div>
+          </div>
         </div>
       </section>
 
