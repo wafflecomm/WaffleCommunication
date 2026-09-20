@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="ko" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>와플커뮤니케이션 (Waffle Communication) - README 매뉴얼</title>
+  <meta name="description" content="와플커뮤니케이션 공식 웹사이트, 4개 국어 i18n 다국어 시스템, 커피 후원 플랫폼, 5대 Engineering Study 가이드 공식 README">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Iconify Solar Icons -->
+  <script src="https://code.iconify.design/iconify-icon/2.3.0/iconify-icon.min.js"></script>
+
+  <!-- Paperlogy Webfont CDN -->
+  <style>
+    @font-face {
+      font-family: 'Paperlogy';
+      src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2408-3@1.0/Paperlogy-4Regular.woff2') format('woff2');
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'Paperlogy';
+      src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2408-3@1.0/Paperlogy-6SemiBold.woff2') format('woff2');
+      font-weight: 600;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'Paperlogy';
+      src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2408-3@1.0/Paperlogy-7Bold.woff2') format('woff2');
+      font-weight: 700;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'Paperlogy';
+      src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2408-3@1.0/Paperlogy-8ExtraBold.woff2') format('woff2');
+      font-weight: 800;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    * {
+      font-family: 'Paperlogy', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      box-sizing: border-box;
+    }
+
+    body {
+      word-break: keep-all;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #CBD5E1;
+      border-radius: 9999px;
+    }
+    .dark ::-webkit-scrollbar-thumb {
+      background: #334155;
+    }
+  </style>
+</head>
+<body class="bg-gray-50 dark:bg-zinc-950 text-gray-800 dark:text-zinc-200 min-h-screen selection:bg-indigo-500 selection:text-white">
+
+  <!-- Top Reading Progress Bar -->
+  <div class="fixed top-0 left-0 w-full h-1 bg-transparent z-50">
+    <div id="progress-bar" class="h-full bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 w-0 transition-all duration-75"></div>
+  </div>
+
+  <!-- Header -->
+  <header class="sticky top-0 z-40 bg-white/80 dark:bg-zinc-900/80 backdrop-blur-md border-b border-gray-200 dark:border-zinc-800 px-4 sm:px-8 py-3.5 flex items-center justify-between">
+    <div class="flex items-center gap-3">
+      <a href="index.html" class="flex items-center gap-2 font-bold text-gray-900 dark:text-white hover:text-indigo-500 transition">
+        <span class="text-2xl">🧇</span>
+        <span class="tracking-tight text-base sm:text-lg">Waffle Communication</span>
+      </a>
+      <span class="hidden sm:inline-block px-2.5 py-0.5 rounded-full text-xs font-semibold bg-indigo-100 dark:bg-indigo-950/60 text-indigo-600 dark:text-indigo-400">
+        README v2.5.2
+      </span>
+    </div>
+
+    <div class="flex items-center gap-3">
+      <a href="WEBSITE_PLANNING.html" class="text-xs sm:text-sm font-semibold text-gray-600 dark:text-zinc-300 hover:text-indigo-500 flex items-center gap-1">
+        <iconify-icon icon="solar:document-text-bold"></iconify-icon> 기획서 뷰어
+      </a>
+      <a href="donate/index.html" class="text-xs sm:text-sm font-semibold text-gray-600 dark:text-zinc-300 hover:text-orange-500 flex items-center gap-1">
+        <iconify-icon icon="solar:cup-bold"></iconify-icon> 후원 페이지
+      </a>
+      <button id="theme-toggle" class="p-2 rounded-full bg-gray-100 dark:bg-zinc-800 text-gray-700 dark:text-zinc-300 hover:scale-105 active:scale-95 transition" aria-label="테마 전환">
+        <iconify-icon id="theme-icon" icon="solar:moon-bold-duotone" class="text-lg"></iconify-icon>
+      </button>
+    </div>
+  </header>
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-8 py-8 grid grid-cols-1 lg:grid-cols-4 gap-8">
+    
+    <!-- Sidebar: Table of Contents -->
+    <aside class="hidden lg:block lg:col-span-1">
+      <div class="sticky top-24 space-y-4 p-5 rounded-3xl bg-white dark:bg-zinc-900 border border-gray-200 dark:border-zinc-800 shadow-sm text-sm">
+        <h3 class="font-bold text-gray-900 dark:text-white flex items-center gap-2 text-xs uppercase tracking-wider">
+          <iconify-icon icon="solar:list-bold-duotone" class="text-indigo-500 text-base"></iconify-icon>
+          <span>README 목차</span>
+        </h3>
+        <nav class="space-y-1.5 text-xs text-gray-600 dark:text-zinc-400 font-medium">
+          <a href="#section-hero" class="block py-1 hover:text-indigo-500 transition">1. 프로젝트 개요</a>
+          <a href="#section-features" class="block py-1 hover:text-indigo-500 transition font-bold text-indigo-600 dark:text-indigo-400">2. 핵심 기능 (Key Features)</a>
+          <a href="#section-services" class="block pl-3 py-0.5 text-[11px] hover:text-indigo-500 transition">• 6대 핵심 서비스 라인업</a>
+          <a href="#section-study" class="block pl-3 py-0.5 text-[11px] hover:text-indigo-500 transition">• 5대 Engineering Study</a>
+          <a href="#section-stack" class="block py-1 hover:text-indigo-500 transition">3. 기술 스택 (Tech Stack)</a>
+          <a href="#section-structure" class="block py-1 hover:text-indigo-500 transition">4. 프로젝트 디렉토리 구조</a>
+          <a href="#section-business" class="block py-1 hover:text-indigo-500 transition">5. 공식 사업자 정보</a>
+          <a href="#section-start" class="block py-1 hover:text-indigo-500 transition">6. 빠른 시작 (Getting Started)</a>
+        </nav>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="lg:col-span-3 space-y-10">
+      
+      <!-- Hero Card -->
+      <div id="section-hero" class="p-8 sm:p-10 rounded-3xl bg-gradient-to-br from-white via-indigo-50/20 to-purple-50/40 dark:from-zinc-900 dark:via-zinc-900 dark:to-zinc-800/80 border border-gray-200 dark:border-zinc-800 shadow-sm relative overflow-hidden">
+        <div class="space-y-3">
+          <div class="flex items-center gap-2 text-xs font-bold text-indigo-600 dark:text-indigo-400">
+            <span>WAFFLE COMMUNICATION</span>
+            <span>•</span>
+            <span>OFFICIAL README v2.5.2</span>
+          </div>
+          <h1 class="text-2xl sm:text-4xl font-extrabold text-gray-900 dark:text-white tracking-tight leading-tight">
+            와플커뮤니케이션 공식 웹 & 커피 후원 플랫폼
+          </h1>
+          <p class="text-sm sm:text-base text-gray-600 dark:text-zinc-400 max-w-2xl leading-relaxed">
+            Funny Flow, Happy Connect — 창의적인 플레이와 혁신적인 개발을 이끄는 와플커뮤니케이션의 4개 국어(KO/EN/JA/ZH) 공식 홈페이지, 국내/해외 듀얼 결제 커피 후원 시스템, 5대 Engineering Study 실전 가이드 공식 매뉴얼입니다.
+          </p>
+
+          <div class="flex flex-wrap gap-2 pt-2">
+            <span class="px-3 py-1 rounded-full text-xs font-semibold bg-blue-100 dark:bg-blue-950/60 text-blue-700 dark:text-blue-300">🌐 4개국어 i18n 완비</span>
+            <span class="px-3 py-1 rounded-full text-xs font-semibold bg-orange-100 dark:bg-orange-950/60 text-orange-700 dark:text-orange-300">☕ 커피 후원 플랫폼</span>
+            <span class="px-3 py-1 rounded-full text-xs font-semibold bg-purple-100 dark:bg-purple-950/60 text-purple-700 dark:text-purple-300">📚 5대 Engineering Study</span>
+            <span class="px-3 py-1 rounded-full text-xs font-semibold bg-green-100 dark:bg-green-950/60 text-green-700 dark:text-green-300">⚖️ 통신판매업 완비</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Section 2: Key Features -->
+      <section id="section-features" class="p-6 sm:p-8 rounded-3xl bg-white dark:bg-zinc-900 border border-gray-200 dark:border-zinc-800 shadow-sm space-y-6">
+        <h2 class="text-xl font-bold text-gray-900 dark:text-white flex items-center gap-2">
+          <span class="w-7 h-7 rounded-xl bg-indigo-100 dark:bg-indigo-950/60 text-indigo-600 dark:text-indigo-400 flex items-center justify-center text-sm font-bold">1</span>
+          <span>핵심 기능 (Key Features)</span>
+        </h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs sm:text-sm">
+          <!-- Feature 1: i18n -->
+          <div class="p-5 rounded-2xl bg-gray-50 dark:bg-zinc-800/60 border border-gray-100 dark:border-zinc-700/60 space-y-2">
+            <div class="flex items-center gap-2 text-indigo-600 dark:text-indigo-400 font-bold">
+              <iconify-icon icon="solar:global-bold" class="text-lg"></iconify-icon>
+              <span>4개 국어(KO/EN/JA/ZH) i18n 엔진</span>
+            </div>
+            <p class="text-gray-600 dark:text-zinc-300 text-xs leading-relaxed">
+              0ms 인메모리 자체 내장 엔진으로 브라우저 언어 자동 감지, LocalStorage 영구 보존, URL 파라미터(<code>?lang=</code>) 실시간 전환을 완벽 지원합니다.
+            </p>
+          </div>
+
+          <!-- Feature 2: Antigravity Hero -->
+          <div class="p-5 rounded-2xl bg-gray-50 dark:bg-zinc-800/60 border border-gray-100 dark:border-zinc-700/60 space-y-2">
+            <div class="flex items-center gap-2 text-indigo-600 dark:text-indigo-400 font-bold">
+              <iconify-icon icon="solar:atom-bold" class="text-lg"></iconify-icon>
+              <span>Antigravity Hero & Vantablack Luxe</span>
+            </div>
+            <p class="text-gray-600 dark:text-zinc-300 text-xs leading-relaxed">
+              순수 바닐라 JS 물리 엔진으로 구현된 마우스 반응형 무중력 파티클 애니메이션과 하이엔드 글래스모피즘 UI를 선사합니다.
+            </p>
+          </div>
+
+          <!-- Feature 3: Donation -->
+          <div class="p-5 rounded-2xl bg-gray-50 dark:bg-zinc-800/60 border border-gray-100 dark:border-zinc-700/60 space-y-2">
+            <div class="flex items-center gap-2 text-indigo-600 dark:text-indigo-400 font-bold">
+              <iconify-icon icon="solar:cup-star-bold" class="text-lg"></iconify-icon>
+              <span>원클릭 커피 후원 플랫폼</span>
+            </div>
+            <p class="text-gray-600 dark:text-zinc-300 text-xs leading-relaxed">
+              국내 PortOne V2(카드/카카오/토스) 및 해외 PayPal 듀얼 결제, Supabase PostgreSQL 실시간 피드, 축하 영수증 모달을 지원합니다.
+            </p>
+          </div>
+
+          <!-- Feature 4: SEO & Compliance -->
+          <div class="p-5 rounded-2xl bg-gray-50 dark:bg-zinc-800/60 border border-gray-100 dark:border-zinc-700/60 space-y-2">
+            <div class="flex items-center gap-2 text-indigo-600 dark:text-indigo-400 font-bold">
+              <iconify-icon icon="solar:shield-check-bold" class="text-lg"></iconify-icon>
+              <span>전자상거래 준수 & 글로벌 SEO</span>
+            </div>
+            <p class="text-gray-600 dark:text-zinc-300 text-xs leading-relaxed">
+              통신판매업 신고(제2026-서울강남-04919호), 3대 약관(이용약관/개인정보/환불) 및 4개 국어 hreflang 다국어 sitemap.xml을 완비했습니다.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section: Services -->
+      <section id="section-services" class="p-6 sm:p-8 rounded-3xl bg-white dark:bg-zinc-900 border border-gray-200 dark:border-zinc-800 shadow-sm space-y-4">
+        <h2 class="text-xl font-bold text-gray-900 dark:text-white flex items-center gap-2">
+          <span class="w-7 h-7 rounded-xl bg-indigo-100 dark:bg-indigo-950/60 text-indigo-600 dark:text-indigo-400 flex items-center justify-center text-sm font-bold">2</span>
+          <span>Our Services (6대 핵심 서비스 라인업)</span>
+        </h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 text-xs">
+          <div class="p-4 rounded-2xl bg-gray-50 dark:bg-zinc-800/60 border border-gray-200 dark:border-zinc-700/60 space-y-1.5">
+            <strong class="text-indigo-600 dark:text-indigo-400 block text-sm">⚡ 1. 트래픽 캐쳐 AI</strong>
+            <p class="text-gray-600 dark:text-zinc-300">실시간 급상승 키워드/트렌드 기반 5분 AI 자동 글작성 마케팅 솔루션</p>
+          </div>
+          <div class="p-4 rounded-2xl bg-gray-50 dark:bg-zinc-800/60 border border-gray-200 dark:border-zinc-700/60 space-y-1.5">
+            <strong class="text-indigo-600 dark:text-indigo-400 block text-sm">🎮 2. 캐주얼 & 온라인 게임</strong>
+            <p class="text-gray-600 dark:text-zinc-300">소셜 엔터테인먼트, 혁신적인 보드게임 및 파티게임 제작</p>
+          </div>
+          <div class="p-4 rounded-2xl bg-gray-50 dark:bg-zinc-800/60 border border-gray-200 dark:border-zinc-700/60 space-y-1.5">
+            <strong class="text-indigo-600 dark:text-indigo-400 block text-sm">📚 3. 교육용 앱 솔루션</strong>
+            <p class="text-gray-600 dark:text-zinc-300">재미와 배움을 효과적으로 융합한 인터랙티브 에듀테크</p>
+          </div>
+          <div class="p-4 rounded-2xl bg-gray-50 dark:bg-zinc-800/60 border border-gray-200 dark:border-zinc-700/60 space-y-1.5">
+            <strong class="text-indigo-600 dark:text-indigo-400 block text-sm">🎵 4. Moodify Q</strong>
+            <p class="text-gray-600 dark:text-zinc-300">사진/감정 분석 기반 맞춤형 AI 음악 큐레이션 및 생성 솔루션</p>
+          </div>
+          <div class="p-4 rounded-2xl bg-gray-50 dark:bg-zinc-800/60 border border-gray-200 dark:border-zinc-700/60 space-y-1.5">
+            <strong class="text-indigo-600 dark:text-indigo-400 block text-sm">☕🎵 5. Music Diffuser</strong>
+            <p class="text-gray-600 dark:text-zinc-300">공부, 업무, 휴식을 위한 감성 AI Lo-Fi & Ambient 음악 유튜브 채널</p>
+          </div>
+          <div class="p-4 rounded-2xl bg-gray-50 dark:bg-zinc-800/60 border border-gray-200 dark:border-zinc-700/60 space-y-1.5">
+            <strong class="text-indigo-600 dark:text-indigo-400 block text-sm">🎮🔥 6. 우짤게임 UZGAME</strong>
+            <p class="text-gray-600 dark:text-zinc-300">유쾌하고 재밌는 실시간 게임 플레이 스트리밍 공식 유튜브 채널</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section: Study -->
+      <section id="section-study" class="p-6 sm:p-8 rounded-3xl bg-indigo-50/40 dark:bg-zinc-900 border border-indigo-200 dark:border-indigo-900/40 shadow-sm space-y-4">
+        <h2 class="text-xl font-bold text-gray-900 dark:text-white flex items-center gap-2">
+          <span class="w-7 h-7 rounded-xl bg-indigo-500 text-white flex items-center justify-center text-sm font-bold">3</span>
+          <span>Engineering Study 5대 실전 가이드라인</span>
+        </h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 text-xs">
+          <a href="study/ai-powered-web-dev/" target="_blank" class="p-3.5 rounded-2xl bg-white dark:bg-zinc-800/80 border border-gray-200 dark:border-zinc-700/80 hover:border-indigo-500 transition block space-y-1">
+            <strong class="text-gray-900 dark:text-white block">💻 1. AI 웹 개발 실전 전략</strong>
+            <span class="text-gray-500 dark:text-zinc-400 text-[11px] block">Claude 3.7 + Antigravity 하이브리드 워크플로우</span>
+          </a>
+          <a href="study/webapp-design-guide/" target="_blank" class="p-3.5 rounded-2xl bg-white dark:bg-zinc-800/80 border border-gray-200 dark:border-zinc-700/80 hover:border-indigo-500 transition block space-y-1">
+            <strong class="text-gray-900 dark:text-white block">🎨 2. 웹앱 디자인 시스템 가이드</strong>
+            <span class="text-gray-500 dark:text-zinc-400 text-[11px] block">Vantablack Luxe & Glassmorphism UI 설계</span>
+          </a>
+          <a href="study/ai-cowork-guide/" target="_blank" class="p-3.5 rounded-2xl bg-white dark:bg-zinc-800/80 border border-gray-200 dark:border-zinc-700/80 hover:border-indigo-500 transition block space-y-1">
+            <strong class="text-gray-900 dark:text-white block">🤖 3. AI 협업 프롬프트 가이드</strong>
+            <span class="text-gray-500 dark:text-zinc-400 text-[11px] block">Context 관리 및 Subagent 위임 전략</span>
+          </a>
+          <a href="study/app-update-plan/" target="_blank" class="p-3.5 rounded-2xl bg-white dark:bg-zinc-800/80 border border-gray-200 dark:border-zinc-700/80 hover:border-indigo-500 transition block space-y-1">
+            <strong class="text-gray-900 dark:text-white block">🚀 4. 앱 업데이트 & 버전 전략</strong>
+            <span class="text-gray-500 dark:text-zinc-400 text-[11px] block">Semantic Versioning & 무중단 배포</span>
+          </a>
+          <a href="study/mobile-pc-dual-ui-architecture/" target="_blank" class="p-3.5 rounded-2xl bg-white dark:bg-zinc-800/80 border border-gray-200 dark:border-zinc-700/80 hover:border-indigo-500 transition block space-y-1">
+            <strong class="text-gray-900 dark:text-white block">📱 5. 모바일/PC 듀얼 UI 가이드</strong>
+            <span class="text-gray-500 dark:text-zinc-400 text-[11px] block">단일 코드베이스 반응형 분기 아키텍처</span>
+          </a>
+        </div>
+      </section>
+
+      <!-- Section: Tech Stack -->
+      <section id="section-stack" class="p-6 sm:p-8 rounded-3xl bg-white dark:bg-zinc-900 border border-gray-200 dark:border-zinc-800 shadow-sm space-y-4">
+        <h2 class="text-xl font-bold text-gray-900 dark:text-white flex items-center gap-2">
+          <span class="w-7 h-7 rounded-xl bg-indigo-100 dark:bg-indigo-950/60 text-indigo-600 dark:text-indigo-400 flex items-center justify-center text-sm font-bold">4</span>
+          <span>기술 스택 (Tech Stack)</span>
+        </h2>
+        <div class="overflow-x-auto rounded-2xl border border-gray-200 dark:border-zinc-800">
+          <table class="w-full text-left text-xs">
+            <tbody class="divide-y divide-gray-200 dark:divide-zinc-800 text-gray-600 dark:text-zinc-300">
+              <tr>
+                <td class="p-3 font-semibold text-gray-900 dark:text-white w-1/3">Front-End</td>
+                <td class="p-3">Vanilla HTML5, CSS3, Modern JavaScript (ES6+), Tailwind CSS CDN</td>
+              </tr>
+              <tr>
+                <td class="p-3 font-semibold text-gray-900 dark:text-white">타이포그래피</td>
+                <td class="p-3">Paperlogy Webfont (400, 600, 700, 800), Outfit, Noto Sans KR</td>
+              </tr>
+              <tr>
+                <td class="p-3 font-semibold text-gray-900 dark:text-white">다국어(i18n)</td>
+                <td class="p-3">Client-Side In-Memory JSON DOM Binding (KO/EN/JA/ZH)</td>
+              </tr>
+              <tr>
+                <td class="p-3 font-semibold text-gray-900 dark:text-white">결제 게이트웨이</td>
+                <td class="p-3">PortOne Browser SDK V2 (국내) + PayPal Official Donate SDK (해외)</td>
+              </tr>
+              <tr>
+                <td class="p-3 font-semibold text-gray-900 dark:text-white">데이터베이스</td>
+                <td class="p-3">Supabase PostgreSQL (Realtime WebSocket, Row Level Security)</td>
+              </tr>
+              <tr>
+                <td class="p-3 font-semibold text-gray-900 dark:text-white">호스팅 & 도메인</td>
+                <td class="p-3">GitHub Pages + 커스텀 도메인 (https://iwaffle.kr/)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Section: Business -->
+      <section id="section-business" class="p-6 sm:p-8 rounded-3xl bg-white dark:bg-zinc-900 border border-gray-200 dark:border-zinc-800 shadow-sm space-y-4">
+        <h2 class="text-xl font-bold text-gray-900 dark:text-white flex items-center gap-2">
+          <span class="w-7 h-7 rounded-xl bg-indigo-100 dark:bg-indigo-950/60 text-indigo-600 dark:text-indigo-400 flex items-center justify-center text-sm font-bold">5</span>
+          <span>공식 사업자 정보</span>
+        </h2>
+        <div class="overflow-x-auto rounded-2xl border border-gray-200 dark:border-zinc-800 text-xs">
+          <table class="w-full text-left">
+            <tbody class="divide-y divide-gray-200 dark:divide-zinc-800 text-gray-600 dark:text-zinc-300">
+              <tr>
+                <td class="p-3 font-semibold text-gray-900 dark:text-white w-1/3">상호 / 대표자</td>
+                <td class="p-3 font-bold text-indigo-600 dark:text-indigo-400">와플커뮤니케이션 / 김인섭 (개인사업자)</td>
+              </tr>
+              <tr>
+                <td class="p-3 font-semibold text-gray-900 dark:text-white">사업자등록번호</td>
+                <td class="p-3 font-mono font-bold text-gray-900 dark:text-white">214-13-58853</td>
+              </tr>
+              <tr>
+                <td class="p-3 font-semibold text-gray-900 dark:text-white">통신판매업신고</td>
+                <td class="p-3">제2026-서울강남-04919호</td>
+              </tr>
+              <tr>
+                <td class="p-3 font-semibold text-gray-900 dark:text-white">사업장 주소</td>
+                <td class="p-3">(06159) 서울특별시 강남구 테헤란로 423, 2층 2440호 (삼성동, 현대타워)</td>
+              </tr>
+              <tr>
+                <td class="p-3 font-semibold text-gray-900 dark:text-white">고객센터</td>
+                <td class="p-3 font-bold">02-561-0770 (평일 10:00~18:00) | waffle.comm@gmail.com</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Section: Start -->
+      <section id="section-start" class="p-6 sm:p-8 rounded-3xl bg-white dark:bg-zinc-900 border border-gray-200 dark:border-zinc-800 shadow-sm space-y-4">
+        <h2 class="text-xl font-bold text-gray-900 dark:text-white flex items-center gap-2">
+          <span class="w-7 h-7 rounded-xl bg-indigo-100 dark:bg-indigo-950/60 text-indigo-600 dark:text-indigo-400 flex items-center justify-center text-sm font-bold">6</span>
+          <span>바로가기 (Quick Links)</span>
+        </h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 text-xs">
+          <a href="index.html" class="p-4 rounded-2xl bg-gray-50 dark:bg-zinc-800/60 border border-gray-200 dark:border-zinc-700/60 hover:border-indigo-500 transition flex items-center justify-between">
+            <span class="font-bold text-gray-900 dark:text-white">🏠 공식 메인 홈페이지</span>
+            <iconify-icon icon="solar:arrow-right-linear" class="text-indigo-500"></iconify-icon>
+          </a>
+          <a href="donate/index.html" class="p-4 rounded-2xl bg-gray-50 dark:bg-zinc-800/60 border border-gray-200 dark:border-zinc-700/60 hover:border-indigo-500 transition flex items-center justify-between">
+            <span class="font-bold text-gray-900 dark:text-white">☕ 커피 후원 플랫폼</span>
+            <iconify-icon icon="solar:arrow-right-linear" class="text-indigo-500"></iconify-icon>
+          </a>
+          <a href="WEBSITE_PLANNING.html" class="p-4 rounded-2xl bg-gray-50 dark:bg-zinc-800/60 border border-gray-200 dark:border-zinc-700/60 hover:border-indigo-500 transition flex items-center justify-between">
+            <span class="font-bold text-gray-900 dark:text-white">📑 통합 기획서 뷰어</span>
+            <iconify-icon icon="solar:arrow-right-linear" class="text-indigo-500"></iconify-icon>
+          </a>
+        </div>
+      </section>
+
+    </main>
+
+  </div>
+
+  <!-- Footer -->
+  <footer class="border-t border-gray-200 dark:border-zinc-800 py-6 text-center text-xs text-gray-500 dark:text-zinc-500 bg-white dark:bg-zinc-900 space-y-1">
+    <p class="font-bold text-gray-700 dark:text-zinc-300">와플커뮤니케이션 (Waffle Communication) 공식 README 매뉴얼</p>
+    <p>상호명: 와플커뮤니케이션 | 대표자: 김인섭 | 사업자등록번호: 214-13-58853 | 통신판매업신고: 제2026-서울강남-04919호 | 고객센터: 02-561-0770</p>
+    <p class="pt-1 text-[11px]">&copy; 2026 Waffle Communication. All rights reserved.</p>
+  </footer>
+
+  <!-- Progress & Theme Script -->
+  <script>
+    window.addEventListener('scroll', () => {
+      const winScroll = document.documentElement.scrollTop || document.body.scrollTop;
+      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const scrolled = (winScroll / height) * 100;
+      document.getElementById('progress-bar').style.width = scrolled + '%';
+    });
+
+    const themeBtn = document.getElementById('theme-toggle');
+    const themeIcon = document.getElementById('theme-icon');
+
+    function applyTheme(isDark) {
+      if (isDark) {
+        document.documentElement.classList.add('dark');
+        themeIcon.setAttribute('icon', 'solar:sun-2-bold-duotone');
+      } else {
+        document.documentElement.classList.remove('dark');
+        themeIcon.setAttribute('icon', 'solar:moon-bold-duotone');
+      }
+    }
+
+    const savedTheme = localStorage.getItem('readme_theme');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    applyTheme(savedTheme === 'dark' || (!savedTheme && prefersDark));
+
+    themeBtn.addEventListener('click', () => {
+      const isDark = document.documentElement.classList.toggle('dark');
+      localStorage.setItem('readme_theme', isDark ? 'dark' : 'light');
+      applyTheme(isDark);
+    });
+  </script>
+</body>
+</html>
