@@ -159,6 +159,11 @@
 
 ### 6.1 메인 홈페이지 (`index.html`)
 * **Hero Section**: 회사의 브랜드 슬로건, 핵심 가치 전달 및 주요 서비스 소개
+* **Multilingual i18n System (4개 국어 실시간 다국어 지원)**:
+  - 🇰🇷 한국어 (KO, 기본), 🇺🇸 영어 (EN), 🇯🇵 일본어 (JA), 🇨🇳 중국어 (ZH)
+  - JSON 기반 비동기 DOM 치환 엔진 (`asset/js/i18n.js` & `asset/lang/*.json`)
+  - 브라우저 언어 자동 감지, `localStorage` 설정 저장, URL 파라미터(`?lang=`) 지원
+  - 상단 헤더 글래스모피즘 지구본(🌐) 드롭다운 캡슐 및 모바일 선택기 그룹
 * **Services & Apps (6대 핵심 서비스 라인업)**:
   - ⚡ **1. 트래픽 캐쳐 (Traffic Catcher AI)**: 실시간 급상승 키워드 & 트렌드 기반 올인원 AI 자동 글작성 마케팅 플랫폼 ([trafficcatcher.ai](https://www.trafficcatcher.ai))
   - 🎮 **2. 캐주얼 & 온라인 게임**: 소셜 엔터테인먼트, 혁신적인 보드게임 및 파티게임

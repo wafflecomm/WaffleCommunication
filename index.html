@@ -112,14 +112,57 @@
                 <span class="logo-text">Waffle<span> Communication</span></span>
             </a>
             <ul class="nav-menu">
-                <li><a href="#hero">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#portfolio">Portfolio</a></li>
-                <li><a href="#study">Study</a></li>
-                <li><a href="#partners">Partners</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li><a href="#hero" data-i18n="nav.home">Home</a></li>
+                <li><a href="#about" data-i18n="nav.about">About</a></li>
+                <li><a href="#services" data-i18n="nav.services">Services</a></li>
+                <li><a href="#portfolio" data-i18n="nav.portfolio">Portfolio</a></li>
+                <li><a href="#study" data-i18n="nav.study">Study</a></li>
+                <li><a href="#partners" data-i18n="nav.partners">Partners</a></li>
+                <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
+                <!-- Mobile Language Selector Bar -->
+                <li class="mobile-lang-bar">
+                    <button type="button" class="mobile-lang-btn" data-set-lang="ko">🇰🇷 KO</button>
+                    <button type="button" class="mobile-lang-btn" data-set-lang="en">🇺🇸 EN</button>
+                    <button type="button" class="mobile-lang-btn" data-set-lang="ja">🇯🇵 JA</button>
+                    <button type="button" class="mobile-lang-btn" data-set-lang="zh">🇨🇳 ZH</button>
+                </li>
             </ul>
+
+            <!-- Desktop Language Switcher Dropdown -->
+            <div class="lang-dropdown">
+                <button type="button" class="lang-dropdown-toggle" aria-label="언어 선택" title="Language Selector">
+                    <span class="lang-current-flag">🌐</span>
+                    <span class="lang-current-text">한국어</span>
+                    <span class="lang-arrow">▼</span>
+                </button>
+                <ul class="lang-menu">
+                    <li>
+                        <button type="button" class="lang-menu-item active" data-set-lang="ko">
+                            <span>🇰🇷 한국어 (KO)</span>
+                            <span class="check-icon">✓</span>
+                        </button>
+                    </li>
+                    <li>
+                        <button type="button" class="lang-menu-item" data-set-lang="en">
+                            <span>🇺🇸 English (EN)</span>
+                            <span class="check-icon">✓</span>
+                        </button>
+                    </li>
+                    <li>
+                        <button type="button" class="lang-menu-item" data-set-lang="ja">
+                            <span>🇯🇵 日本語 (JA)</span>
+                            <span class="check-icon">✓</span>
+                        </button>
+                    </li>
+                    <li>
+                        <button type="button" class="lang-menu-item" data-set-lang="zh">
+                            <span>🇨🇳 中文 (ZH)</span>
+                            <span class="check-icon">✓</span>
+                        </button>
+                    </li>
+                </ul>
+            </div>
+
             <div class="menu-toggle" id="mobile-menu">
                 <span></span>
                 <span></span>
@@ -133,23 +176,20 @@
         <section id="hero" class="hero-section">
             <div id="antigravity-container"></div>
             <div class="hero-content container">
-                <!--
-                <h1 class="hero-title animate-in">Waffle<br>Communication</h1>
-                -->
                 <h1 class="hero-title animate-in">
-                    <span class="text-gradient">Funny Flow</span><br>
-                    <span class="text-gradient">Happy Connect</span>
+                    <span class="text-gradient" data-i18n="hero.title_1">Funny Flow</span><br>
+                    <span class="text-gradient" data-i18n="hero.title_2">Happy Connect</span>
                 </h1>
 
-                <p class="hero-subtitle animate-in">Innovating the Future through<br>Creative Technology</p>
+                <p class="hero-subtitle animate-in" data-i18n="hero.subtitle" data-i18n-html="true">Innovating the Future through<br>Creative Technology</p>
                 <div class="hero-btns animate-in">
-                    <a href="#services" class="btn btn-primary">Our Services</a>
-                    <a href="#contact" class="btn btn-secondary">Get in Touch</a>
+                    <a href="#services" class="btn btn-primary" data-i18n="hero.btn_services">Our Services</a>
+                    <a href="#contact" class="btn btn-secondary" data-i18n="hero.btn_contact">Get in Touch</a>
                 </div>
             </div>
             <div class="scroll-indicator">
                 <div class="mouse"></div>
-                <p>Scroll Down</p>
+                <p data-i18n="hero.scroll_down">Scroll Down</p>
             </div>
         </section>
 
@@ -157,20 +197,20 @@
         <section id="about" class="about-section scroll-reveal">
             <div class="container grid">
                 <div class="about-text">
-                    <span class="section-tag">About Us</span>
-                    <h2 class="section-title">창의적인 플레이,<br>혁신적인 개발</h2>
-                    <p class="section-desc">
+                    <span class="section-tag" data-i18n="about.tag">About Us</span>
+                    <h2 class="section-title" data-i18n="about.title" data-i18n-html="true">창의적인 플레이,<br>혁신적인 개발</h2>
+                    <p class="section-desc" data-i18n="about.desc">
                         와플커뮤니케이션은 2012년 설립 이후, 기술과 재미의 경계를 허무는 혁신적인 솔루션을 제공해 왔습니다.
                         단순한 소프트웨어를 넘어 사용자의 삶에 즐거움과 효율을 더하는 가치를 창출합니다.
                     </p>
                     <div class="vision-cards">
                         <div class="vision-card">
-                            <h3>Vision</h3>
-                            <p>글로벌</p> 소셜 엔터테인먼트의 중심</p>
+                            <h3 data-i18n="about.vision_title">Vision</h3>
+                            <p data-i18n="about.vision_desc">글로벌 소셜 엔터테인먼트의 중심</p>
                         </div>
                         <div class="vision-card">
-                            <h3>Mission</h3>
-                            <p>AI 기술로 사람을 연결하고</p> 세상을 더 즐겁고 행복하게</p>
+                            <h3 data-i18n="about.mission_title">Mission</h3>
+                            <p data-i18n="about.mission_desc">AI 기술로 사람을 연결하고 세상을 더 즐겁고 행복하게</p>
                         </div>
                     </div>
                 </div>
@@ -185,9 +225,9 @@
         <section id="services" class="services-section">
             <div class="container">
                 <div class="header-center scroll-reveal">
-                    <span class="section-tag">What We Do</span>
-                    <h2 class="section-title">Our Services</h2>
-                    <p class="section-desc">최신 기술을 활용한 다양한 분야의 소프트웨어 솔루션을 제공합니다.</p>
+                    <span class="section-tag" data-i18n="services.tag">What We Do</span>
+                    <h2 class="section-title" data-i18n="services.title">Our Services</h2>
+                    <p class="section-desc" data-i18n="services.desc">최신 기술을 활용한 다양한 분야의 소프트웨어 솔루션을 제공합니다.</p>
                 </div>
                 <div class="services-grid">
                     <!-- Card 1: Traffic Catcher AI (Featured First) -->
@@ -195,18 +235,18 @@
                         <div class="card-inner">
                             <a href="https://www.trafficcatcher.ai" target="_blank" rel="noopener noreferrer" style="text-decoration: none; color: inherit; display: block;">
                                 <div class="card-image" style="position: relative;">
-                                    <img src="asset/images/traffic_catcher.png" alt="트래픽 캐쳐 - AI 트래픽 자동 글작성 솔루션">
-                                    <span style="position: absolute; bottom: 12px; right: 12px; background: rgba(79, 70, 229, 0.85); color: #fff; padding: 4px 10px; border-radius: 20px; font-size: 0.75rem; font-weight: 700; display: flex; items-center; gap: 4px; backdrop-filter: blur(4px);">
+                                    <img src="asset/images/traffic_catcher.png" alt="Traffic Catcher AI">
+                                    <span style="position: absolute; bottom: 12px; right: 12px; background: rgba(79, 70, 229, 0.85); color: #fff; padding: 4px 10px; border-radius: 20px; font-size: 0.75rem; font-weight: 700; display: flex; items-center; gap: 4px; backdrop-filter: blur(4px);" data-i18n="services.traffic_catcher_badge">
                                         ⚡ AI Platform
                                     </span>
                                 </div>
                                 <div class="card-content">
                                     <div class="icon">⚡✍️</div>
-                                    <h3>트래픽 캐쳐 (Traffic Catcher)</h3>
-                                    <p style="margin-bottom: 0.5rem; font-weight: 700; color: #818CF8; font-size: 0.9rem;">"AI 트래픽을 잡아 5분 만에 나만의 글 작성!"</p>
-                                    <p style="margin-bottom: 1rem; font-size: 0.85rem; line-height: 1.6;">실시간 급상승 키워드와 포털·OTT·주식 트렌드를 스마트하게 포착하여 고품질 콘텐츠를 5분 만에 완성하는 올인원 AI 글작성 솔루션입니다.</p>
+                                    <h3 data-i18n="services.traffic_catcher_title">트래픽 캐쳐 (Traffic Catcher)</h3>
+                                    <p style="margin-bottom: 0.5rem; font-weight: 700; color: #818CF8; font-size: 0.9rem;" data-i18n="services.traffic_catcher_slogan">"AI 트래픽을 잡아 5분 만에 나만의 글 작성!"</p>
+                                    <p style="margin-bottom: 1rem; font-size: 0.85rem; line-height: 1.6;" data-i18n="services.traffic_catcher_desc">실시간 급상승 키워드와 포털·OTT·주식 트렌드를 스마트하게 포착하여 고품질 콘텐츠를 5분 만에 완성하는 올인원 AI 글작성 솔루션입니다.</p>
                                     <div style="display: inline-flex; align-items: center; gap: 6px; font-size: 0.85rem; font-weight: 700; color: #818CF8;">
-                                        <span>서비스 바로가기</span>
+                                        <span data-i18n="services.service_link">서비스 바로가기</span>
                                         <span>→</span>
                                     </div>
                                 </div>
@@ -221,11 +261,11 @@
                             </div>
                             <div class="card-content" style="flex: 1; padding-bottom: 3.5rem;">
                                 <div class="icon">🎮</div>
-                                <h3>캐주얼 & 온라인 게임</h3>
-                                <p>다함께 즐기는 소셜 엔터테인먼트, 혁신적인 보드게임과 파티게임 경험을 선사합니다.</p>
+                                <h3 data-i18n="services.games_title">캐주얼 & 온라인 게임</h3>
+                                <p data-i18n="services.games_desc">다함께 즐기는 소셜 엔터테인먼트, 혁신적인 보드게임과 파티게임 경험을 선사합니다.</p>
                             </div>
                             <!-- Bottom-Right Planning Badge -->
-                            <span style="position: absolute; bottom: 24px; right: 24px; background: rgba(245, 158, 11, 0.15); border: 1px solid rgba(245, 158, 11, 0.5); color: #FBBF24; padding: 5px 14px; border-radius: 20px; font-size: 0.8rem; font-weight: 700; display: inline-flex; align-items: center; gap: 5px; backdrop-filter: blur(8px); box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);">
+                            <span style="position: absolute; bottom: 24px; right: 24px; background: rgba(245, 158, 11, 0.15); border: 1px solid rgba(245, 158, 11, 0.5); color: #FBBF24; padding: 5px 14px; border-radius: 20px; font-size: 0.8rem; font-weight: 700; display: inline-flex; align-items: center; gap: 5px; backdrop-filter: blur(8px); box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);" data-i18n="services.planning_badge">
                                 🛠️ 기획중
                             </span>
                         </div>
@@ -238,11 +278,11 @@
                             </div>
                             <div class="card-content" style="flex: 1; padding-bottom: 3.5rem;">
                                 <div class="icon">📚</div>
-                                <h3>교육용 앱 솔루션</h3>
-                                <p>재미와 배움을 융합한 에듀테크 서비스로 학습의 효율성을 극대화합니다.</p>
+                                <h3 data-i18n="services.edutech_title">교육용 앱 솔루션</h3>
+                                <p data-i18n="services.edutech_desc">재미와 배움을 융합한 에듀테크 서비스로 학습의 효율성을 극대화합니다.</p>
                             </div>
                             <!-- Bottom-Right Planning Badge -->
-                            <span style="position: absolute; bottom: 24px; right: 24px; background: rgba(245, 158, 11, 0.15); border: 1px solid rgba(245, 158, 11, 0.5); color: #FBBF24; padding: 5px 14px; border-radius: 20px; font-size: 0.8rem; font-weight: 700; display: inline-flex; align-items: center; gap: 5px; backdrop-filter: blur(8px); box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);">
+                            <span style="position: absolute; bottom: 24px; right: 24px; background: rgba(245, 158, 11, 0.15); border: 1px solid rgba(245, 158, 11, 0.5); color: #FBBF24; padding: 5px 14px; border-radius: 20px; font-size: 0.8rem; font-weight: 700; display: inline-flex; align-items: center; gap: 5px; backdrop-filter: blur(8px); box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);" data-i18n="services.planning_badge">
                                 🛠️ 기획중
                             </span>
                         </div>
@@ -252,63 +292,63 @@
                         <div class="card-inner">
                             <a href="https://moodifyq.com" target="_blank" rel="noopener noreferrer" style="text-decoration: none; color: inherit; display: block;">
                                 <div class="card-image" style="position: relative;">
-                                    <img src="asset/images/service-moodifyq.png" alt="Moodify Q - AI 음악 추천 및 맞춤형 배경음악 제작">
-                                    <span style="position: absolute; bottom: 12px; right: 12px; background: rgba(168, 85, 247, 0.85); color: #fff; padding: 4px 10px; border-radius: 20px; font-size: 0.75rem; font-weight: 700; display: flex; items-center; gap: 4px; backdrop-filter: blur(4px);">
+                                    <img src="asset/images/service-moodifyq.png" alt="Moodify Q - AI Music">
+                                    <span style="position: absolute; bottom: 12px; right: 12px; background: rgba(168, 85, 247, 0.85); color: #fff; padding: 4px 10px; border-radius: 20px; font-size: 0.75rem; font-weight: 700; display: flex; items-center; gap: 4px; backdrop-filter: blur(4px);" data-i18n="services.moodify_badge">
                                         🎧 Moodify Q Web
                                     </span>
                                 </div>
                                 <div class="card-content">
                                     <div class="icon">🎧🎵</div>
-                                    <h3>Moodify Q</h3>
-                                    <p style="margin-bottom: 0.5rem; font-weight: 700; color: #C084FC; font-size: 0.9rem;">"오늘 나의 분위기, 그 순간을 채우는 완벽한 배경음악."</p>
-                                    <p style="margin-bottom: 1rem; font-size: 0.85rem; line-height: 1.6;">사용자의 사진과 무드, 감성을 AI로 정밀 분석하여 나만의 맞춤형 플레이리스트와 감성 배경음악을 스마트하게 제작 및 추천합니다.</p>
+                                    <h3 data-i18n="services.moodify_title">Moodify Q</h3>
+                                    <p style="margin-bottom: 0.5rem; font-weight: 700; color: #C084FC; font-size: 0.9rem;" data-i18n="services.moodify_slogan">"오늘 나의 분위기, 그 순간을 채우는 완벽한 배경음악."</p>
+                                    <p style="margin-bottom: 1rem; font-size: 0.85rem; line-height: 1.6;" data-i18n="services.moodify_desc">사용자의 사진과 무드, 감성을 AI로 정밀 분석하여 나만의 맞춤형 플레이리스트와 감성 배경음악을 스마트하게 제작 및 추천합니다.</p>
                                     <div style="display: inline-flex; align-items: center; gap: 6px; font-size: 0.85rem; font-weight: 700; color: #C084FC;">
-                                        <span>Moodify Q 바로가기</span>
+                                        <span data-i18n="services.moodify_link">Moodify Q 바로가기</span>
                                         <span>→</span>
                                     </div>
                                 </div>
                             </a>
                         </div>
                     </div>
-                    <!-- Card 4: Music Diffuser (YouTube Channel) -->
+                    <!-- Card 5: Music Diffuser (YouTube Channel) -->
                     <div class="service-card scroll-reveal">
                         <div class="card-inner">
                             <a href="https://www.youtube.com/@Music_Diffuser" target="_blank" rel="noopener noreferrer" style="text-decoration: none; color: inherit; display: block;">
                                 <div class="card-image" style="position: relative;">
                                     <img src="asset/images/music_diffuser.png" alt="Music Diffuser - AI Lo-Fi & Ambient Music">
-                                    <span style="position: absolute; bottom: 12px; right: 12px; background: rgba(255, 0, 0, 0.85); color: #fff; padding: 4px 10px; border-radius: 20px; font-size: 0.75rem; font-weight: 700; display: flex; items-center; gap: 4px; backdrop-filter: blur(4px);">
+                                    <span style="position: absolute; bottom: 12px; right: 12px; background: rgba(255, 0, 0, 0.85); color: #fff; padding: 4px 10px; border-radius: 20px; font-size: 0.75rem; font-weight: 700; display: flex; items-center; gap: 4px; backdrop-filter: blur(4px);" data-i18n="services.music_diffuser_badge">
                                         ▶ YouTube
                                     </span>
                                 </div>
                                 <div class="card-content">
                                     <div class="icon">☕🎵</div>
-                                    <h3>Music Diffuser</h3>
-                                    <p style="margin-bottom: 1rem;">공부, 업무, 휴식 및 명상을 위한 감성적인 AI Lo-Fi & Ambient 배경음악 공식 유튜브 채널입니다.</p>
+                                    <h3 data-i18n="services.music_diffuser_title">Music Diffuser</h3>
+                                    <p style="margin-bottom: 1rem;" data-i18n="services.music_diffuser_desc">공부, 업무, 휴식 및 명상을 위한 감성적인 AI Lo-Fi & Ambient 배경음악 공식 유튜브 채널입니다.</p>
                                     <div style="display: inline-flex; align-items: center; gap: 6px; font-size: 0.85rem; font-weight: 700; color: #FF813F;">
-                                        <span>유튜브 채널 감상하기</span>
+                                        <span data-i18n="services.youtube_link">유튜브 채널 감상하기</span>
                                         <span>→</span>
                                     </div>
                                 </div>
                             </a>
                         </div>
                     </div>
-                    <!-- Card 5: 우짤게임 UZGAME (YouTube Channel) -->
+                    <!-- Card 6: 우짤게임 UZGAME (YouTube Channel) -->
                     <div class="service-card scroll-reveal">
                         <div class="card-inner">
                             <a href="https://www.youtube.com/@uzgame-201" target="_blank" rel="noopener noreferrer" style="text-decoration: none; color: inherit; display: block;">
                                 <div class="card-image" style="position: relative;">
-                                    <img src="asset/images/uzgame.jpg" alt="우짤게임 UZGAME - 게임 스트리밍 채널">
-                                    <span style="position: absolute; bottom: 12px; right: 12px; background: rgba(255, 0, 0, 0.85); color: #fff; padding: 4px 10px; border-radius: 20px; font-size: 0.75rem; font-weight: 700; display: flex; items-center; gap: 4px; backdrop-filter: blur(4px);">
+                                    <img src="asset/images/uzgame.jpg" alt="UZGAME">
+                                    <span style="position: absolute; bottom: 12px; right: 12px; background: rgba(255, 0, 0, 0.85); color: #fff; padding: 4px 10px; border-radius: 20px; font-size: 0.75rem; font-weight: 700; display: flex; items-center; gap: 4px; backdrop-filter: blur(4px);" data-i18n="services.uzgame_badge">
                                         ▶ YouTube
                                     </span>
                                 </div>
                                 <div class="card-content">
                                     <div class="icon">🎮🔥</div>
-                                    <h3>우짤게임 (UZGAME)</h3>
-                                    <p style="margin-bottom: 0.5rem; font-weight: 700; color: #FF813F; font-size: 0.9rem;">"그래서, 우짤래? 일단 게임부터 시작하지! 🎮"</p>
-                                    <p style="margin-bottom: 1rem; font-size: 0.85rem; line-height: 1.6;">다양한 게임의 세계를 유쾌하고 재밌게 풀어내는 게임 플레이 스트리밍 채널입니다. 복잡한 고민은 접어두고 함께 즐겨보세요!</p>
+                                    <h3 data-i18n="services.uzgame_title">우짤게임 (UZGAME)</h3>
+                                    <p style="margin-bottom: 0.5rem; font-weight: 700; color: #FF813F; font-size: 0.9rem;" data-i18n="services.uzgame_slogan">"그래서, 우짤래? 일단 게임부터 시작하지! 🎮"</p>
+                                    <p style="margin-bottom: 1rem; font-size: 0.85rem; line-height: 1.6;" data-i18n="services.uzgame_desc">다양한 게임의 세계를 유쾌하고 재밌게 풀어내는 게임 플레이 스트리밍 채널입니다. 복잡한 고민은 접어두고 함께 즐겨보세요!</p>
                                     <div style="display: inline-flex; align-items: center; gap: 6px; font-size: 0.85rem; font-weight: 700; color: #FF813F;">
-                                        <span>유튜브 채널 감상하기</span>
+                                        <span data-i18n="services.youtube_link">유튜브 채널 감상하기</span>
                                         <span>→</span>
                                     </div>
                                 </div>
@@ -323,14 +363,12 @@
         <section id="portfolio" class="portfolio-section">
             <div class="container">
                 <div class="header-center scroll-reveal">
-                    <span class="section-tag">Portfolio</span>
-                    <h2 class="section-title">Selected Works</h2>
+                    <span class="section-tag" data-i18n="portfolio.tag">Portfolio</span>
+                    <h2 class="section-title" data-i18n="portfolio.title">Selected Works</h2>
                     <div class="ai-quote-container scroll-reveal">
                         <p class="ai-quote">
-                            <span class="quote-sub">AI 시대 전에는</span> "<span class="quote-focus">기술을 가진 사람이 문제를
-                                찾았다 면</span>"<br>
-                            <span class="quote-sub">AI 시대 이후는</span> "<span class="quote-focus">문제를 가진 사람이
-                                기술을 쓰는 시대</span>" <span class="quote-sub">입니다.</span>
+                            <span class="quote-sub" data-i18n="portfolio.quote_sub1">AI 시대 전에는</span> "<span class="quote-focus" data-i18n="portfolio.quote_focus1">기술을 가진 사람이 문제를 찾았다 면</span>"<br>
+                            <span class="quote-sub" data-i18n="portfolio.quote_sub2">AI 시대 이후는</span> "<span class="quote-focus" data-i18n="portfolio.quote_focus2">문제를 가진 사람이 기술을 쓰는 시대</span>" <span class="quote-sub" data-i18n="portfolio.quote_sub3">입니다.</span>
                         </p>
                     </div>
                 </div>
@@ -338,23 +376,23 @@
                     <div class="portfolio-item glassmorphism">
                         <img src="asset/images/portfolio-1.png" alt="Wellness Tracker">
                         <div class="portfolio-info">
-                            <h4>Wellness Connect</h4>
-                            <p>Lifestyle App</p>
+                            <h4 data-i18n="portfolio.item1_title">Wellness Connect</h4>
+                            <p data-i18n="portfolio.item1_desc">Lifestyle App</p>
                         </div>
                     </div>
                     <div class="portfolio-item glassmorphism">
                         <img src="asset/images/portfolio-2.png" alt="Fintech Dashboard">
                         <div class="portfolio-info">
-                            <h4>Waffle Pay</h4>
-                            <p>Fintech Solution</p>
+                            <h4 data-i18n="portfolio.item2_title">Waffle Pay</h4>
+                            <p data-i18n="portfolio.item2_desc">Fintech Solution</p>
                         </div>
                     </div>
                     <div class="portfolio-item glassmorphism">
                         <a href="https://zeons.github.io/CITY2048/" target="_blank" class="portfolio-link">
                             <img src="asset/images/city2048.jpg" alt="CITY 2048 - 3D Puzzle Game">
                             <div class="portfolio-info">
-                                <h4>CITY 2048</h4>
-                                <p>3D Puzzle Game</p>
+                                <h4 data-i18n="portfolio.item3_title">CITY 2048</h4>
+                                <p data-i18n="portfolio.item3_desc">3D Puzzle Game</p>
                                 <div class="link-icon">
                                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                                         stroke-linecap="round" stroke-linejoin="round">
@@ -374,9 +412,9 @@
         <section id="study" class="study-section">
             <div class="container">
                 <div class="header-center scroll-reveal">
-                    <span class="section-tag">Learning & Growth</span>
-                    <h2 class="section-title">Engineering Study</h2>
-                    <p class="section-desc">AI 에이전트 협업, 모던 디자인 시스템, 무중단 배포까지 실전 개발 워크플로우를 학습하고 공유합니다.</p>
+                    <span class="section-tag" data-i18n="study.tag">Learning & Growth</span>
+                    <h2 class="section-title" data-i18n="study.title">Engineering Study</h2>
+                    <p class="section-desc" data-i18n="study.desc">AI 에이전트 협업, 모던 디자인 시스템, 무중단 배포까지 실전 개발 워크플로우를 학습하고 공유합니다.</p>
                 </div>
 
                 <div class="study-grid scroll-reveal">
@@ -385,12 +423,12 @@
                         <div>
                             <div class="study-card-header">
                                 <div class="study-icon-box">🚀</div>
-                                <span class="study-badge">AI Workflow</span>
+                                <span class="study-badge" data-i18n="study.card1_badge">AI Workflow</span>
                             </div>
                             <div class="study-card-body">
-                                <h3>AI-Powered Web Dev</h3>
-                                <div class="study-sub-desc">기획부터 배포까지 6단계 30분 완성 워크플로우</div>
-                                <p class="study-main-desc">
+                                <h3 data-i18n="study.card1_title">AI-Powered Web Dev</h3>
+                                <div class="study-sub-desc" data-i18n="study.card1_sub">기획부터 배포까지 6단계 30분 완성 워크플로우</div>
+                                <p class="study-main-desc" data-i18n="study.card1_desc">
                                     NotebookLM 기획부터 Cloudflare 배포까지, 최신 AI 도구를 결합하여 1인 개발자도 전문 웹서비스를 신속하게 빌드하는 실전 파이프라인 가이드입니다.
                                 </p>
                             </div>
@@ -402,7 +440,7 @@
                                 <span class="study-tag-item">#30분완성</span>
                             </div>
                             <span class="study-action-btn">
-                                <span>가이드 보기</span>
+                                <span data-i18n="study.guide_btn">가이드 보기</span>
                                 <span>→</span>
                             </span>
                         </div>
@@ -413,12 +451,12 @@
                         <div>
                             <div class="study-card-header">
                                 <div class="study-icon-box">🎨</div>
-                                <span class="study-badge">Design System</span>
+                                <span class="study-badge" data-i18n="study.card2_badge">Design System</span>
                             </div>
                             <div class="study-card-body">
-                                <h3>다크 네온 디자인 시스템</h3>
-                                <div class="study-sub-desc">사이버펑크 글래스모피즘 &amp; 8대 추천 폰트 스타터 킷</div>
-                                <p class="study-main-desc">
+                                <h3 data-i18n="study.card2_title">다크 네온 디자인 시스템</h3>
+                                <div class="study-sub-desc" data-i18n="study.card2_sub">사이버펑크 글래스모피즘 & 8대 추천 폰트 스타터 킷</div>
+                                <p class="study-main-desc" data-i18n="study.card2_desc">
                                     어떤 웹앱에도 즉시 이식 가능한 다크 네온 UI 테마 토큰, Paperlogy 등 8대 폰트 비교 분석, 엠비언트 특수 FX, 모바일 Safe Area 표준을 집대성했습니다.
                                 </p>
                             </div>
@@ -430,7 +468,7 @@
                                 <span class="study-tag-item">#AmbientFX</span>
                             </div>
                             <span class="study-action-btn">
-                                <span>가이드 보기</span>
+                                <span data-i18n="study.guide_btn">가이드 보기</span>
                                 <span>→</span>
                             </span>
                         </div>
@@ -441,12 +479,12 @@
                         <div>
                             <div class="study-card-header">
                                 <div class="study-icon-box">🤖</div>
-                                <span class="study-badge">Multi-Agent</span>
+                                <span class="study-badge" data-i18n="study.card3_badge">Multi-Agent</span>
                             </div>
                             <div class="study-card-body">
-                                <h3>AI 협업·통합 운영 가이드</h3>
-                                <div class="study-sub-desc">Gemini, Codex, Claude 3대 에이전트 무충돌 파이프라인</div>
-                                <p class="study-main-desc">
+                                <h3 data-i18n="study.card3_title">AI 협업·통합 운영 가이드</h3>
+                                <div class="study-sub-desc" data-i18n="study.card3_sub">Gemini, Codex, Claude 3대 에이전트 무충돌 파이프라인</div>
+                                <p class="study-main-desc" data-i18n="study.card3_desc">
                                     각기 다른 AI 에이전트의 작업을 안전하게 통합하고, 로컬·스테이징·운영 3단계 환경을 통해 하나의 완성도 높은 제품으로 연결하는 운영 기준입니다.
                                 </p>
                             </div>
@@ -458,7 +496,7 @@
                                 <span class="study-tag-item">#DevOps</span>
                             </div>
                             <span class="study-action-btn">
-                                <span>가이드 보기</span>
+                                <span data-i18n="study.guide_btn">가이드 보기</span>
                                 <span>→</span>
                             </span>
                         </div>
@@ -469,12 +507,12 @@
                         <div>
                             <div class="study-card-header">
                                 <div class="study-icon-box">🔄</div>
-                                <span class="study-badge">Release Pattern</span>
+                                <span class="study-badge" data-i18n="study.card4_badge">Release Pattern</span>
                             </div>
                             <div class="study-card-body">
-                                <h3>웹앱 업데이트 &amp; 캐시 갱신</h3>
-                                <div class="study-sub-desc">브라우저·PWA·웹뷰 캐시 트러블을 원천 차단하는 배포 설계</div>
-                                <p class="study-main-desc">
+                                <h3 data-i18n="study.card4_title">웹앱 업데이트 & 캐시 갱신</h3>
+                                <div class="study-sub-desc" data-i18n="study.card4_sub">브라우저·PWA·웹뷰 캐시 트러블을 원천 차단하는 배포 설계</div>
+                                <p class="study-main-desc" data-i18n="study.card4_desc">
                                     Git Commit SHA를 번들과 매니페스트에 주입하여, 새 배포 감지 시 사용자에게 끊김 없이 최신 버전을 갱신시키는 재사용 가능한 릴리스 프로세스입니다.
                                 </p>
                             </div>
@@ -486,7 +524,7 @@
                                 <span class="study-tag-item">#PWAPattern</span>
                             </div>
                             <span class="study-action-btn">
-                                <span>가이드 보기</span>
+                                <span data-i18n="study.guide_btn">가이드 보기</span>
                                 <span>→</span>
                             </span>
                         </div>
@@ -497,12 +535,12 @@
                         <div>
                             <div class="study-card-header">
                                 <div class="study-icon-box">📱💻</div>
-                                <span class="study-badge">Product Architecture</span>
+                                <span class="study-badge" data-i18n="study.card5_badge">Product Architecture</span>
                             </div>
                             <div class="study-card-body">
-                                <h3>모바일·PC 듀얼 UI 아키텍처</h3>
-                                <div class="study-sub-desc">One Core, Two Shells 실전 웹앱 아키텍처 가이드</div>
-                                <p class="study-main-desc">
+                                <h3 data-i18n="study.card5_title">모바일·PC 듀얼 UI 아키텍처</h3>
+                                <div class="study-sub-desc" data-i18n="study.card5_sub">One Core, Two Shells 실전 웹앱 아키텍처 가이드</div>
+                                <p class="study-main-desc" data-i18n="study.card5_desc">
                                     모바일 웹·PWA·설치 앱의 안정성을 100% 보존하면서 하나의 서비스에 PC 최적화 화면을 확장하는 One Core, Two Shells 분리 렌더링 및 기능 플래그(Feature Flag) 점진 배포 표준입니다.
                                 </p>
                             </div>
@@ -515,7 +553,7 @@
                                 <span class="study-tag-item">#PWA·Capacitor</span>
                             </div>
                             <span class="study-action-btn">
-                                <span>가이드 보기</span>
+                                <span data-i18n="study.guide_btn">가이드 보기</span>
                                 <span>→</span>
                             </span>
                         </div>
@@ -528,9 +566,9 @@
         <section id="partners" class="partners-section">
             <div class="container">
                 <div class="header-center scroll-reveal">
-                    <span class="section-tag">Partners</span>
-                    <h2 class="section-title">Global Partners</h2>
-                    <p class="section-desc">글로벌 리딩 기업들과 함께 혁신적인 미래를 만들어갑니다.</p>
+                    <span class="section-tag" data-i18n="partners.tag">Partners</span>
+                    <h2 class="section-title" data-i18n="partners.title">Global Partners</h2>
+                    <p class="section-desc" data-i18n="partners.desc">글로벌 리딩 기업들과 함께 혁신적인 미래를 만들어갑니다.</p>
                 </div>
                 <div class="partners-grid scroll-reveal">
                     <div class="partner-item glassmorphism">
@@ -609,33 +647,31 @@
             </div>
         </section>
 
-
-
         <!-- Section 7: Contact Us -->
         <section id="contact" class="contact-section">
             <div class="container grid">
                 <div class="contact-info scroll-reveal">
-                    <span class="section-tag">Get in Touch</span>
-                    <h2 class="section-title">행복한 미래를<br>함께 만들어갑니다</h2>
-                    <p class="section-desc">비즈니스 제휴 및 채용에 관한 문의를 환영합니다.</p>
+                    <span class="section-tag" data-i18n="contact.tag">Get in Touch</span>
+                    <h2 class="section-title" data-i18n="contact.title" data-i18n-html="true">행복한 미래를<br>함께 만들어갑니다</h2>
+                    <p class="section-desc" data-i18n="contact.desc">비즈니스 제휴 및 채용에 관한 문의를 환영합니다.</p>
 
                     <ul class="contact-details">
-                        <li><strong>Email:</strong> waffle.comm@gmail.com</li>
-                        <li><strong>Location:</strong> 서울특별시 강남구 테헤란로 423, 현대타워 2층</li>
+                        <li><strong data-i18n="contact.email_label">Email:</strong> waffle.comm@gmail.com</li>
+                        <li><strong data-i18n="contact.location_label">Location:</strong> <span data-i18n="contact.location_val">서울특별시 강남구 테헤란로 423, 현대타워 2층</span></li>
                     </ul>
                 </div>
                 <div class="contact-form-container scroll-reveal">
                     <form id="contact-form" class="glassmorphism">
                         <div class="form-group">
-                            <input type="text" id="name" placeholder="Name" required>
+                            <input type="text" id="name" placeholder="Name" data-i18n-placeholder="contact.form_name_ph" required>
                         </div>
                         <div class="form-group">
-                            <input type="email" id="email" placeholder="Email" required>
+                            <input type="email" id="email" placeholder="Email" data-i18n-placeholder="contact.form_email_ph" required>
                         </div>
                         <div class="form-group">
-                            <textarea id="message" rows="5" placeholder="Message" required></textarea>
+                            <textarea id="message" rows="5" placeholder="Message" data-i18n-placeholder="contact.form_msg_ph" required></textarea>
                         </div>
-                        <button type="submit" class="btn btn-primary btn-full">메시지 보내기</button>
+                        <button type="submit" class="btn btn-primary btn-full" data-i18n="contact.form_submit">메시지 보내기</button>
                     </form>
                 </div>
             </div>
@@ -651,23 +687,23 @@
                     <span>Waffle Communication</span>
                 </div>
                 <div class="footer-info">
-                    <p><strong>상호명 :</strong> 와플커뮤니케이션 | <strong>대표자 :</strong> 김인섭 | <strong>사업자등록번호 :</strong> 214-13-58853</p>
-                    <p><strong>업태/종목 :</strong> 서비스 / 소프트웨어개발및공급 | <strong>통신판매업신고 :</strong> 제2026-서울강남-04919호</p>
-                    <p><strong>사업장 주소 :</strong> (06159) 서울특별시 강남구 테헤란로 423, 2층 2440호 (삼성동, 현대타워)</p>
-                    <p><strong>고객센터 :</strong> 02-561-0770 (평일 10:00~18:00) | <strong>이메일 :</strong> waffle.comm@gmail.com</p>
+                    <p><strong data-i18n="footer.biz_name_label">상호명 :</strong> <span data-i18n="footer.biz_name_val">와플커뮤니케이션</span> | <strong data-i18n="footer.ceo_label">대표자 :</strong> <span data-i18n="footer.ceo_val">김인섭</span> | <strong data-i18n="footer.biz_num_label">사업자등록번호 :</strong> <span data-i18n="footer.biz_num_val">214-13-58853</span></p>
+                    <p><strong data-i18n="footer.biz_type_label">업태/종목 :</strong> <span data-i18n="footer.biz_type_val">서비스 / 소프트웨어개발및공급</span> | <strong data-i18n="footer.telecom_num_label">통신판매업신고 :</strong> <span data-i18n="footer.telecom_num_val">제2026-서울강남-04919호</span></p>
+                    <p><strong data-i18n="footer.addr_label">사업장 주소 :</strong> <span data-i18n="footer.addr_val">(06159) 서울특별시 강남구 테헤란로 423, 2층 2440호 (삼성동, 현대타워)</span></p>
+                    <p><strong data-i18n="footer.cs_label">고객센터 :</strong> <span data-i18n="footer.cs_val">02-561-0770 (평일 10:00~18:00)</span> | <strong data-i18n="footer.email_label">이메일 :</strong> waffle.comm@gmail.com</p>
                 </div>
             </div>
             <div class="footer-bottom" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.08);">
                 <div class="footer-links" style="display: flex; gap: 1rem; font-size: 0.85rem;">
-                    <a href="donate/terms.html" style="color: rgba(255,255,255,0.7); text-decoration: underline;">이용약관</a>
-                    <a href="donate/privacy.html" style="color: rgba(255,255,255,0.7); text-decoration: underline;">개인정보처리방침</a>
-                    <a href="donate/refund.html" style="color: #FF813F; text-decoration: underline;">환불정책</a>
+                    <a href="donate/terms.html" style="color: rgba(255,255,255,0.7); text-decoration: underline;" data-i18n="footer.terms">이용약관</a>
+                    <a href="donate/privacy.html" style="color: rgba(255,255,255,0.7); text-decoration: underline;" data-i18n="footer.privacy">개인정보처리방침</a>
+                    <a href="donate/refund.html" style="color: #FF813F; text-decoration: underline;" data-i18n="footer.refund">환불정책</a>
                     <a href="donate/index.html" style="color: #FF813F; font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 4px;">
-                        <span>커피후원</span>
+                        <span data-i18n="footer.coffee_support">커피후원</span>
                         <span>☕</span>
                     </a>
                 </div>
-                <p>&copy; 2026 Waffle Communication. All rights reserved.</p>
+                <p data-i18n="footer.rights">&copy; 2026 Waffle Communication. All rights reserved.</p>
             </div>
         </div>
     </footer>
@@ -675,9 +711,9 @@
     <!-- Floating Coffee Donation Button (Perfect Circle with Dual Pulse & Smart Floating Badge) -->
     <div class="floating-coffee-wrapper">
         <div class="floating-coffee-tooltip">
-            <span>커피 한 잔 후원하기 ☕</span>
+            <span data-i18n="floating.coffee_tooltip">커피 한 잔 후원하기 ☕</span>
         </div>
-        <a href="donate/index.html" class="floating-coffee-btn" id="floating-coffee-btn" aria-label="커피 후원하기">
+        <a href="donate/index.html" class="floating-coffee-btn" id="floating-coffee-btn" aria-label="커피 후원하기" data-i18n-aria="floating.coffee_aria">
             <span class="coffee-pulse-ring ring-1"></span>
             <span class="coffee-pulse-ring ring-2"></span>
             <div class="coffee-icon-box">
@@ -686,13 +722,14 @@
         </a>
     </div>
 
-    <button id="back-to-top" class="back-to-top" aria-label="Back to Top">
+    <button id="back-to-top" class="back-to-top" aria-label="Back to Top" data-i18n-aria="floating.back_to_top_aria">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
             stroke-linejoin="round">
             <polyline points="18 15 12 9 6 15"></polyline>
         </svg>
     </button>
 
+    <script src="asset/js/i18n.js"></script>
     <script src="script.js"></script>
 </body>
 
